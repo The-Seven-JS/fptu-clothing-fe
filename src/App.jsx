@@ -1,10 +1,18 @@
 import { useState } from 'react'
+import Header from './Header'
 
 function App() {
   return (
     <>
-        Sắc sét phun ly
-        year year
+      <header>
+        {<Header/>}
+      </header>
+      <body>
+        
+      </body>
+      <footer>
+        {<Footer/>}
+      </footer>
     </>
   )
 }
