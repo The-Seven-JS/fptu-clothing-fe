@@ -9,13 +9,13 @@ function News() {
     const [data, setData] = useState([]);//fetch data tu db
     useEffect(() => {
       axios.get("https://jsonplaceholder.typicode.com/posts").then((res) => {
-        setData(res.data);
+        setData(res.data.slice(0,5));
       });
     }, []);
     //---------ket thuc fetch data--------------------------------
     const [curMainPage,setCurMainPage] = useState(0);//ghi card hien tai
     const [prevMainPage, setPrevMainPage] = useState(0);//ghi trang truoc do, su dung de so sanh xem trang moi la < > de tao huong cho animation
-    const mainCards = data.slice(0,5);//noi dung fetch vao
+    const mainCards = data.slice();//noi dung fetch vao
     const offsetMainCard = curMainPage * 1;//sau khi chuyen trang fetch trang moi tu dau
     const mainCardsToShow = mainCards.slice(offsetMainCard,offsetMainCard + 1)//sao ra mot mang moi de hien thi tai 1 thoi diem
     // console.log(mainCardsToShow);
@@ -100,7 +100,7 @@ function News() {
         forcePage={curMainPage}
       />
 {/* ----------------------------------------------- */}
-      {data.length > 0 && curCards.map((_, index) => (
+      {curCards.map((_, index) => (
         <Contentcard key={index + offset} number={index + offset} />
       ))}
       <ReactPaginate
