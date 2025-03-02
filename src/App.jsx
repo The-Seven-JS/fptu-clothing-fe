@@ -1,18 +1,14 @@
 import { useState } from 'react'
 import Header from './Header'
-
+import Maincard from './fuctnews/maincard'
+import Contentcard from './fuctnews/contentcard'
+import './fuctnews/maincard.css'
+import './fuctnews/contentcard.css'
+import News from './fuctnews/News'
 function App() {
   return (
     <>
-      <header>
-        {<Header/>}
-      </header>
-      <body>
-        
-      </body>
-      <footer>
-        {<Footer/>}
-      </footer>
+      <News/>
     </>
   )
 }
