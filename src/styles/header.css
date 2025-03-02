@@ -1,0 +1,58 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid black;
+    padding: 10px 20px;
+    font-family: 'Be Vietnam Pro',sans-serif;
+    font-weight: light;
+    margin-bottom: 30px;
+  }
+  
+  /* Left section with title and menu */
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between "FUCT" and menu items */
+  }
+  
+  /* "FUCT" title */
+  .header-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+  }
+  .header-right{
+    display: flex;
+    gap: 20px;
+  }
+  /* Menu items container */
+  .header-menu {
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    gap: 15px; /* Space between menu items */
+  }
+  
+  /* Individual menu items */
+  .menu-item {
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  
+  /* Test button */
+  .header-test-button {
+    background-color: yellow;
+    color: black;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
