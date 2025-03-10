@@ -1,30 +1,41 @@
 import React from 'react';
-// import styles from '/src/styles/HeightWeightScreen.module.css';
+import "/src/styles/MainTestScreen.css"
+import { Link } from 'react-router-dom';
 
 const HeightWeightScreen = ({ onNext, onChange, formData }) => {
+
   return (
-    <div >
-      <h2>Cùng tìm hiểu về cơ thể của bạn nhé!</h2>
-      <p>Chung tôi cần biết chiều cao và cân nặng của bạn để đưa ra câu trả lời thích hợp nhất.</p>
-      <div >
-        <label>Chiều cao <span >cm</span></label>
-        <input 
-          type="number" 
-          value={formData.height} 
-          onChange={(e) => onChange('height', e.target.value)} 
-          placeholder="Chiều cao"
-        />
+    <div className='bodysize_container'>
+      <div className='bodysize_text'>
+        <h2>Cùng tìm hiểu về cơ thể của bạn nhé!</h2>
+        <p>Chúng tôi cần biết chiều cao và cân nặng của bạn để đưa ra câu trả lời thích hợp nhất.</p>
       </div>
-      <div >
-        <label>Cân nặng <span >kg</span></label>
+      <div>
         <input 
-          type="number" 
-          value={formData.weight} 
-          onChange={(e) => onChange('weight', e.target.value)} 
-          placeholder="Cân nặng"
+          type="text"
+          className='height_input'
+          onChange={() => handleChange('height')}
         />
+        <div className='height_container'>
+          <div className='height_title'>Chiều cao...</div>
+          <div className='height_unit'>cm</div>
+        </div>
       </div>
-      <button onClick={onNext}>TIẾP THEO</button>
+      <div>
+        <input 
+          type="text"
+          className='weight_input'
+            onChange={() => handleChange('weight')}
+        />
+        <div className='weight_container'>
+          <div className='weight_title'>Cân nặng...</div>
+          <div className='weight_unit'>kg</div>
+        </div>
+      </div>
+      
+      <Link to='/test/body-shape'>
+        <button>TIẾP THEO</button>
+      </Link>
     </div>
   );
 };

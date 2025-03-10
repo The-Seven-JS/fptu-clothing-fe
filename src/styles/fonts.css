@@ -51,30 +51,30 @@
 @font-face {
     font-family: 'Inter';
     src: url('/public/fonts/Inter/static/Inter_24pt-Bold.ttf') format('truetype');
-    font-size: bold;
+    font-style: bold;
 }
 @font-face{
     font-family: 'Inter';
     src: url('/public/fonts/Inter/static/Inter_24pt-Regular.ttf') format('truetype');
-    font-size: normal;
+    font-style: normal;
 }
 @font-face{
     font-family: 'Inter';
     src: url('/public/fonts/Inter/static/Inter_24pt-Medium.ttf') format('truetype');
-    font-size: medium;
+    font-style: medium;
 }
 @font-face {
     font-family: 'Inter';
     src: url('/public/fonts/Inter/static/Inter_24pt-SemiBold.ttf') format('truetype');
-    font-size: semi-bold;
+    font-style: semi-bold;
 }
 @font-face {
     font-family: 'Inter';
     src: url('/public/fonts/Inter/static/Inter_24pt-Light.ttf') format('truetype');
-    font-size: light;
+    font-style: light;
 }
 @font-face {
     font-family: 'Inter';
-    src: url('/fonts/Inter/static/Inter_24pt-LightItalic.ttf') format('truetype');
-    font-size:light-italic;
+    src: url('/public/fonts/Inter/static/Inter_24pt-LightItalic.ttf') format('truetype');
+    font-style: light-italic;
 }

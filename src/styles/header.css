@@ -1,14 +1,14 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border-bottom: 1px solid black;
-    padding: 10px 20px;
+    padding: 5px 20px;
     font-family: 'Be Vietnam Pro',sans-serif;
     font-weight: light;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   
   /* Left section with title and menu */
@@ -21,8 +21,10 @@
   /* "FUCT" title */
   .header-title {
     font-size: 30px;
-    font-weight: bold;
-    color: black;
+    font-family: 'Inter',sans-serif;
+    font-weight: 300;
+    text-decoration: none;
+    color: #000000;
     text-transform: uppercase;
   }
   .header-right{
@@ -36,15 +38,16 @@
     align-items: center;
     gap: 15px; /* Space between menu items */
   }
-  
-  /* Individual menu items */
-  .menu-item {
-    font-size: 16px;
-    color: black;
+  .nav-link{
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
     text-decoration: none;
-    text-transform: uppercase;
   }
-  
+  .nav-link-header{ 
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    font-weight: 400;
+  }
   /* Test button */
   .header-test-button {
     background-color: yellow;

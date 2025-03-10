@@ -1,5 +1,5 @@
 import React from 'react'
-import '/src/styles/mainpage.css'
+import '/src/styles/MainCard.css'
 
 function Card({comment, user_img, user, description}) {
   return (

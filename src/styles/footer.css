@@ -1,6 +1,6 @@
+@import url('./fonts.css');
 .main-footer{
     background-color:  #2F2F30;;
-    max-width: 100%;
     margin: 0;
 }
 .footer{
@@ -9,7 +9,6 @@
     flex-direction: row;
     background-color: #2F2F30;
     width: 100%;
-    max-width: 100%;
     align-items: center;
     margin-top: 18px;
     padding:0;
@@ -31,6 +30,7 @@
     gap: 35px;
 }
 .footer-title{
+    font-family: 'Inter',sans-serif;
     font-size: 20px;
     margin: 0;
     font-weight: light;
@@ -52,6 +52,7 @@
     gap: 30px;
 }
 .footer-right h4{
+    font-family: 'Inter',sans-serif;
     font-size: 20px;
     font-weight: bold;
 }

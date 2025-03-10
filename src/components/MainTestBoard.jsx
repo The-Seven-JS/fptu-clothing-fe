@@ -10,7 +10,7 @@ function MainTestBoard() {
           để tiếp thêm sự tự tin mỗi khi có dịp ra ngoài.</h2>
           <button className='board-explore-btn'>LÀM TEST NGAY</button>
         </div>
-        <div className='white-block'>
+        <div className='icon'>
           <img src='/image/test1.png' alt='background-img' className='board-img'></img>
         </div>
       </div>

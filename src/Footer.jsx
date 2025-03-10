@@ -2,7 +2,7 @@ import React from 'react'
 import './styles/footer.css'
 function Footer() {
 return (
-    <div className='footer'>
+    <footer className='footer'>
         <div className='footer-left'>
             <div className='footer-text'>
                 <h1 className='footer-title'>FUCT - FPT UNIVERSITY CLOTHING</h1>
@@ -23,7 +23,7 @@ return (
                 <h5 className='footer-lead-fb'>FPTU leader:   <a>https://www.facebook.com/hathanhtu526</a></h5>
             </div>
         </div>
-    </div>
+    </footer>
 )
 }
 
