@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.fixed-top {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    width: 100%;
+    background-color: #fff; /* Adjust background color as needed */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Add shadow if needed */
+    position: fixed; /* Make the container fixed to the top */
+    top: 0;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.nav-pane {
+    flex: 0.5; /* Adjust flex value as needed */
+}
+
+.header {
+    flex: 3; /* Adjust flex value as needed */
+}

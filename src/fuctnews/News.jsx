@@ -7,9 +7,11 @@ import './News.css'
 import axios from "axios";
 function News() {
     const [data, setData] = useState([]);//fetch data tu db
+    const [content, setContent] = useState([]);//fetch data tu db
     useEffect(() => {
-      axios.get("https://jsonplaceholder.typicode.com/posts").then((res) => {
-        setData(res.data.slice(0,5));
+      axios.get("http://34.87.162.201:3000/articles").then((res) => {
+        setData(res.data.slice(0,5));//lay 2 bai viet dau tien
+        setContent(res.data.slice());//lay 5 bai viet tiep theo
       });
     }, []);
     //---------ket thuc fetch data--------------------------------
@@ -54,7 +56,7 @@ function News() {
     //---------ket thuc pagination the main--------------------------------------------------
     const itemsPerPage = 4;//so card content tren trang
     const [curPage,setCurPage] = useState(0);//vi tri trang news
-    const cards = Array.from({length:200});//fetch tu db
+    const cards = content.slice();//fetch tu db
 
     const offset = curPage * itemsPerPage;//vi tri bat dau cua content card render tren moi trang
     const curCards = cards.slice(offset,offset + itemsPerPage);//sao mang hien thi tren 1 thoi diem
@@ -76,7 +78,7 @@ function News() {
           transition={{ duration: 0.5 }}
         >
         {mainCardsToShow.map((card,index)=> (
-        <Maincard key={index + offsetMainCard} title={card.title} content={card.body}/>
+        <Maincard key={index + offsetMainCard} title={card.title} content={card.content}/>
         ))}
         </motion.div>
       </AnimatePresence>
@@ -100,8 +102,8 @@ function News() {
         forcePage={curMainPage}
       />
 {/* ----------------------------------------------- */}
-      {curCards.map((_, index) => (
-        <Contentcard key={index + offset} number={index + offset} />
+      {curCards.map((card, index) => (
+        <Contentcard key={index + offset} title={card.title} content={card.content} date={card.data} />
       ))}
       <ReactPaginate
         previousLabel={"<"}

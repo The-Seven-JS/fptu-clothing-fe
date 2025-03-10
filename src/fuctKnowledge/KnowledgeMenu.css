@@ -1,0 +1,61 @@
+.background {
+    /* background-color: palevioletred; */
+    height: max-content;
+    width: 60%; /* Change width to 60% */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px; /* Adjust the gap between the items as needed */
+    padding: 10px; /* Add padding to move items away from the edges */
+}
+
+.item {
+    position: relative; /* Add relative positioning */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; /* Add padding to ensure equal space around the image */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.item img {
+    width: 100%; /* Make the images take full width of the container */
+    height: auto; /* Maintain the aspect ratio */
+    object-fit: cover; /* Ensure the images cover the entire grid cell */
+    border-radius: 10px; /* Add rounded corners if needed */
+    transition: transform 0.3s ease; /* Add transition for hover effect */
+}
+
+.item img:hover {
+    transform: scale(1.05); /* Scale up the image on hover */
+}
+
+.item p {
+    position: absolute; /* Add absolute positioning */
+    bottom: 30px; /* Position the paragraph at the bottom */
+    left: 50%; /* Center the paragraph horizontally */
+    transform: translateX(-50%); /* Center the paragraph horizontally */
+    margin: 0;
+    text-align: center;
+    font-size: 1rem;
+    color: #fff; /* Adjust the text color as needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
+    padding: 5px 10px; /* Add padding to the paragraph */
+    border-radius: 5px; /* Add rounded corners to the paragraph */
+    transition: background-color 0.3s ease; /* Add transition for hover effect */
+}
+
+.item:hover p {
+    background-color: rgba(0, 0, 0, 0.7); /* Darken the background on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .background {
+        width: 80%;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+}
