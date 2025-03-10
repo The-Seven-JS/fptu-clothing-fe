@@ -7,7 +7,7 @@ function MainTestScreen() {
   return (
     <div className='test-container'>
       <h1 className='test-title'>FUCT</h1>
-      <div className='content'>
+      <div className='maintest-content'>
         <Outlet/>
       </div>
     </div>

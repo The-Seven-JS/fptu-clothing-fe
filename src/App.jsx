@@ -2,7 +2,7 @@ import Header from './Header';
 import Footer from './Footer';
 import './styles/index.css';
 import MainTestScreen from './MainTestScreen';
-import MainPage from './MainPage';
+import MainPageAdmin from './Admin/MainPage';
 import TestIntroScreen from './components/TestIntroScreen';
 import GenderScreen from './components/GenderScreen';
 import HeightWeightScreen from './components/HeightWeightScreen';
@@ -11,17 +11,24 @@ import { Route, Routes } from 'react-router-dom';
 import UndertoneScreen from './components/UndertoneScreen';
 import ResultScreen from './components/ResultScreen';
 import LegComputeScreen from './components/LegComputeScreen';
+import News from './fuctnews/News.jsx'
+import KnowledgeMenu from './fuctKnowledge/KnowledgeMenu';
+import MainPage from './MainPage';
 
 function App() {
   return (
     <div style={{
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      fontFamily:'serif',  
     }}>
-      <Header />
+      <Header />  
       <Routes>
         <Route path='/' element={<MainPage />} />
+        <Route path='/news' element={<News/>}/>
+        <Route path='/knowledge' element={<KnowledgeMenu/>}/>
+        <Route path='/admin' element={<MainPageAdmin/>}/>
         <Route path='/test' element={<MainTestScreen />}>
           <Route index element={<TestIntroScreen/>}/>
           <Route path='/test/intro' element={<TestIntroScreen />} />

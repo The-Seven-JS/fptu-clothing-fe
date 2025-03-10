@@ -4,6 +4,7 @@ import React, { useState,useEffect } from 'react'
 import ReactPaginate from "react-paginate";
 import { motion, AnimatePresence } from 'framer-motion';
 import './News.css'
+
 import axios from "axios";
 function News() {
     const [data, setData] = useState([]);//fetch data tu db
@@ -82,7 +83,7 @@ function News() {
         ))}
         </motion.div>
       </AnimatePresence>
-        <div className="button">
+        <div className="news-slider-button">
           <img src="src/fuctnews/arrowleft.png" alt="" className="arrow-left" onClick={() => iconClick(0)} />
           <img src="src/fuctnews/arrow.png" alt="" className="arrow-right" onClick={() => iconClick(1)} />
         </div>

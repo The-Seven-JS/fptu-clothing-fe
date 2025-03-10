@@ -5,7 +5,7 @@
     font-style: extra-bold;
 }
 body{
-    background-image: url('/image/test-background.png');
+    /* background-image: url('/image/test-background.png'); */
 }
 * > button{
     font-family: 'Gabarito', sans-serif;
@@ -30,8 +30,8 @@ body{
     place-self: center;
     
 }
-.content{
-    background-color: antiquewhite;
+.maintest-content{
+    /* background-color: antiquewhite; */
     margin-left: 100px;
     margin-right: 100px;
     padding: 10px 30px 3% 30px;

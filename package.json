@@ -22,11 +22,10 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.2.0",
-    "react-spinners": "^0.15.0"
+    "react-spinners": "^0.15.0",
     "react-paginate": "^8.3.0",
     "react-quilljs": "^2.0.5",
     "react-resizable": "^3.0.5",
-    "react-router-dom": "^7.2.0",
     "rehype-sanitize": "^6.0.0",
     "slate-history": "^0.110.3"
   },

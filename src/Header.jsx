@@ -13,8 +13,8 @@ function Header() {
       <div className="header-right">
         <nav className="header-menu">
           <NavLink to="/" className="nav-link">TRANG CHỦ</NavLink>
-          <NavLink to="/" className="nav-link">FUCT NEWS</NavLink>
-          <NavLink to="/test" className="nav-link">KIẾN THỨC THỜI TRANG</NavLink>
+          <NavLink to="/news" className="nav-link">FUCT NEWS</NavLink>
+          <NavLink to="/knowledge" className="nav-link">KIẾN THỨC THỜI TRANG</NavLink>
         </nav>
         <NavLink to="/test">
           <button className="header-test-button">LÀM TEST NGAY</button>
