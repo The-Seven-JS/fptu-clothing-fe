@@ -1,0 +1,132 @@
+@import url('./fonts.css');
+.main-footer{
+    background-color:  #2F2F30;;
+    margin: 0;
+}
+.footer{
+    display: flex; 
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: #2F2F30;
+    width: 100%;
+    align-items: center;
+    margin-top: 18px;
+    padding:0;
+    box-sizing: border-box;
+}
+.footer-text{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #fff;
+}
+.footer-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+    gap: 35px;
+}
+.footer-title{
+    font-family: 'Inter',sans-serif;
+    font-size: 20px;
+    margin: 0;
+    font-weight: light;
+}
+.footer-subtitle{
+    font-size: 10px;
+    margin-top: 3px;
+    opacity: 0.6;
+    font-family: 'Inter', sans-serif;
+    font-weight: light-italic;
+}
+
+.footer-right{
+    margin-right: 16px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    gap: 30px;
+}
+.footer-right h4{
+    font-family: 'Inter',sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+.footer-img{
+    margin-left: 20px;
+    display:flex;
+    cursor: pointer;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+.footer-img .insta{
+    width: 20px;    
+    height: 20px;
+    transition: filter 0.3s ease;
+}
+.footer-img .insta:hover {
+    filter: brightness(1.8);
+}
+.footer-img .ytb{
+    width: 20px;
+    height: 20px;
+    transition: filter 0.3s ease;
+}
+.footer-img .ytb:hover {
+    filter: brightness(1.8);
+}
+.footer-img .fb{
+    width: 20px; 
+    height: 20px;
+    transition: filter 0.3s ease;
+}   
+.footer-img .fb:hover {
+        filter: brightness(1.8);
+    }
+.footer-img .github {
+    width: 20px;
+    height: 20px;
+    transition: filter 0.3s ease;
+}
+.footer-img .github:hover {
+    filter: brightness(1.8);
+}
+.footer-right div h5{
+    margin: 0;
+    opacity: 0.6;
+    font-family: 'Inter', sans-serif;
+    font-weight: light-italic;
+}
+.footer-lead-fb a{
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+}
+.footer-lead-fb a::after {
+    content: "Click to visit!";  /* Change tooltip text as needed */
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    bottom: 150%;  /* Position above the link */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.footer-lead-fb a:hover::after {
+    opacity: 1;
+    visibility: visible;
+}

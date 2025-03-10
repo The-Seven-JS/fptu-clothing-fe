@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'Be Vietnam Pro';
+    src: url('public/fonts/Be_Vietnam_Pro/BeVietnamPro-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Be Vietnam Pro Bold';
+    src: url('public/fonts/Be_Vietnam_Pro/BeVietnamPro-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Inter';
+    src: url('public/fonts/Inter/static/Inter_24pt-ExtraLight.ttf') format('truetype');
+}
+.maincard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw; 
+    height: 350px;
+    border: 1px;
+    border-color: #E1E1E1;
+    border-style: solid;
+    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.3); /* Add shadow for the div */
+    position: relative;
+    background-color:#FFFFFF ;
+    top: -110px;
+}
+.maincard > *{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.maincard > p{
+    font-family: 'Be Vietnam Pro';
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 8;
+}
+.maincard > h5{
+    font-family:'Inter' ;
+}
+.maincard > h2{
+    font-family: 'Be Vietnam Pro Bold';
+}
+.outer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: -70px;
+}
+.outer > img{
+    width: 80vw;
+    height: 60vh;
+    object-fit: cover;
+}

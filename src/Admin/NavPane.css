@@ -1,0 +1,110 @@
+* {
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+.nav-pane {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* White text color */
+    width: 200px; /* Set a fixed width for the nav pane */
+    height: 100vh; /* Full height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px; /* Add padding to the top */
+    padding-bottom: 20px; /* Add padding to the bottom */
+    position: relative; /* Set position to relative for absolute positioning of child elements */
+}
+
+.menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1; /* Allow the menu to grow and take up available space */
+}
+
+.menu-item {
+    width: 100%; /* Ensure the menu-item takes the full width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center the menu items vertically */
+    flex-grow: 1; /* Allow the menu items to grow and take up available space */
+}
+
+.menu-item p {
+    width: 100%; /* Ensure the p elements take the full width */
+    padding: 15px 0; /* Adjust padding for spacing */
+    margin: 0;
+    text-align: center;
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease; /* Add transition for hover effect */
+    border-top: 1px solid #444; /* Add top border */
+    border-bottom: 1px solid #444; /* Add bottom border */
+}
+
+.menu-item p:hover {
+    background-color: #444; /* Darken background color on hover */
+}
+
+.menu-item p.active {
+    background-color: #FFD700; /* Yellow background for active item */
+    color: #333; /* Dark text color for active item */
+    border-top: 1px solid #FFD700; /* Match border color with background */
+    border-bottom: 1px solid #FFD700; /* Match border color with background */
+}
+
+/* Target the first three p elements in the menu-item */
+.menu-item > p:nth-child(-n+3) {
+    padding: 20px 0; /* Increase padding for larger button size */
+    font-size: 18px; /* Increase font size */
+}
+
+#admin {
+    width: 50%;
+}
+
+.change-pass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.change-pass img {
+    width: 30px;
+    height: 30px;
+    margin-left: 2px;
+}
+
+.logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout img {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+.admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px; /* Add padding to the bottom */
+    margin-top: auto; /* Push the admin section to the bottom */
+}
+
+.admin p {
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    border: none; /* Remove borders */
+    transition: text-decoration 0.3s ease; /* Add transition for underline effect */
+}
+
+.admin p:hover {
+    background-color: transparent; /* Ensure background color does not change */
+    text-decoration: underline; /* Add underline on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}

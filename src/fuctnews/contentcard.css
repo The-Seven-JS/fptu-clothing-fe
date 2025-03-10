@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Be Vietnam Pro';
+    src: url('public/fonts/Be_Vietnam_Pro/BeVietnamPro-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Be Vietnam Light';
+    src: url('public/fonts/Be_Vietnam_Pro/BeVietnamPro-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Inter Light';
+    src: url('public/fonts/Inter/static/Inter_24pt-ExtraLight.ttf') format('truetype');
+}
+.contentcard {
+    display: flex;
+    margin: 20px 15vw;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 1ch;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.25);
+    transition: 0.3s;
+}
+.contentcard > img{
+    width: 400px;
+    height: 250px;
+    object-fit: cover;
+    margin-right: 10%;
+    border-radius: 1ch;
+}
+.content > h3 {
+    font-family: 'Be Vietnam Pro';
+}
+.p1{
+    font-family: 'Be Vietnam Light';
+    color: #828282;
+}
+.p2{
+    font-family: 'Inter Light';
+}
