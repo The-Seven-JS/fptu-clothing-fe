@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Be Vietnam Pro Bold';
+    src: url('public/fonts/Be_Vietnam_Pro/BeVietnamPro-Bold.ttf') format('truetype');
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap; /* Prevents wrapping */
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.line {
+    flex: 0.33; /* Allows the line to grow and shrink */
+    height: 1px;
+    background-color: black;
+    margin: 0 10px;
+}
+.text {
+    font-size: 70px;
+    font-weight: bold;
+    font-family: 'Be Vietnam Pro Bold';
+    margin: 0 10px;
+    white-space: nowrap; /* Prevents text wrapping */
+}
