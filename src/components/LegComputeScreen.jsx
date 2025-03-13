@@ -1,7 +1,11 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 function LegComputeScreen() {
+    const [currentLeg, setCurrentLeg] = useState(1)
+    const location = useLocation()
+    const message = location.state?.message || 'No data passed';
+    console.log('Leg-render')
   return (
     <div className='leglength_container'>
         <div>
@@ -9,21 +13,12 @@ function LegComputeScreen() {
             <p>Qua chiều dài chân, chúng tôi có thể xác định đúng tỉ lệ chân - lưng, giúp bạn tránh chọn phải những bộ trang phục dìm dáng, từ đó tự tin hơn mỗi khi ra ngoài.</p>
         </div>
         <div className='leglength_items'>
-            <div>
-                <img alt='Thuoc do' src=''></img>
-                <h4>Xác định bằng thước đo</h4>
-            </div>
-            <div>
-                <img alt='Thuoc do' src='/image/uoc_luong.svg'></img>
-                <h4>Xác định bằng ước lượng</h4>
-            </div>
-            <div>
-                <img alt='Thuoc do' src=''></img>
-                <h4>Tôi không rõ cách xác định</h4>
-            </div>
+                                                                         
         </div>
-        <Link to='/test/result'>
-            <button>Hoàn thành</button>
+        <Link to='/test/result' state={{message: message}}>
+            <button onClick={() => {
+                message.leg = currentLeg
+            }}>Hoàn thành</button>
         </Link>
     </div>
   )

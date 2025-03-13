@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "/src/styles/MainTestScreen.css"
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const HeightWeightScreen = ({ onNext, onChange, formData }) => {
-
+const HeightWeightScreen = () => {
+  const [height, setHeight] = useState(0)
+  const [weight, setWeight] = useState(0)
+  const location = useLocation();
+  const message = location.state?.message || 'No data passed';
+  const calculateBMI = (height, weight) => {
+    if (height > 0 && weight > 0) {
+      return (weight / ((height / 100) ** 2)).toFixed(1);  
+    }
+    alert('Invalid Input!');
+  };
+  console.log('height-weight-render')
+  const handleClick = (message) =>{
+    const bmi_index = calculateBMI(height, weight);
+    if (bmi_index < 18.5)
+      {
+        message.bmi = 1 
+      }
+      else if (bmi_index>=18.5 && bmi_index <=24.9){
+        message.bmi = 2
+      }
+      else if (bmi_index> 24.9 && bmi_index <=29.9){
+        message.bmi = 3
+      }
+      else{
+        message.bmi = 4
+      }
+      console.log(message.bmi)
+  }
   return (
     <div className='bodysize_container'>
       <div className='bodysize_text'>
@@ -14,7 +41,8 @@ const HeightWeightScreen = ({ onNext, onChange, formData }) => {
         <input 
           type="text"
           className='height_input'
-          onChange={() => handleChange('height')}
+          value={height}
+          onChange={(e) => setHeight(e.target.value)}
         />
         <div className='height_container'>
           <div className='height_title'>Chiều cao...</div>
@@ -25,7 +53,8 @@ const HeightWeightScreen = ({ onNext, onChange, formData }) => {
         <input 
           type="text"
           className='weight_input'
-            onChange={() => handleChange('weight')}
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
         />
         <div className='weight_container'>
           <div className='weight_title'>Cân nặng...</div>
@@ -33,8 +62,8 @@ const HeightWeightScreen = ({ onNext, onChange, formData }) => {
         </div>
       </div>
       
-      <Link to='/test/body-shape'>
-        <button>TIẾP THEO</button>
+      <Link to='/test/body-shape' state={{message : message}}>
+        <button onClick={() => handleClick(message)}>TIẾP THEO</button>
       </Link>
     </div>
   );

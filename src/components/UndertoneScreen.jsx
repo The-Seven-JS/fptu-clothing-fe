@@ -1,11 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-const UndertoneScreen = ({ onSelect, onNext }) => {
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+const UndertoneScreen = () => {
+  const [skinChoosen, setSkinChoosen] = useState('')
   const undertones = [
     { name: 'Undertone lạnh', img: '/image/undertone-lanh.svg' },
     { name: 'Undertone trung tính', img: '/image/undertone-trungbinh.svg' },
     { name: 'Undertone ấm', img: '/image/undertone-am.svg' },
   ];
+  console.log('Undertone-render')
+  const location = useLocation()
+  const message1 = location.state?.message || "No data passed"
+  const handleClick = (message) =>{
+    if (skinChoosen =='Undertone lạnh'){
+      message.skin = 1
+    }
+    else if (skinChoosen == 'Undertone trung tính'){
+      message.skin = 2
+    }
+    else{
+      message.skin = 3
+    }
+    console.log(message1)
+  }
 
   return (
     <div className='undertone-container'>
@@ -18,14 +34,18 @@ const UndertoneScreen = ({ onSelect, onNext }) => {
           <div 
             key={undertone.name}
             className='undertone-container-item'
+            onClick={() => {
+              setSkinChoosen(undertone.name)
+              alert(undertone.name)
+              }}
           >
             <img src={undertone.img} alt={undertone.name} sty></img>
             <h3>{undertone.name}</h3>
           </div>
         ))}
       </div>
-      <Link to='/test/leglength'>
-        <button>Tiếp theo</button>
+      <Link to='/test/leglength' state={{message:message1}}>
+        <button onClick={() => handleClick(message1)}>Tiếp theo</button>
       </Link>
     </div>
   );
