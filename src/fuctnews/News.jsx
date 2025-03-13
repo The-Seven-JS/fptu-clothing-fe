@@ -37,8 +37,10 @@ function News() {
 
     useEffect(() => {
       const timer = setTimeout(() => {
+        if(data.length != 0){
           setPrevMainPage(curMainPage);
           setCurMainPage((curMainPage + 1) % mainCards.length);
+        }
       }, 5000); // 5000 milliseconds = 5 seconds
 
       return () => clearTimeout(timer);
@@ -93,7 +95,7 @@ function News() {
         nextLabel={">"}
         breakLabel={"..."}
         breakClassName={"break-me"}
-        pageCount={5}
+        pageCount={data.length}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={handleMainClick}
@@ -110,7 +112,7 @@ function News() {
         previousLabel={"<"}
         nextLabel={">"}
         breakLabel={"..."}
-        pageCount={Math.ceil(200 / itemsPerPage)}
+        pageCount={Math.ceil(content.length / itemsPerPage)}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={handlePageClick}
