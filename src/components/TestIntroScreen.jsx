@@ -22,7 +22,7 @@ function TestIntroScreen() {
         <li>Trả lời chân thực, sát với bản thân nhất để nhận được kết quả chính xác.</li>
       </ul>
       <div className='sub-container'>
-        <Link to="/test/gender">
+        <Link to="/test/gender" >
           <button>TÔI ĐÃ SẴN SÀNG</button>
         </Link>
       </div>

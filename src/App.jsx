@@ -14,8 +14,11 @@ import LegComputeScreen from './components/LegComputeScreen';
 import News from './fuctnews/News.jsx'
 import KnowledgeMenu from './fuctKnowledge/KnowledgeMenu';
 import MainPage from './MainPage';
+import { useState } from 'react';
+import Login from './Admin/Login.jsx';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div style={{
       display: 'flex',
@@ -23,12 +26,15 @@ function App() {
       justifyContent: 'space-between',
       fontFamily:'serif',  
     }}>
+    
       <Header />  
       <Routes>
-        <Route path='/' element={<MainPage />} />
+        <Route path='/' element={<MainPage />}w />
         <Route path='/news' element={<News/>}/>
         <Route path='/knowledge' element={<KnowledgeMenu/>}/>
-        <Route path='/admin' element={<MainPageAdmin/>}/>
+        <Route path='/admin/success' element={<MainPageAdmin/>} />
+        <Route path={isLoggedIn? '/admin/success': '/admin'} element={isLoggedIn ? <MainPageAdmin /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
+        {/* <Route path='/admin' element={<Login/>} /> */}
         <Route path='/test' element={<MainTestScreen />}>
           <Route index element={<TestIntroScreen/>}/>
           <Route path='/test/intro' element={<TestIntroScreen />} />
