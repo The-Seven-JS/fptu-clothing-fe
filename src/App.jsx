@@ -7,18 +7,30 @@ import TestIntroScreen from './components/TestIntroScreen';
 import GenderScreen from './components/GenderScreen';
 import HeightWeightScreen from './components/HeightWeightScreen';
 import BodyShapeScreen from './components/BodyShapeScreen';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import UndertoneScreen from './components/UndertoneScreen';
 import ResultScreen from './components/ResultScreen';
 import LegComputeScreen from './components/LegComputeScreen';
 import News from './fuctnews/News.jsx'
 import KnowledgeMenu from './fuctKnowledge/KnowledgeMenu';
 import MainPage from './MainPage';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Login from './Admin/Login.jsx';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation()
+  useEffect(() =>{
+    if (location.pathname.startsWith('/test')){
+      document.body.style.backgroundImage = "url('/image/test-background.png')";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center";
+      document.body.style.backgroundRepeat = "no-repeat";
+    }
+    else{
+      document.body.style.backgroundImage ="none"
+    }
+  },[location.pathname])
   return (
     <div style={{
       display: 'flex',

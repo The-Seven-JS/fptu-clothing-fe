@@ -38,6 +38,24 @@
     align-items: center;
     gap: 15px; /* Space between menu items */
   }
+
+  .header-menu-link:hover{
+    color: #FCCE0D;
+  }
+  .header-menu-link {
+    text-decoration: none;
+    font-family: 'Gabarito', sans-serif;
+    font-weight: bold;
+    transition: 0.4s ease;
+    color: #000000;
+  }
+  .header-menu-a-active{
+    color: #FCCE0D;
+  }
+  .header-menu-a-pending{
+    color: #000000;
+    opacity: 0.5;
+  }
   .nav-link{
     font-family: 'Inter', sans-serif;
     font-weight: 700;

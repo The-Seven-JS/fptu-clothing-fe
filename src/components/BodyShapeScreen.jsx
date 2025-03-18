@@ -162,7 +162,7 @@ const BodyShapeScreen = () => {
         </div>
       )}
       <Link to='/test/undertone' state={{message: message}}>
-        <button onClick={() => handleClick1(message)}>TIẾP THEO</button>
+        <button className='test_button_class' onClick={() => handleClick1(message)}>TIẾP THEO</button>
       </Link>
     </div>
   );
