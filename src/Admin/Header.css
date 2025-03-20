@@ -15,7 +15,7 @@
     width: 60%;
     margin-left: 3vw;
 }
-button {
+.create {
     margin-right: 3vw;
     padding: 10px 20px; /* Adjust padding for button size */
     background-color: #FFD700; /* Set background color to yellow */
