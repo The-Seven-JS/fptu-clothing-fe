@@ -4,10 +4,7 @@ import React, { useState,useEffect } from 'react'
 import ReactPaginate from "react-paginate";
 import { motion, AnimatePresence } from 'framer-motion';
 import './News.css'
-<<<<<<< Updated upstream
-=======
 import { useNavigate } from 'react-router-dom';
->>>>>>> Stashed changes
 import axios from "axios";
 function News() {
     const [data, setData] = useState([]);//fetch data tu db
@@ -40,8 +37,10 @@ function News() {
 
     useEffect(() => {
       const timer = setTimeout(() => {
+        if(data.length != 0){
           setPrevMainPage(curMainPage);
           setCurMainPage((curMainPage + 1) % mainCards.length);
+        }
       }, 5000); // 5000 milliseconds = 5 seconds
 
       return () => clearTimeout(timer);
@@ -90,7 +89,7 @@ function News() {
         ))}
         </motion.div>
       </AnimatePresence>
-        <div className="button">
+        <div className="news-slider-button">
           <img src="src/fuctnews/arrowleft.png" alt="" className="arrow-left" onClick={() => iconClick(0)} />
           <img src="src/fuctnews/arrow.png" alt="" className="arrow-right" onClick={() => iconClick(1)} />
         </div>
@@ -100,7 +99,7 @@ function News() {
         nextLabel={">"}
         breakLabel={"..."}
         breakClassName={"break-me"}
-        pageCount={5}
+        pageCount={data.length}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={handleMainClick}
@@ -117,7 +116,7 @@ function News() {
         previousLabel={"<"}
         nextLabel={">"}
         breakLabel={"..."}
-        pageCount={Math.ceil(200 / itemsPerPage)}
+        pageCount={Math.ceil(content.length / itemsPerPage)}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={handlePageClick}

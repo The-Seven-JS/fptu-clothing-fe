@@ -53,8 +53,6 @@
 }
 .p2{
     font-family: 'Inter Light';
-<<<<<<< Updated upstream
-=======
 }
 @media (max-width: 1024px) {
     .p1 {
@@ -72,5 +70,4 @@
     .p1 {
         -webkit-line-clamp: 2; /* Show only 2 lines on very small screens */
     }
->>>>>>> Stashed changes
 }

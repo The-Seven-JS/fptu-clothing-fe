@@ -1,18 +1,3 @@
-<<<<<<< Updated upstream
-import { useState } from 'react'
-import Maincard from './fuctnews/maincard'
-import Contentcard from './fuctnews/contentcard'
-import './fuctnews/maincard.css'
-import './fuctnews/contentcard.css'
-import News from './fuctnews/News'
-import NewsContent from './fuctnews/NewsContent'
-import Accessory from './fuctKnowledge/Accessory'
-import Appearance from './fuctKnowledge/Appearance'
-import Tips from './fuctKnowledge/Tips'
-import Other from './fuctKnowledge/Other'
-import KnowledgeMenu from './fuctKnowledge/KnowledgeMenu'
-import MainPage from './Admin/MainPage'
-=======
 import Header from './Header';
 import Footer from './Footer';
 import './styles/index.css';
@@ -33,24 +18,9 @@ import AddPost from './Admin/AddPost.jsx';
 import { useState } from 'react';
 import Login from './Admin/Login.jsx';
 import NewsContent from './fuctnews/NewsContent.jsx';
->>>>>>> Stashed changes
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
-<<<<<<< Updated upstream
-    <>
-      {/* <News/> */}
-      {/* <NewsContent/> */}
-      {/* <AddPost/> */}
-      {/* <Accessory/> */}
-      {/* <Appearance/> */}
-      {/* <Tips/> */}
-      {/* <Other/> */}
-      <KnowledgeMenu/>
-      {/* <MainPage/> */}
-
-    </>
-  )
-=======
     <div style={{
       display: 'flex',
       flexDirection: 'column',
@@ -83,7 +53,6 @@ function App() {
       <Footer />
     </div>
   );
->>>>>>> Stashed changes
 }
 
-export default App
+export default App;
