@@ -3,32 +3,39 @@ import { Link, useLocation } from 'react-router-dom'
 import classes from '/src/styles/legcomputed.module.css'
 import "/src/styles/MainTestScreen.css"
 import { Accordion, AccordionPanel, Avatar, Center, CheckboxCard, CheckboxIndicator, Group, Notification, TextInput } from '@mantine/core';
+import { notifications } from '@mantine/notifications';
+import { GoAlertFill } from 'react-icons/go';
 function LegComputeScreen() {
     const [checkedValue1, setCheckedValue1] = useState({ up: 0, down: 0 })
     const [checkedValue2, setCheckedValue2] = useState(null)
     const location = useLocation()
     const message = location.state?.message || 'No data passed';
+    
     const skelieCompute = (up, down) => (up-down)*100
-    const handleData = (checkedValue1,checkedValue2) =>{
-        if (checkedValue1.up == null && checkedValue1.down != null || checkedValue1.down == null && checkedValue1.up != null){
-            return (
-                <Notification title="WARNING">
-                    Bạn cần phải nhập đầy đủ cả thông tin chiều cao khi ngồi hoặc đứng
-                </Notification>
-            )
-        }
-        else if (checkedValue2 != null){
-            message.leg = checkedValue2
+    const handleData = (e) =>{
+        const up = parseFloat(checkedValue1.up)
+        const down = parseFloat(checkedValue1.down)
+        if (isNaN(up) || isNaN(down) || up <= 0 || down <= 0){
+            e.preventDefault()
+            notifications.show({
+                id:'warning',
+                position:'bottom-right',
+                withBorder:'true',
+                autoClose:'500',
+                title:'WARNING',
+                color:'#cc3300',
+                message:'Số liệu phải là các số dương!',
+                icon:<GoAlertFill/>
+            });
+            throw new Error("Số liệu phải là các số dương.");
         }
         else{
             const temp = skelieCompute(checkedValue1.up, checkedValue1.down)
-            if (temp <= 82.7){
+            if (temp <= 82.7) {
                 message.leg = 1
-            }
-            else if (temp <= 87.4){
+            } else if (temp <= 87.4) {
                 message.leg = 2
-            }
-            else if (temp <= 92.1){
+            } else if (temp <= 92.1) {
                 message.leg = 3
             }
         }
@@ -46,7 +53,7 @@ function LegComputeScreen() {
             name: 'Xác định bằng ước lượng (Dành cho những bạn không rõ cách đo)',
             description:'daasd'
         }
-
+console.log(checkedValue2)
   return (
     <div className='leglength_container'>
         <div>
@@ -76,7 +83,7 @@ function LegComputeScreen() {
                         label="Chiều cao lúc ngồi"
                         placeholder='Chiều cao'
                         value={checkedValue1.down}
-                        onChange={(event) => setCheckedValue1((prev) => ({ ...prev, down: event.currentTarget.value }))}
+                        onChange={(event) => setCheckedValue1((prev) => ({ ...prev, down: event.currentTarget.value}))}
                     />
                     <TextInput mt="md"
                         rightSectionPointerEvents='none'
@@ -153,7 +160,7 @@ function LegComputeScreen() {
             </Accordion>
         </div>
         </div>
-        <Link to='/test/result' state={{message: message}}>
+        <Link to='/test/result' state={{message: message}} onClick={handleData}>
             <button className='test_button_class' onClick={() => {
                 message.leg = currentLeg
             }}>Hoàn thành</button>

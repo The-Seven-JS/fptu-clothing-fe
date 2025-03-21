@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import "/src/styles/MainTestScreen.css"
 import { Link, useLocation } from 'react-router-dom';
+import { GoAlertFill } from 'react-icons/go';
+import { notifications } from '@mantine/notifications';
 
 const HeightWeightScreen = () => {
   const [height, setHeight] = useState()
@@ -9,18 +11,15 @@ const HeightWeightScreen = () => {
   const [isWeightFocused, setWeightFocused] = useState(false)
   const location = useLocation();
   const message = location.state?.message || 'No data passed';
-
   const calculateBMI = (height, weight) => {
-    if (height > 0 && weight > 0) {
-      return (weight / ((height / 100) ** 2)).toFixed(1);  
+    const h = parseFloat(height);
+    const w = parseFloat(weight);
+    if (isNaN(h) || isNaN(w) || h <= 0 || w <= 0) {
+      throw new Error("Chiều cao và cân nặng phải là các số dương.");
     }
-    alert('Invalid Input!');
+    return (w / ((h / 100) ** 2)).toFixed(1);
   };
-  useEffect(() =>{
-    
-  }, )
-  console.log('height-weight-render')
-  const handleClick = (message) =>{
+  const handleClick = () =>{
     const bmi_index = calculateBMI(height, weight);
     if (bmi_index < 18.5)
       {
@@ -35,7 +34,24 @@ const HeightWeightScreen = () => {
       else{
         message.bmi = 4
       }
+  }
+  const handleNavigate = (e) => {
+    if (message.bmi==0) {
+      e.preventDefault()
+      notifications.show({
+        id:'warning',
+        position:'bottom-right',
+        withBorder:'true',
+        autoClose:'500',
+        title:'WARNING',
+        color:'#cc3300',
+        message:'Bạn cần phải nhập đúng dữ liệu trước khi chuyển!',
+        icon:<GoAlertFill/>
+      })
+    }
+    else {
       console.log(message.bmi)
+    }
   }
   return (
     <div className='bodysize_container'>
@@ -87,8 +103,8 @@ const HeightWeightScreen = () => {
         </div>
       </div>
       
-      <Link to='/test/body-shape' state={{message : message}}>
-        <button className='test_button_class' onClick={() => handleClick(message)}>TIẾP THEO</button>
+      <Link to='/test/body-shape' state={{message : message}} onClick={handleNavigate}>
+        <button className='test_button_class' onClick={() => handleClick()}>TIẾP THEO</button>
       </Link>
     </div>
   );

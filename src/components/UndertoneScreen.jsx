@@ -1,4 +1,6 @@
+import { notifications } from '@mantine/notifications';
 import React, { useState } from 'react';
+import { GoAlertFill } from 'react-icons/go';
 import { Link, useLocation } from 'react-router-dom';
 const UndertoneScreen = () => {
   const [skinChoosen, setSkinChoosen] = useState('')
@@ -9,24 +11,37 @@ const UndertoneScreen = () => {
   ];
   // console.log('Undertone-render')
   const location = useLocation()
-  const message1 = location.state?.message || "No data passed"
+  const message = location.state?.message || "No data passed"
   const handleClick1 = (name) =>{
-    // alert(name)
     setSkinChoosen(name)
-  }
-  const handleClick = (message) =>{
-    if (skinChoosen =='Undertone lạnh'){
+    if (name =='Undertone lạnh'){
       message.skin = 1
     }
-    else if (skinChoosen == 'Undertone trung tính'){
+    else if (name == 'Undertone trung tính'){
       message.skin = 2
     }
     else{
       message.skin = 3
     }
-    // console.log(message1)
   }
-
+  const handleNavigate = (e) => {
+      if (!message.skin) {
+        e.preventDefault()
+        notifications.show({
+          id:'warning',
+          position:'bottom-right',
+          withBorder:'true',
+          autoClose:'500',
+          title:'WARNING',
+          color:'#cc3300',
+          message:'Bạn cần phải chọn giới tính của bạn trước khi chuyển!',
+          icon:<GoAlertFill/>
+        })
+      }
+      else {
+        console.log(message.skin)
+      }
+    }
   return (
     <div className='undertone-container'>
       <div>
@@ -41,18 +56,16 @@ const UndertoneScreen = () => {
                         skinChoosen === undertone.name ? 'undertone_clicked' : ''}`}
             onClick={(e) => {
               handleClick1(undertone.name);
-              const computedStyle = window.getComputedStyle(e.currentTarget);
-              console.log('Current className:', e.currentTarget.className);
-              console.log('Computed styles:', computedStyle);
             }}
+            style={{cursor:'pointer'}}
           >
             <img src={undertone.img} alt={undertone.name}></img>
             <h3>{undertone.name}</h3>
           </div>
         ))}
       </div>
-      <Link to='/test/leglength' state={{ message: message1 }}>
-        <button className='test_button_class' onClick={() => handleClick(message1)}>TIẾP THEO</button>
+      <Link to='/test/leglength' state={{ message: message }} onClick={handleNavigate}>
+        <button className='test_button_class' >TIẾP THEO</button>
       </Link>
     </div>
   );

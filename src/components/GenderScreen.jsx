@@ -3,10 +3,13 @@ import '/src/styles/MainTestScreen.css'
 import { Link } from 'react-router-dom';
 import Aos from 'aos';
 import "aos/dist/aos.css";
+import { notifications } from '@mantine/notifications';
+import { GoAlertFill } from "react-icons/go";
 
 const GenderScreen = () => {
   const [gender, setGender] = useState('')
   const [disableAOS, setDisableAOS] = useState(false); 
+  const [showNotification, setShowNotification] = useState();
   const aosInitialized = useRef(false)
   const message = {
     gender: '',
@@ -33,8 +36,25 @@ const GenderScreen = () => {
       document.body.style.backgroundColor= 'white'
     }
   },[gender])
-  const handleClick = (message) =>{
-    message.gender = gender
+  const handleNavigate = (e) => {
+    if (gender == '') {
+      e.preventDefault()
+      setShowNotification(true)
+      notifications.show({
+        id:'warning',
+        position:'bottom-right',
+        withBorder:'true',
+        autoClose:'500',
+        title:'WARNING',
+        color:'#cc3300',
+        message:'Bạn cần phải chọn giới tính của bạn trước khi chuyển!',
+        icon:<GoAlertFill/>
+      })
+    }
+    else {
+      setShowNotification(false)
+      message.gender=gender
+    }
   }
   return (
     <div className='gender_container'>
@@ -50,13 +70,19 @@ const GenderScreen = () => {
         <div className={`gender_male ${gender==='female'?'selected':''}`} onClick={() => setGender('female')} {...(!disableAOS && {'data-aos':'zoom-in'})}>
           <img alt='gender_female' src ='/image/OC_girl.svg'></img>
           <h4>Nữ</h4>
-        </div>
+        </div>  
       </div>
-      <Link to='/test/height-weight' state={{message: message}} >
-        <button className='test_button_class' onClick={() => handleClick(message)}>TIẾP THEO</button>
+      <Link to='/test/height-weight' state={{message: message}} onClick={handleNavigate} >
+        <button className='test_button_class'>TIẾP THEO</button>
       </Link>
     </div>
   );
 };
 
 export default GenderScreen;
+
+/* Có 3 cách để passing data qua các page:
+1, Sử dụng Local Storage hoặc Session Storage
+2, Sử dụng Context API để quản lý trạng thái toàn cục
+3, Sử dụng location.state của React Router Dom
+*/
