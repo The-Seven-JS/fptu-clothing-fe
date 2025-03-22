@@ -17,7 +17,8 @@ import MainPage from './MainPage';
 import { useEffect, useState } from 'react';
 import Login from './Admin/Login.jsx';
 import ChangePassword from './Admin/ChangePassword';
-
+import AddPost from './Admin/AddPost.jsx';
+import NewsContent from './fuctnews/NewsContent.jsx';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation()
@@ -60,6 +61,7 @@ function App() {
           <Route path='/test/undertone' element={<UndertoneScreen/>}/>
           <Route path='/test/result' element={<ResultScreen/>}/>
           <Route path='/test/leglength' element={<LegComputeScreen/>}/>
+          
         </Route>
       </Routes>
       <Footer />

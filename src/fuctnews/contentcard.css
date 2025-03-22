@@ -54,20 +54,3 @@
 .p2{
     font-family: 'Inter Light';
 }
-@media (max-width: 1024px) {
-    .p1 {
-        -webkit-line-clamp: 4; /* Show fewer lines on medium screens */
-    }
-}
-
-@media (max-width: 768px) {
-    .p1 {
-        -webkit-line-clamp: 3; /* Show even fewer lines on smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .p1 {
-        -webkit-line-clamp: 2; /* Show only 2 lines on very small screens */
-    }
-}

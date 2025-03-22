@@ -5,7 +5,7 @@
     src: url('/fonts/GarbaritoCong/GabaritoCong-Bold.ttf') format('truetype');
     font-style: extra-bold;
 }
-* > button{
+/* * > button{
     font-family: 'Gabarito', sans-serif;
     line-height: 1.4;
     background-color: #FCCE0D;
@@ -15,8 +15,8 @@
     padding: 10px 20px;
     border-radius: 20px;
     transition: 0.3s ease;
-}
-.test_button_class{
+} */
+/* .test_button_class{
     font-family: 'Gabarito', sans-serif;
     line-height: 1.4;
     background-color: #FCCE0D;
@@ -32,7 +32,7 @@
 }
 * > button:hover{
     transform: scale(1.1);
-}
+} */
 .test-title{
     font-family: 'Bagel Fat One', sans-serif;
     font-style: bold;
