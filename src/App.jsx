@@ -43,10 +43,12 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage />}w />
         <Route path='/news' element={<News/>}/>
+        <Route path='/news/content' element={<NewsContent/>}/>
         <Route path='/knowledge' element={<KnowledgeMenu/>}/>
         <Route path='/admin/success' element={<MainPageAdmin/>} />
         <Route path={isLoggedIn? '/admin/success': '/admin'} element={isLoggedIn ? <MainPageAdmin /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
         {/* <Route path='/admin' element={<Login/>} /> */}
+        <Route path='/admin/addpost' element={<AddPost />} />
         <Route path='/test' element={<MainTestScreen />}>
           <Route index element={<TestIntroScreen/>}/>
           <Route path='/test/intro' element={<TestIntroScreen />} />
