@@ -5,7 +5,8 @@ import './MainPage.css';
 import Login from './Login';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import AddPost from './AddPost';
+import PostManager from './PostManager';
 function MainPage() {
   const [validate, setValidate] = useState(true)
   const navigate = useNavigate()
@@ -26,7 +27,12 @@ function MainPage() {
     <div>
         <div className='fixed-top'>
           <NavPane />
-          <Header />
+          <div className='right-side'>
+            <Header />
+            <div className='inside-right-side'>
+              <PostManager />
+            </div>
+          </div>
         </div>
     </div>
   );

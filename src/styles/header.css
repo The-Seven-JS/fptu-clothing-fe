@@ -29,6 +29,7 @@
   }
   .header-right{
     display: flex;
+    align-items: center;
     gap: 20px;
   }
   /* Menu items container */
@@ -76,4 +77,23 @@
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+  }
+  .header-menu-mobile{
+    display: none;
+  }
+  @media screen and (max-width: 798px) {
+    .header-test-button{
+      font-size:14px;
+    }
+    .header-menu{
+      font-size:12px;
+    }
+  }
+  @media screen and (max-width: 693px){
+    .header-menu-mobile{
+      display: block;
+    }
+    .header-menu{
+      display: none;
+    }
   }

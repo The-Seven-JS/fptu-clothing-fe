@@ -18,7 +18,7 @@ return (
         </div>
         <div className='footer-right'>
             <h4>Contact us!</h4>
-            <div>
+            <div className='footer-text-r'>
                 <h5 className='footer-lead-fb'>JSClub:   <a>https://www.facebook.com/fu.jsclub</a></h5>
                 <h5 className='footer-lead-fb'>FPTU leader:   <a>https://www.facebook.com/hathanhtu526</a></h5>
             </div>

@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap');
 @font-face {
     font-family: 'Gabarito';
     src: url('/fonts/GarbaritoCong/GabaritoCong-Bold.ttf') format('truetype');
     font-style: extra-bold;
 }
-@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap');
 * > button{
     font-family: 'Gabarito', sans-serif;
     line-height: 1.4;
@@ -47,7 +47,7 @@
     padding: 10px 30px 3% 30px;
     place-items: center;
     margin-bottom: 100px;
-    
+    box-sizing: content-box;
 }   
 .test-container{
     padding-left: 100px;
@@ -335,6 +335,22 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    padding: 30px 30px;
+}
+.leglength_text{
+    box-sizing: border-box;
+    margin: 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 100%;
+}
+.leglength_items{
+    padding: 20px 10px;
+}
+.leg_img{
+    max-width: 100%;
+    height: auto    ;
 }
 .leglength_container div h2{
     font-family: 'Be Vietnam Pro', sans-serif;
@@ -347,7 +363,7 @@
     color: #2F2F30;
 }
 .leglength_item{
-    width: 1100px;
+    width: 100%;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
 }
@@ -355,22 +371,7 @@
     font-family: 'Inter', sans-serif;
     font-weight: 400;
 }
-/* .leglength_items{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    gap: 50px;
-}
-.leglength_items div{
-    display: flex;
-    flex-direction: column;
-    gap: 10px; 
-    align-items: center;
-}
-.leglength_items div img{
-    height: 200px;
-    width: 200px;
-} */
+
 
 /*Result Container*/
 .result_container{
@@ -390,6 +391,10 @@
     font-weight: 300;
 }
 /*Media query*/
+@media screen and (max-width:1237px){
+
+    
+}
 @media screen and (max-width: 997px) {
     .undertone-container-item{
         width: 190px;
