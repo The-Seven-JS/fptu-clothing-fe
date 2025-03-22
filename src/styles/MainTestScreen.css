@@ -7,7 +7,7 @@
 body{
     background-image: url('/image/test-background.png');
 }
-* > button{
+/* * > button{
     font-family: 'Gabarito', sans-serif;
     line-height: 1.4;
     background-color: #FCCE0D;
@@ -17,10 +17,10 @@ body{
     padding: 10px 20px;
     border-radius: 20px;
     transition: 0.3s ease;
-}
-* > button:hover{
+} */
+/* * > button:hover{
     transform: scale(1.1);
-}
+} */
 .test-title{
     font-family: 'Bagel Fat One', sans-serif;
     font-style: bold;

@@ -17,6 +17,7 @@ import MainPage from './MainPage';
 import AddPost from './Admin/AddPost.jsx';
 import { useState } from 'react';
 import Login from './Admin/Login.jsx';
+import NewsContent from './fuctnews/NewsContent.jsx';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage />}w />
         <Route path='/news' element={<News/>}/>
+        <Route path='/news/content' element={<NewsContent/>}/>
         <Route path='/knowledge' element={<KnowledgeMenu/>}/>
         <Route path='/admin/success' element={<MainPageAdmin/>} />
         <Route path={isLoggedIn? '/admin/success': '/admin'} element={isLoggedIn ? <MainPageAdmin /> : <Login onLogin={() => setIsLoggedIn(true)} />} />

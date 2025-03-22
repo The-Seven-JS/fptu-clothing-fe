@@ -10,17 +10,26 @@ body {
     width: 100%;
     background-color: #fff; /* Adjust background color as needed */
     box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Add shadow if needed */
-    position: fixed; /* Make the container fixed to the top */
+    position: fixed; 
     top: 0;
     z-index: 1000; /* Ensure it stays on top of other elements */
 }
 
 .nav-pane {
-    flex: 0.5; /* Adjust flex value as needed */
+    flex: 0.2; /* Adjust flex value as needed */
 }
 
-.header {
-    flex: 3; /* Adjust flex value as needed */
+.right-side{
+    flex: 0.8; /* Adjust flex value as needed */
+}
+.add-post-container{
+    position: sticky;
+}
+.inside-right-side{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
 }
 /*LOGIN*/
 .admin_validate_container{

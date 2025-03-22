@@ -2,75 +2,200 @@ import "@blocknote/core/fonts/inter.css";
 import { BlockNoteView } from "@blocknote/mantine";
 import "@blocknote/mantine/style.css";
 import { useCreateBlockNote } from "@blocknote/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios"; // Import Axios
 import "./AddPost.css"; // Import the CSS file
+import { useLocation } from "react-router-dom";
 
 export default function AddPost() {
+  const location = useLocation();
+  const { title,id,bg } = location.state || {};
   const [htmlContent, setHtmlContent] = useState(""); // Add state for HTML content
   const [fetchedData, setFetchedData] = useState(""); // Add state for fetched data
+  const [postId, setPostId] = useState(null); // Add state for post ID
+  const [bgimage, setBgimage] = useState(""); // Add state for title
+  const [uploadStatus, setUploadStatus] = useState(""); // Add state for upload status
+  const [fileName, setFileName] = useState(""); // Add state for file name
+  const [blocks, setBlocks] = useState([]); // Add state for blocks
+  // Use a ref to store the dynamic uploadFile function
+  const uploadFileFunctionRef = useRef(async () => {
+    throw new Error("Post ID is not set. Please create a post first.");
+  });
 
-  // Uploads a file to the server and returns the URL to the uploaded file.
-  async function uploadFile(file) {
-    const body = new FormData();
-    body.append("file", file);
+  // Update the uploadFile function dynamically when postId is set
+  useEffect(() => {
+    if (postId) {
+      uploadFileFunctionRef.current = async (file) => {
+        const body = new FormData();
+        body.append("file", file);
 
-    try {
-      const response = await axios.post("https://tmpfiles.org/api/v1/upload", body, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      // Correctly access the url property
-      if (response.data && response.data.data && response.data.data.url) {
-        return response.data.data.url.replace("tmpfiles.org/", "tmpfiles.org/dl/");
-      } else {
-        console.error("Upload failed: URL not found in response");
-      }
-    } catch (error) {
-      console.error("Error uploading file:", error);
-      throw error;
+        try {
+          const response = await axios.post(`http://34.87.162.201:3000/photos/upload-to-cloud/${postId}`, body, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+          if (response.data) {
+            console.log(response.data);
+            return response.data.url[0];
+          } else {
+            console.error("Upload failed: URL not found in response");
+          }
+        } catch (error) {
+          console.error("Error uploading file:", error);
+          throw error;
+        }
+      };
     }
-  }
+  }, [postId]); // Re-run this effect whenever postId changes
 
-  // Creates a new editor instance.
-  const editor = useCreateBlockNote({ uploadFile });
+  // Initialize the editor at the top level
+  const editor = useCreateBlockNote({
+    uploadFile: async (file) => {
+      // Always use the latest version of the uploadFile function
+      return uploadFileFunctionRef.current(file);
+    },
 
-  const onChange = async () => {
-    // Converts the editor's contents from Block objects to HTML and store to state.
-    const html = await editor.blocksToHTMLLossy(editor.document);
-    setHtmlContent(html);
-  };
+  });
+
+  // Automatically create a new post when the page loads
+  useEffect(() => {
+    const createNewPost = async () => {
+      try {
+        const response = await axios.post("http://34.87.162.201:3000/articles/new", {
+          title: "New Post", // Use the extracted <h2> content as the title if available
+          content: "<p></p>",
+        });
+        console.log("Response:", response.data);
+        setFetchedData(response.data.content);
+        setPostId(response.data.id); // Store the returned ID in the state
+      } catch (error) {
+        console.error("Error creating new post:", error);
+      }
+    };
+
+    if(!title){
+        console.log(title);
+        createNewPost();
+    }else{
+      console.log(id);
+      setPostId(id);
+    }
+    
+  }, []); // Run only once when the component mounts
 
   useEffect(() => {
-    // on mount, trigger initial conversion of the initial content to md
-    onChange();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const loadPost = async () => {
+      const loaded = await editor.tryParseHTMLToBlocks(title);
+      setBlocks(loaded);
+      editor.replaceBlocks(editor.document, loaded);
+      console.log(blocks);
+    };
+    loadPost();
+  }, [editor]);
 
-  // Function to handle submission
-  const handleSubmit = async () => {
+  const handleSave = async () => {
+    if (!postId) {
+      console.error("Post ID is not available. Please create a new post first.");
+      return;
+    }
+    if(bgimage === "" && title){
+      console.log("ok");
+      try {
+        const response = await axios.put(`http://34.87.162.201:3000/articles/${postId}`, {
+          title: bg, // Use the extracted <h2> content as the title if available
+          content: htmlContent,
+        });
+        console.log("Response:", response.data);
+        setFetchedData(response.data.content);
+      } catch (error) {
+        console.error("Error submitting data:", error);
+      }
+    }else{
+      console.log("no ok");
+      try {
+        const response = await axios.put(`http://34.87.162.201:3000/articles/${postId}`, {
+          title: bgimage, // Use the extracted <h2> content as the title if available
+          content: htmlContent,
+        });
+        console.log("Response:", response.data);
+        setFetchedData(response.data.content);
+      } catch (error) {
+        console.error("Error submitting data:", error);
+      }
+    }
+  };
+
+  const onChange = async () => {
+    if (editor) {
+      // Converts the editor's contents from Block objects to HTML and store to state.
+      const html = await editor.blocksToHTMLLossy(editor.document);
+      setHtmlContent(html);
+    }
+  };
+
+  const handleCustomUpload = async (event) => {
+    if (!postId) {
+      console.error("Post ID is not available. Please create a new post first.");
+      return;
+    }
+  
+    const file = event.target.files[0]; // Get the selected file
+    if (!file) {
+      console.error("No file selected.");
+      return;
+    }
+  
+    setUploadStatus("selected"); // Update the upload status immediately after file selection
+    setFileName(file.name); // Update the file name immediately after file selection
+  
     try {
-      const response = await axios.post("http://34.87.162.201:3000/articles/new", {
-        title: "New Post",
+      const uploadedUrl = await uploadFileFunctionRef.current(file); // Use the uploadFile function
+      setBgimage(uploadedUrl);
+      const response = await axios.put(`http://34.87.162.201:3000/articles/${postId}`, {
+        title: bgimage, // Use the extracted <h2> content as the title if available
         content: htmlContent,
       });
-      console.log("Response:", response.data);
-      setFetchedData(response.data.content);
+      console.log("Uploaded file URL:", uploadedUrl);
+      alert(`File uploaded successfully: ${uploadedUrl}`);
     } catch (error) {
-      console.error("Error submitting data:", error);
+      console.error("Error uploading file:", error);
     }
   };
 
   // Renders the editor instance using a React component.
   return (
     <>
-      <BlockNoteView editor={editor} onChange={onChange} />
-      <div style={{ marginTop: "20px" }}>
-        <h3>Preview:</h3>
-        <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      <div className="add-post">
+        <div className="buttons">
+        <label
+  htmlFor="upload"
+  className={`upload-label ${
+    uploadStatus === "selected"
+      ? "selected"
+      : bgimage === "" && title
+      ? "existing-photo-label"
+      : ""
+  }`}
+>
+  {uploadStatus === "selected"
+    ? fileName
+    : bgimage === "" && title
+    ? "Sửa ảnh đã có"
+    : "Tải lên Ảnh Bìa"}
+</label>
+          <button onClick={handleSave} className="save">
+            Hoàn Thành
+          </button>
+        </div>
+        <BlockNoteView className="editor" editor={editor} onChange={onChange} />
+        <input
+          type="file"
+          id="upload"
+          onChange={handleCustomUpload}
+          className="upload-button"
+        />
       </div>
-      <button onClick={handleSubmit}>Submit</button>
     </>
   );
 }
