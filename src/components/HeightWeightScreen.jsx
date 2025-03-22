@@ -5,8 +5,8 @@ import { GoAlertFill } from 'react-icons/go';
 import { notifications } from '@mantine/notifications';
 
 const HeightWeightScreen = () => {
-  const [height, setHeight] = useState()
-  const [weight, setWeight] = useState()
+  const [height, setHeight] = useState('')
+  const [weight, setWeight] = useState('')
   const [isHeightFocused, setHeightFocused] = useState(false)
   const [isWeightFocused, setWeightFocused] = useState(false)
   const location = useLocation();

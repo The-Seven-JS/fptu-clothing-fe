@@ -130,3 +130,28 @@
     opacity: 1;
     visibility: visible;
 }
+@media screen and (max-width: 660px) {
+    .footer{
+        flex-direction: column;
+    }
+    .footer-text{
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+        margin-right:10px;
+    }
+    .footer-img{
+        margin-right:40px;
+    }
+    .footer-left{
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-right{
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+    }
+}

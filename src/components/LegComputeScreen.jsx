@@ -6,16 +6,26 @@ import { Accordion, AccordionPanel, Avatar, Center, CheckboxCard, CheckboxIndica
 import { notifications } from '@mantine/notifications';
 import { GoAlertFill } from 'react-icons/go';
 function LegComputeScreen() {
-    const [checkedValue1, setCheckedValue1] = useState({ up: 0, down: 0 })
+    const [sitHeight, setSitHeight] = useState('')
+    const [standHeight, setStandHeight] = useState('')
     const [checkedValue2, setCheckedValue2] = useState(null)
     const location = useLocation()
     const message = location.state?.message || 'No data passed';
     
-    const skelieCompute = (up, down) => (up-down)*100
+    const skelieCompute = (up, down) => (up/down)*100
     const handleData = (e) =>{
-        const up = parseFloat(checkedValue1.up)
-        const down = parseFloat(checkedValue1.down)
-        if (isNaN(up) || isNaN(down) || up <= 0 || down <= 0){
+        const up = parseFloat(standHeight)/100
+        const down = parseFloat(sitHeight)/100
+        const temp = skelieCompute(up, down)
+        const res = 0
+        if (temp <= 82.7) {
+            res = 1
+        } else if (temp <= 87.4) {
+            res = 2
+        } else if (temp <= 92.1) {
+            res = 3
+        }
+        if (res != checkedValue2 && res != 0){
             e.preventDefault()
             notifications.show({
                 id:'warning',
@@ -24,20 +34,17 @@ function LegComputeScreen() {
                 autoClose:'500',
                 title:'WARNING',
                 color:'#cc3300',
-                message:'Số liệu phải là các số dương!',
+                message:'Bạn đang nhập cả hai loại dữ liệu cùng một lúc, và chúng không trùng khớp với nhau!',
                 icon:<GoAlertFill/>
-            });
-            throw new Error("Số liệu phải là các số dương.");
+            }) 
+        }
+        else if (res == 0 && checkedValue2){
+            message.leg = checkedValue2
+            console.log(message)
         }
         else{
-            const temp = skelieCompute(checkedValue1.up, checkedValue1.down)
-            if (temp <= 82.7) {
-                message.leg = 1
-            } else if (temp <= 87.4) {
-                message.leg = 2
-            } else if (temp <= 92.1) {
-                message.leg = 3
-            }
+            message.leg = res
+            console.log(message)
         }
     }
     const option1 =   {
@@ -53,17 +60,16 @@ function LegComputeScreen() {
             name: 'Xác định bằng ước lượng (Dành cho những bạn không rõ cách đo)',
             description:'daasd'
         }
-console.log(checkedValue2)
   return (
     <div className='leglength_container'>
-        <div>
+        <div className='leglength_text'>
             <h2>Tới bước cuối - Xác định độ dài chân rồi nè!</h2>
             <p>Qua chiều dài chân, chúng tôi có thể xác định đúng tỉ lệ chân - lưng, giúp bạn tránh chọn phải những bộ trang phục dìm dáng, từ đó tự tin hơn mỗi khi ra ngoài.</p>
         </div>
         <div>
-        <div style={{marginBottom: '30px' , marginTop: '30px', display:'flex', flexDirection:'column',gap:'30px'}}>
+        <div style={{marginBottom: '30px' , marginTop: '30px', display:'flex', flexDirection:'column',gap:'30px'}} className="leglength_items">
             <Accordion multiple >
-            <Accordion.Item value={option1.id} className='leglength_item'>
+            <Accordion.Item key={option1.id} value={option1.id} className='leglength_item'>
                 <Accordion.Control>
                     <div style={{display: 'flex', flexDirection:'row', gap: '20px', alignItems:'center'}}>
                         {<Avatar src={option1.src} radius='xl' size='md'/>}
@@ -82,31 +88,65 @@ console.log(checkedValue2)
                         rightSection="cm"
                         label="Chiều cao lúc ngồi"
                         placeholder='Chiều cao'
-                        value={checkedValue1.down}
-                        onChange={(event) => setCheckedValue1((prev) => ({ ...prev, down: event.currentTarget.value}))}
+                        value={sitHeight}
+                        onChange={(event) => {
+                            if (!isNaN(event.target.value)){
+                                setSitHeight(event.target.value)
+                            }
+                            else{
+                                notifications.show({
+                                    id:'warning',
+                                    position:'bottom-right',
+                                    withBorder:'true',
+                                    autoClose:'500',
+                                    title:'WARNING',
+                                    color:'#cc3300',
+                                    message:'Vui lòng nhập đúng định dạng!',
+                                    icon:<GoAlertFill/>
+                                })
+                                setSitHeight(sitHeight)
+                            }
+                        }}
                     />
                     <TextInput mt="md"
                         rightSectionPointerEvents='none'
                         rightSection="cm"
                         label="Chiều cao lúc đứng"
                         placeholder='Chiều cao'
-                        value={checkedValue1.up}
-                        onChange={(event) => setCheckedValue1((prev) => ({up: event.currentTarget.value, ...prev}))}
+                        value={standHeight}
+                        onChange={(event) => {
+                            if (!isNaN(event.target.value)){
+                                setStandHeight(event.target.value)
+                            }
+                            else{
+                                notifications.show({
+                                    id:'warning',
+                                    position:'bottom-right',
+                                    withBorder:'true',
+                                    autoClose:'500',
+                                    title:'WARNING',
+                                    color:'#cc3300',
+                                    message:'Vui lòng nhập đúng định dạng!',
+                                    icon:<GoAlertFill/>
+                                })
+                                setStandHeight(standHeight)
+                            }
+                        }}
                     />
                 </Accordion.Panel>
             </Accordion.Item>
-            <Accordion.Item value={option2.id} className='leglength_item'>
+            <Accordion.Item key={option2.id} value={option2.id} className='leglength_item'>
                 <Accordion.Control>
                 <div style={{display: 'flex', flexDirection:'row', gap: '20px', alignItems:'center'}}>
                     {<Avatar src={option2.src} radius='xl' size='md'/>}
                     <h3>{option2.name}</h3>
                 </div>
                 </Accordion.Control>
-                <Accordion.Panel>
-                    <h1>Nếu bạn không thể xác định độ dài chân, cũng đừng lo!</h1>
+                <Accordion.Panel className='leglength_item'>
+                    <h2>Nếu bạn không thể xác định độ dài chân, cũng đừng lo!</h2>
                     <p>Các bạn làm theo hướng dẫn của chúng tôi để đo được kết quả tương đối chính xác nhé!</p>
                     <Center>
-                        <img src='/image/khong_biet_do.svg'></img>
+                        <img className="leg_img" src='/image/khong_biet_do.svg'></img>
                     </Center>
                     <div style={{display: 'flex', flexDirection: 'row', gap: '10px', marginTop:'30px'}}>
                         <CheckboxCard
@@ -119,7 +159,7 @@ console.log(checkedValue2)
                                 <Center>
                                     <CheckboxIndicator/>
                                     <div>
-                                        <h2 style={{marginLeft: '30px', fontSize:'16px'}}>Chân dài</h2>
+                                        <h2 style={{marginLeft: '30px', fontSize:'16px'}}>Chân siêu dài</h2>
                                     </div>
                                 </Center>
                             </Group>
@@ -134,7 +174,7 @@ console.log(checkedValue2)
                                 <Center>
                                     <CheckboxIndicator/>
                                     <div>
-                                        <h2 style={{marginLeft: '30px', fontSize: '16px'}}>Chân vừa</h2>
+                                        <h2 style={{marginLeft: '30px', fontSize: '16px'}}>Chân dài</h2>
                                     </div>
                                 </Center>
                             </Group>
@@ -161,9 +201,7 @@ console.log(checkedValue2)
         </div>
         </div>
         <Link to='/test/result' state={{message: message}} onClick={handleData}>
-            <button className='test_button_class' onClick={() => {
-                message.leg = currentLeg
-            }}>Hoàn thành</button>
+            <button className='test_button_class'>Hoàn thành</button>
         </Link>
     </div>
   )

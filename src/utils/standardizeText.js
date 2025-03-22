@@ -6,7 +6,7 @@ function standardizeText(input, gender) {
             header: 'Trang phục',
             content: [
                 {
-                    subheader: 'Áo',
+                    subheader: 'Áo/váy',
                     content: [
                         { title: 'Cổ', content: 'Need to find' },
                         { title: 'Kiểu dáng', content: 'Need to find' },
@@ -15,7 +15,7 @@ function standardizeText(input, gender) {
                     ]
                 },
                 {
-                    subheader: 'Quần',
+                    subheader: 'Quần/Chân váy',
                     content: [
                         { title: 'Kiểu dáng', content: 'Need to find' },
                         { title: 'Màu sắc', content: 'Need to find' },
@@ -38,7 +38,7 @@ function standardizeText(input, gender) {
                     ]
                 },
                 {
-                    subheader: 'Suit',
+                    subheader: 'Suit/Jumpsuit',
                     content: [
                         { title: 'Kiểu dáng', content: 'Need to find' },
                         { title:'Màu sắc', content: 'Need to find'}
