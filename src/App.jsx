@@ -19,6 +19,7 @@ import { useState } from 'react';
 import Login from './Admin/Login.jsx';
 import NewsContent from './fuctnews/NewsContent.jsx';
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div style={{
       display: 'flex',
@@ -54,4 +55,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

@@ -1,6 +1,17 @@
 import React from 'react'
 import './NavPane.css'
+import axios from 'axios';
 function NavPane() {
+  const handleLogout = async () =>{
+    try{
+      const response = await axios.get('https://testing-2bfd.onrender.com/logout', { withCredentials: true });
+      console.log(response.data.message)
+    }
+    catch(error){
+      console.error('Error logging in:', error);
+      throw error;
+    }
+  }
   return (
     <div className='nav-pane'>
       <div className='menu'>
@@ -15,7 +26,7 @@ function NavPane() {
                 <p>Thay đổi mã PIN</p>
                 <img src="https://s3-alpha-sig.figma.com/img/e874/ec27/a1475682b39490c8a45302ca0d4c8d9b?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=SFcAY-Pk-oWvzBH6eu2IE5Fw1TzVYAyW8ZRPzcncVMkaDGhJZWgnlDiGb9GH8cbYROrORkCHw3lpks2vg8lSapGSBhb~IrUjsgVH8rZdPKElen~AMT5aLYxXJ67bZyNXiXo1SdGoNWMitmg50xamdZvfJumNQ~radjqTN~KUcDzVrQ~jL5W3cNmVdS0LgGiV1tEEPLii5pWYRE-7OET7Aj7B~nS0iK-PFfZ1IPmEY35debkwqB1ciGUviyXJezsPwNw1Vt4KJggdXjrnNLOOKO3fJFtz1uZcxjG~YGA2TaQ30NHy-OgSk3TgddzKrXxyY3TCbwqwOj4G001gV0qXCw__" alt="" />
             </div>
-            <div className='logout'>
+            <div className='logout' onClick={handleLogout}>
                 <p>Đăng xuất</p>
                 <img src="https://s3-alpha-sig.figma.com/img/83e9/ac08/d197c513863055d6a5f5a57e5c468a0d?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=AH06Az2ls-fNGLeNDXq~awIieyo74NCdl6J7Mjg6K7NqYSJKg84WMdCevwMakK3-17-xuUJrqGuNRNC8B9Zzk9QBMKWBMzERjUqNYCaV1VRPoaIH3~Lvg6lcVtyW6FZnaTBjxpbWySaeAKM67h-W6APsd0apGBCec-TT4tqW-6l0RCmWX5PVRMYhbEVPhIwSfnh8kafm0X9EDHJ1nP3JzbhEMpONehjguad9v2Ffer9OnXOmCyfGIFXZKSP1uZ7ww21kV7L6POj0NphyClRCoaX6os7k-QCWXGSFI5fsxHRtk08iLqClYfRVFa-RG9DrKKm~1Uy~FWOBBqGV~D586A__" alt="" />
             </div>

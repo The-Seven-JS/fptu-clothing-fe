@@ -103,14 +103,13 @@ html{
   .arrow-right:hover{
     transform: translateX(10px);
   }
-  .button{
-    position:absolute;
+  .news-slider-button{
+    position: absolute;
     width: 100%;
     display: flex;
     justify-content:center;
-    gap: 80vw;
-    top: 28%;
+    gap: 82vw;
+    top: 45%;
     margin: 0;
-    margin-left: -8px;
   }
   
