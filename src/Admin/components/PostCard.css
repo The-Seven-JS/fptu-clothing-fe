@@ -1,0 +1,40 @@
+.post-header {
+    display: flex; /* Aligns items horizontally */
+    align-items: center; /* Vertically centers items */
+    justify-content: space-between; /* Spreads items across the width */
+    margin-bottom: 10px;
+    background-color: #F8F8F8;
+    padding: 25px;
+    border-radius: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    font-family: 'Inter', sans-serif; /* Ensures consistent font */
+}
+
+.post-header > div {
+    flex: 1; /* Ensures equal spacing between elements */
+    text-align: center; /* Centers text within each section */
+}
+
+.post-header > div:first-child {
+    text-align: left; /* Aligns the first section (title) to the left */
+    font-weight: bold; /* Makes the title bold */
+    font-size: 18px; /* Adjusts font size */
+}
+
+.post-header > div:nth-child(2) {
+    font-size: 16px; /* Adjusts font size for the center text */
+    font-weight: 600; /* Slightly bold for emphasis */
+    color: #555; /* Adds a subtle color */
+}
+
+.post-header > div:nth-child(3) {
+    text-align: right; /* Aligns the date to the right */
+    font-size: 14px; /* Adjusts font size for the date */
+    color: #777; /* Adds a lighter color for the date */
+}
+
+.post-header > div:last-child {
+    display: flex; /* Aligns icons horizontally */
+    justify-content: flex-end; /* Aligns icons to the far right */
+    gap: 10px; /* Adds spacing between icons */
+}

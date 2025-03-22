@@ -4,14 +4,15 @@ import React, { useState,useEffect } from 'react'
 import ReactPaginate from "react-paginate";
 import { motion, AnimatePresence } from 'framer-motion';
 import './News.css'
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 function News() {
     const [data, setData] = useState([]);//fetch data tu db
     const [content, setContent] = useState([]);//fetch data tu db
     useEffect(() => {
       axios.get("http://34.87.162.201:3000/articles").then((res) => {
-        setData(res.data.slice(0,5));//lay 2 bai viet dau tien
-        setContent(res.data.slice());//lay 5 bai viet tiep theo
+        setData(res.data.slice(res.data.length-5,res.data.length).reverse());
+        setContent(res.data.slice().reverse());
       });
     }, []);
     //---------ket thuc fetch data--------------------------------
@@ -65,7 +66,11 @@ function News() {
         setCurPage(selected);
     }
     //----------ket thuc pagination cac bai viet--------------------------------------------
-  return (
+    const navigate = useNavigate();
+    const handleCardClick = (news,date) => {
+      navigate(`/news/content/`,{state : {content: news,date: date}});
+    }
+    return (
     <div>
       <div className="button-with-maincard">
       <AnimatePresence initial={false} custom={direction}>
@@ -78,7 +83,7 @@ function News() {
           transition={{ duration: 0.5 }}
         >
         {mainCardsToShow.map((card,index)=> (
-        <Maincard key={index + offsetMainCard} title={card.title} content={card.content}/>
+        <Maincard key={index + offsetMainCard} title={card.title} content={card.content} onClick={() =>handleCardClick(card.content,card.created_at)}/>
         ))}
         </motion.div>
       </AnimatePresence>
@@ -103,7 +108,7 @@ function News() {
       />
 {/* ----------------------------------------------- */}
       {curCards.map((card, index) => (
-        <Contentcard key={index + offset} title={card.title} content={card.content} date={card.data} />
+        <Contentcard key={index + offset} title={card.title} content={card.content} date={card.created_at} onClick={() => handleCardClick(card.content,card.created_at)} />
       ))}
       <ReactPaginate
         previousLabel={"<"}

@@ -9,15 +9,59 @@ body {
     width: 100%;
     background-color: #fff; /* Adjust background color as needed */
     box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Add shadow if needed */
-    position: fixed; /* Make the container fixed to the top */
+    position: fixed; 
     top: 0;
     z-index: 1000; /* Ensure it stays on top of other elements */
 }
 
 .nav-pane {
-    flex: 0.5; /* Adjust flex value as needed */
+    flex: 0.2; /* Adjust flex value as needed */
 }
 
-.header {
-    flex: 3; /* Adjust flex value as needed */
+.right-side{
+    flex: 0.8; /* Adjust flex value as needed */
+}
+.add-post-container{
+    position: sticky;
+}
+.inside-right-side{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+/*LOGIN*/
+.admin_validate_container{
+    backdrop-filter: blur(40px); /* Adjust blur value as needed */
+    background-color: #fff;
+    z-index: 2000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    font-family: 'Inter',sans-serif;
+    font-weight: Bold 700;
+    gap: 10px;
+}
+.admin_pin{
+    position: absolute;
+    left: 35%;    
+    display: flex;
+    flex-direction: column;
+}
+.admin_pin_input{
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.admin_pin_input input{
+    font-size: 30px; /* Adjust font size as needed */
+    text-align: center;
+    line-height: 2;
+}
+.admin_pin_input button{
+    position: relative;
+    left: 25px;
 }
