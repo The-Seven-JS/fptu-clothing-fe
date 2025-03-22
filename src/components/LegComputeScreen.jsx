@@ -17,7 +17,7 @@ function LegComputeScreen() {
         const up = parseFloat(standHeight)/100
         const down = parseFloat(sitHeight)/100
         const temp = skelieCompute(up, down)
-        const res = 0
+        let res = 0
         if (temp <= 82.7) {
             res = 1
         } else if (temp <= 87.4) {
