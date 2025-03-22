@@ -16,6 +16,7 @@ import KnowledgeMenu from './fuctKnowledge/KnowledgeMenu';
 import MainPage from './MainPage';
 import { useEffect, useState } from 'react';
 import Login from './Admin/Login.jsx';
+import ChangePassword from './Admin/ChangePassword';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -46,6 +47,7 @@ function App() {
         <Route path='/knowledge' element={<KnowledgeMenu/>}/>
         <Route path='/admin/success' element={<MainPageAdmin/>} />
         <Route path={isLoggedIn? '/admin/success': '/admin'} element={isLoggedIn ? <MainPageAdmin /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
+        <Route path='/admin/changepass' element={<ChangePassword/>}/>
         {/* <Route path='/admin' element={<Login/>} /> */}
         <Route path='/test' element={<MainTestScreen />}>
           <Route index element={<TestIntroScreen/>}/>
