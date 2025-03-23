@@ -90,8 +90,8 @@ function News() {
         </motion.div>
       </AnimatePresence>
         <div className="news-slider-button">
-          <img src="src/fuctnews/arrowleft.png" alt="" className="arrow-left" onClick={() => iconClick(0)} />
-          <img src="src/fuctnews/arrow.png" alt="" className="arrow-right" onClick={() => iconClick(1)} />
+          <img src="/image/arrowleft.png" alt="" className="arrow-left" onClick={() => iconClick(0)} />
+          <img src="/image/arrow.png" alt="" className="arrow-right" onClick={() => iconClick(1)} />
         </div>
       </div>
       <ReactPaginate
