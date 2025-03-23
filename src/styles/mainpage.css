@@ -4,7 +4,7 @@ body {
     margin: 0; 
     padding: 0;
     background-image: none;
-    background-color: #fff;
+    /* background-color: #fff; */
 }
 
 .main_container > *{

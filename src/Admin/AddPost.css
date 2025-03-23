@@ -7,7 +7,7 @@
 }
 .buttons {
     position: absolute; /* Position the buttons relative to the editor */
-    top: -39px; 
+    top: -45px; 
     left: 0;
     right: 0; /* Extend across the entire width of the editor */
     display: flex; /* Use flexbox for proper alignment */
@@ -48,6 +48,10 @@
     font-size: 16px;
     cursor: pointer;
     text-align: center;
+    transition: none;
+}
+.save:hover{
+    transform: scale(1);
 }
 
 .editor {

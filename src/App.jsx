@@ -31,6 +31,7 @@ function App() {
     }
     else{
       document.body.style.backgroundImage ="none"
+      document.body.style.backgroundColor = "#fff"
     }
   },[location.pathname])
   return (
