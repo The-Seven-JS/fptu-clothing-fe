@@ -23,7 +23,6 @@ import AddPost from './Admin/AddPost.jsx';
 import NewsContent from './fuctnews/NewsContent.jsx';
 import Other from './fuctKnowledge/Other.jsx';
 import Tips from './fuctKnowledge/Tips.jsx'
-import PostManager from './Admin/PostManager.jsx';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation()
