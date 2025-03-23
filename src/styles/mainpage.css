@@ -4,11 +4,13 @@ body {
     margin: 0; 
     padding: 0;
     background-image: none;
+    background-color: #fff;
 }
 
 .main_container > *{
     font-family: 'BeVietnamPro', sans-serif;
     font-weight: regular;
+    background-color: #fff;
     font-size: 16px;
 }
 /*Main Board Test*/

@@ -35,14 +35,14 @@ const ResultScreen = () => {
       section.content.map((subsection) =>{
         console.log(subsection.subheader)
         subsection.content.map((item) =>{
-          console.log(`${item.title}: ${item.content}`)
+          console.log(`${item}`)
         })
       })
     })
     return (
       <div>
       {dataObj.map((section, i) => (
-        <div key={i}>
+        <div key={i} className='result_items'>
           <h3>{section.header}</h3>
           <ul>
             {section.content.map((subsection, j) => (
@@ -51,7 +51,7 @@ const ResultScreen = () => {
                 <ul>
                   {subsection.content.map((item, k) => (
                     <li key={k}>
-                      {item.title}: {item.content}
+                      {item}
                     </li>
                   ))}
                 </ul>

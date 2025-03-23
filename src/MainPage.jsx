@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import MainTestBoard from './components/MainTestBoard'
 import MainCard from './components/MainCard'
 import '/src/styles/mainpage.css'
-import './styles/MainCard.css'
+import './styles/MainCard1.css'
 import Aos from 'aos'
 import "aos/dist/aos.css";
 function MainPage() {

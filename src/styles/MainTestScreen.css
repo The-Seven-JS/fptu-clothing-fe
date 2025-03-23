@@ -231,7 +231,7 @@
 }
 .bodyshape_text p{
     font-family: 'Inter',sans-serif;
-    font-weight: 300;
+    font-weight: 200;
     font-size: 1rem;
 }
 .shape-item-container{
@@ -381,14 +381,30 @@
     align-items: center;
 }
 .result_items h1{
-    font-family: 'Inter',sans-serif;
+    font-family: 'Be Vietnam Pro',sans-serif;
     font-weight: 800;
     color:#2F2F30;
     text-align: center;
 }
 .result_items p{
     font-family: 'Inter',sans-serif;
-    font-weight: 300;
+    font-weight: 200;
+}
+.result_items h3{
+    font-family: 'Be Vietnam Pro',sans-serif;
+    font-weight: 700;
+}
+.result_items ul li{
+    font-family: 'Be Vietnam Pro',sans-serif;
+    font-weight: 500;    
+}
+.result_items ul li ul li{
+    font-family: 'Inter',sans-serif;
+    font-weight: 200;
+}
+.result_container button{
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 800;
 }
 /*Media query*/
 @media screen and (max-width:1237px){

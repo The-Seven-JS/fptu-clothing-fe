@@ -79,11 +79,11 @@ const BodyShapeScreen = () => {
   let currentLst = []
   const message = location.state?.message|| 'Không có data trả về'
   if (message.gender === 'male'){
-    currentLst = female_shapes
+    currentLst = male_shapes
   }
   else (message.gender === 'female')
   {
-    currentLst = male_shapes
+    currentLst = female_shapes
   }
   const handleNavigate = (e) => {
       if (!message.shape) {
