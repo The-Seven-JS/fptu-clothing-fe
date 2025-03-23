@@ -10,7 +10,7 @@ function News() {
     const [data, setData] = useState([]);//fetch data tu db
     const [content, setContent] = useState([]);//fetch data tu db
     useEffect(() => {
-      axios.get("http://34.87.162.201:3000/articles").then((res) => {
+      axios.get("https://be.fuct.gay/articles").then((res) => {
         setData(res.data.slice(res.data.length-5,res.data.length).reverse());
         setContent(res.data.slice().reverse());
       });
