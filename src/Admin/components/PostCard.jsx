@@ -23,7 +23,7 @@ function PostCard({date,title,id,bg}) {
     }
   };
   const handleEdit = () => {
-      navigate(`/admin/addpost`, { state: { title,id,bg} });
+      navigate(`/admin/success/addpost`, { state: { title,id,bg} });
       console.log(bg);
   }
 

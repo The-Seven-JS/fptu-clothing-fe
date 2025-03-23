@@ -55,8 +55,8 @@
 }
 
 .editor {
-    min-width: 80vw;
-    max-width: 80vw;
+    min-width: 60vw;
+    max-width: 60vw;
     height: 600px;
     border: 1px solid #ccc;
     margin: 0 auto;
