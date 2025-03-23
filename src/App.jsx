@@ -19,6 +19,7 @@ import Login from './Admin/Login.jsx';
 import ChangePassword from './Admin/ChangePassword';
 import AddPost from './Admin/AddPost.jsx';
 import NewsContent from './fuctnews/NewsContent.jsx';
+import PostManager from './Admin/PostManager.jsx';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation()
@@ -49,8 +50,11 @@ function App() {
         <Route path='/news/content' element={<NewsContent/>}/>
         <Route path='/knowledge' element={<KnowledgeMenu/>}/>
         <Route path='/admin/success' element={<MainPageAdmin/>} />
-        <Route path={isLoggedIn? '/admin/success': '/admin'} element={isLoggedIn ? <MainPageAdmin /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
-        <Route path='/admin/changepass' element={<ChangePassword/>}/>
+        <Route path={isLoggedIn? '/admin/success/*': '/admin'} element={isLoggedIn ? <MainPageAdmin /> : <Login onLogin={() => setIsLoggedIn(true)} />} >
+          {/* <Route path='/admin/addpost' element={<AddPost/>}/>
+          <Route path='/admin/success/' element={<PostManager/>}/>
+          <Route path='/admin/changepass' element={<ChangePassword/>}/> */}
+        </Route>
         {/* <Route path='/admin' element={<Login/>} /> */}
         <Route path='/admin/addpost' element={<AddPost />} />
         <Route path='/test' element={<MainTestScreen />}>

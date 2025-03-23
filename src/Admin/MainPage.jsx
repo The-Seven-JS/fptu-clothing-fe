@@ -3,7 +3,7 @@ import Header from './Header';
 import NavPane from './NavPane';
 import './MainPage.css';
 import Login from './Login';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AddPost from './AddPost';
 import PostManager from './PostManager';
@@ -28,9 +28,13 @@ function MainPage() {
         <div className='fixed-top'>
           <NavPane />
           <div className='right-side'>
-            <Header />
+            <Header/>
             <div className='inside-right-side'>
-              <PostManager />
+                <Routes>
+                  <Route path='' element={<PostManager/>}/>
+                  <Route path='addpost' element={<AddPost/>}/>
+                </Routes>
+                <Outlet/>
             </div>
           </div>
         </div>

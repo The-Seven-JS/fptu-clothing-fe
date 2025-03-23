@@ -17,7 +17,9 @@ function NavPane() {
     <div className='nav-pane'>
       <div className='menu'>
         <div className='menu-item'>
-        <p>Quản lý bài viết</p>
+        <Link to='/admin/success/' style={{textDecoration: 'none', color: 'white'}}>
+          <p>Quản lý bài viết</p>
+        </Link>
         <p>Thông báo</p>
         <p>Thống kê</p>
         </div>
