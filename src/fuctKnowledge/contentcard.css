@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'Be Vietnam Pro';
+    src: url('public/fonts/Be_Vietnam_Pro/BeVietnamPro-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Be Vietnam Light';
+    src: url('public/fonts/Be_Vietnam_Pro/BeVietnamPro-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Inter Light';
+    src: url('public/fonts/Inter/static/Inter_24pt-ExtraLight.ttf') format('truetype');
+}
+.contentcard {
+    display: flex;
+    margin: 20px 15vw;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 1ch;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.25);
+    transition: 0.1s;
+}
+.contentcard:hover{
+    box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.25);
+    transition: 0.1s;
+}
+.contentcard:hover{
+    box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.25);
+}
+.contentcard > img{
+
+    width: 30%;
+
+    width: 30%;
+    height: 250px;
+    object-fit: cover;
+    margin-right: 10%;
+    border-radius: 1ch;
+}
+.content{
+    width: 70%;
+}
+.content{
+    width: 70%;
+}
+.content > h3 {
+    font-family: 'Be Vietnam Pro';
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for truncated text */
+    display: -webkit-box; /* Use a flexible box for truncation */
+    -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+    -webkit-line-clamp: 3; /* Limit the number of lines to 8 */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for truncated text */
+    display: -webkit-box; /* Use a flexible box for truncation */
+    -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+    -webkit-line-clamp: 3; /* Limit the number of lines to 8 */
+}
+.p1{
+    font-family: 'Be Vietnam Light';
+    color: #828282;
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for truncated text */
+    display: -webkit-box; /* Use a flexible box for truncation */
+    -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+    -webkit-line-clamp: 5; /* Limit the number of lines to 8 */
+    max-height: 100%; /* Ensure it doesn't overflow the parent div */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for truncated text */
+    display: -webkit-box; /* Use a flexible box for truncation */
+    -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+    -webkit-line-clamp: 5; /* Limit the number of lines to 8 */
+    max-height: 100%; /* Ensure it doesn't overflow the parent div */
+}
+.p2{
+    font-family: 'Inter Light';
+}
+@media (max-width: 1024px) {
+    .p1 {
+        -webkit-line-clamp: 4; /* Show fewer lines on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .p1 {
+        -webkit-line-clamp: 3; /* Show even fewer lines on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .p1 {
+        -webkit-line-clamp: 2; /* Show only 2 lines on very small screens */
+    }
+}
+
+@media (max-width: 1024px) {
+    .p1 {
+        -webkit-line-clamp: 4; /* Show fewer lines on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .p1 {
+        -webkit-line-clamp: 3; /* Show even fewer lines on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .p1 {
+        -webkit-line-clamp: 2; /* Show only 2 lines on very small screens */
+    }
+}

@@ -1,0 +1,115 @@
+/* styles.css */
+html{
+  overflow-x:hidden
+}
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    user-select: none;
+    flex-wrap: wrap;
+  }
+  
+  .pagination li {
+    margin: 0 5px;
+  }
+  
+  .pagination li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: black;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Be Vietnam Pro';
+    cursor: pointer;
+  }
+  
+  .active a {
+    background-color: #FCCE0D;
+  }
+  
+  .active a:hover {
+    background-color: #E6BE09; 
+  }
+  
+  .pagination li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .pagination li a.disabled {
+    background-color: #f0f0f0;
+    color: #ccc;
+    pointer-events: none;
+  }
+  .pagination-top .previous,.pagination-top .next{
+    display: none;
+  } 
+  
+  .pagination-top {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    user-select: none;
+  }
+  
+  .pagination-top li a {
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent; /* Hide the number */
+    cursor: pointer;
+  }
+  
+  .pagination-top li a::before {
+    content: '•'; /* This adds a dot before the link content */
+    font-size: 24px; /* Adjust the size of the dots as needed */
+    color: grey;
+  }
+  
+  .pagination-top li a:hover {
+    background-color: transparent;
+    color: transparent; /* Ensure the number stays hidden on hover */
+  }
+  
+  .pagination-top .active-top a::before {
+    color: black; /* Change color for the active page */
+  }
+  
+  .pagination-top .break-me {
+    cursor: default;
+  }
+  
+  .page-link {
+    color: transparent; /* Ensure the number is hidden */
+  }
+  .arrow-left{
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
+  .arrow-right{
+
+    transition: transform 0.3s;
+    cursor: pointer;
+ 
+  }
+  .arrow-left:hover{
+    transform: translateX(-10px);
+  }
+  .arrow-right:hover{
+    transform: translateX(10px);
+  }
+  .news-slider-button{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    gap: 82vw;
+    top: 45%;
+    margin: 0;
+  }
+  

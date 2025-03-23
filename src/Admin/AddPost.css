@@ -1,0 +1,68 @@
+.add-post {
+    position: relative; /* Make the container the positioning context for the buttons */
+    margin: 2rem auto; /* Center the editor horizontally with some margin */
+}
+.upload-button{
+    display: none;
+}
+.buttons {
+    position: absolute; /* Position the buttons relative to the editor */
+    top: -45px; 
+    left: 0;
+    right: 0; /* Extend across the entire width of the editor */
+    display: flex; /* Use flexbox for proper alignment */
+    justify-content: space-between; /* Push buttons to the far-left and far-right */
+    align-items: center; /* Vertically center buttons (if needed) */
+    z-index: 1; /* Ensure the buttons appear above the editor */
+    padding: 0; /* Remove padding to ensure buttons touch edges */
+}
+
+.upload-label {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 10px 10px 0 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #000;
+    cursor: pointer;
+    text-align: center;
+}
+
+.upload-label:hover {
+    background-color: #d0d0d0;
+}
+
+.upload-label.selected {
+    background-color: #F9D600;
+    color: black;
+}
+.existing-photo-label {
+    background-color: #F9D600;
+  }
+.save {
+    background-color: #F9D600;
+    color: black;
+    border: none;
+    border-radius: 10px 10px 0 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    transition: none;
+}
+.save:hover{
+    transform: scale(1);
+}
+
+.editor {
+    min-width: 60vw;
+    max-width: 60vw;
+    height: 600px;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+    background-color: #1F1F1F;
+    border-radius: 0 0 10px 10px;
+}

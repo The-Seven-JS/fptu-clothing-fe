@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid black;
+    padding: 5px 20px;
+    font-family: 'Be Vietnam Pro',sans-serif;
+    font-weight: light;
+    margin-bottom: 20px;
+  }
+  
+  /* Left section with title and menu */
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between "FUCT" and menu items */
+  }
+  
+  /* "FUCT" title */
+  .header-title {
+    font-size: 30px;
+    font-family: 'Inter',sans-serif;
+    font-weight: 300;
+    text-decoration: none;
+    color: #000000;
+    text-transform: uppercase;
+  }
+  .header-right{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  /* Menu items container */
+  .header-menu {
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    gap: 15px; /* Space between menu items */
+  }
+
+  .header-menu-link:hover{
+    color: #FCCE0D;
+  }
+  .header-menu-link {
+    text-decoration: none;
+    font-family: 'Gabarito', sans-serif;
+    font-weight: bold;
+    transition: 0.4s ease;
+    color: #000000;
+  }
+  .header-menu-a-active{
+    color: #FCCE0D;
+  }
+  .header-menu-a-pending{
+    color: #000000;
+    opacity: 0.5;
+  }
+  .nav-link{
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .nav-link-header{ 
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    font-weight: 400;
+  }
+  /* Test button */
+  .header-test-button {
+    background-color: yellow;
+    color: black;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .header-menu-mobile{
+    display: none;
+  }
+  @media screen and (max-width: 798px) {
+    .header-test-button{
+      font-size:14px;
+    }
+    .header-menu{
+      font-size:12px;
+    }
+  }
+  @media screen and (max-width: 693px){
+    .header-menu-mobile{
+      display: block;
+    }
+    .header-menu{
+      display: none;
+    }
+  }
