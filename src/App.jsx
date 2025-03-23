@@ -13,12 +13,16 @@ import ResultScreen from './components/ResultScreen';
 import LegComputeScreen from './components/LegComputeScreen';
 import News from './fuctnews/News.jsx'
 import KnowledgeMenu from './fuctKnowledge/KnowledgeMenu';
+import Appearance from './fuctKnowledge/Appearance.jsx'
+import Accessory from './fuctKnowledge/Accessory.jsx';
 import MainPage from './MainPage';
 import { useEffect, useState } from 'react';
 import Login from './Admin/Login.jsx';
 import ChangePassword from './Admin/ChangePassword';
 import AddPost from './Admin/AddPost.jsx';
 import NewsContent from './fuctnews/NewsContent.jsx';
+import Other from './fuctKnowledge/Other.jsx';
+import Tips from './fuctKnowledge/Tips.jsx'
 import PostManager from './Admin/PostManager.jsx';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -49,6 +53,10 @@ function App() {
         <Route path='/news' element={<News/>}/>
         <Route path='/news/content' element={<NewsContent/>}/>
         <Route path='/knowledge' element={<KnowledgeMenu/>}/>
+        <Route path='/knowledge/appearance' element={<Appearance/>}/>
+        <Route path='/knowledge/Accessory' element={<Accessory/>}/>
+        <Route path='/knowledge/Other' element={<Other/>}/>
+        <Route path='/knowledge/Tips' element={<Tips/>}/>
         <Route path='/admin/success' element={<MainPageAdmin/>} />
         <Route path={isLoggedIn? '/admin/success/*': '/admin'} element={isLoggedIn ? <MainPageAdmin /> : <Login onLogin={() => setIsLoggedIn(true)} />} >
           {/* <Route path='/admin/addpost' element={<AddPost/>}/>

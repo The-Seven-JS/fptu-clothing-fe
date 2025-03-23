@@ -10,14 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@blocknote/core": "^0.25.0",
+    "@blocknote/core": "^0.26.0",
     "@blocknote/mantine": "^0.26.0",
     "@blocknote/react": "^0.26.0",
     "@mantine/core": "^7.17.1",
     "@mantine/hooks": "^7.17.1",
     "@mantine/notifications": "^7.17.2",
-    "@blocknote/ariakit": "latest",
-    "@blocknote/shadcn": "latest",
     "@uiw/react-md-editor": "^3.6.0",
     "aos": "^2.3.4",
     "axios": "^1.7.9",
