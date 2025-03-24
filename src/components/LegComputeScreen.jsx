@@ -69,7 +69,7 @@ function LegComputeScreen() {
         <div>
         <div style={{marginBottom: '30px' , marginTop: '30px', display:'flex', flexDirection:'column',gap:'30px'}} className="leglength_items">
             <Accordion multiple >
-            <Accordion.Item key={option1.id} value={option1.id} className='leglength_item'>
+            {/* <Accordion.Item key={option1.id} value={option1.id} className='leglength_item'>
                 <Accordion.Control>
                     <div style={{display: 'flex', flexDirection:'row', gap: '20px', alignItems:'center'}}>
                         {<Avatar src={option1.src} radius='xl' size='md'/>}
@@ -134,7 +134,7 @@ function LegComputeScreen() {
                         }}
                     />
                 </Accordion.Panel>
-            </Accordion.Item>
+            </Accordion.Item> */}
             <Accordion.Item key={option2.id} value={option2.id} className='leglength_item'>
                 <Accordion.Control>
                 <div style={{display: 'flex', flexDirection:'row', gap: '20px', alignItems:'center'}}>

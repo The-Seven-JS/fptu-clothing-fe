@@ -1,5 +1,5 @@
 import { notifications } from '@mantine/notifications';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GoAlertFill } from 'react-icons/go';
 import { Link, useLocation } from 'react-router-dom';
 // import styles from '/src/styles/HeightWeightScreen.module.css';
@@ -75,16 +75,10 @@ const BodyShapeScreen = () => {
   const [currentShape, setCurrentShape] = useState(null)
   const [tooltipTimeout, setTooltipTimeout] = useState(null); // Thêm biến timeout
   const [showNotification, setShowNotification] = useState()
-  const location = useLocation()
-  let currentLst = []
+
+  const location = useLocation() 
   const message = location.state?.message|| 'Không có data trả về'
-  if (message.gender === 'male'){
-    currentLst = male_shapes
-  }
-  else (message.gender === 'female')
-  {
-    currentLst = female_shapes
-  }
+  const currentLst = message.gender === 'female' ? female_shapes : male_shapes;
   const handleNavigate = (e) => {
       if (!message.shape) {
         e.preventDefault()
@@ -128,6 +122,7 @@ const BodyShapeScreen = () => {
     setCurrentShape(shapename)
     message.shape = shapename.id
     setSelectedShape(shapename.name)
+    console.log(currentLst)
   }
   return (
     <div className='bodyshape_container'>

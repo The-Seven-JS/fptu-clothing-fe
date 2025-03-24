@@ -50,7 +50,7 @@ const HeightWeightScreen = () => {
       })
     }
     else {
-      console.log(message.bmi)
+      console.log(message)
     }
   }
   return (
