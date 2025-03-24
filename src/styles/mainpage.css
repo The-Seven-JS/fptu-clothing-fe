@@ -4,11 +4,13 @@ body {
     margin: 0; 
     padding: 0;
     background-image: none;
+    /* background-color: #fff; */
 }
 
 .main_container > *{
     font-family: 'BeVietnamPro', sans-serif;
     font-weight: regular;
+    background-color: #fff;
     font-size: 16px;
 }
 /*Main Board Test*/
@@ -45,6 +47,9 @@ body {
 }
 .board-text .board-header b{
     color: #FFD700;
+}
+.board-text a{
+    text-decoration: none;
 }
 .board-text .board-subheader{
     font-weight: normal;
@@ -110,6 +115,8 @@ body {
 /*Mini-nav*/
 .main-mini-nav{
     margin-top: 80px;
+    padding: 20px 20px;
+    margin: 20px 20px;
 }
 .mini-nav{
     margin-top: 40px;
@@ -121,7 +128,7 @@ body {
     grid-template-areas:
     "content1 image1"
     "image2 content2";
-    row-gap: 20px;
+    row-gap: 90px;
     column-gap: 30px;
 }
 .title{
@@ -136,12 +143,12 @@ body {
 .news-text, .knowledge-text{
     padding-left: 10px;
 }
-.news-img, .knowledge-img{
-    height: 90%;
-    width: 100% ;
+.mini-nav img{
+    width: 80%;
+    height: 100%;
     align-self: center;
     justify-self: center;
-    object-fit: cover;
+    object-fit: contain;
 }
 .news-text h2, .knowledge-text h2{
     font-family: 'Inter', sans-serif;
@@ -152,7 +159,7 @@ body {
     font-weight: light;
     font-size: 20px; 
     color: #828282;
-    width: 60%;
+    width: 80%;
 }
 .knowledge-text button, .news-text button{
     font-family: 'Gabarito', sans-serif;
@@ -174,7 +181,6 @@ body {
 }
 .news-img{
     grid-area: image1;
-    margin: 10px 10px;
 }
 .news-text{
     grid-area: content1;
@@ -189,8 +195,10 @@ body {
 .UX-containner{
     display: flex;
     flex-direction: column;
-    margin-top: 70px;
-    margin-bottom: 200px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .UX-containner h1{
     margin-left: 20px;
@@ -199,11 +207,13 @@ body {
 .card-container {
     display: flex;
     flex-direction: row;
-    gap: 20px; /* Spacing between cards */
+    gap: 40px; /* Spacing between cards */
     justify-content: center;
     align-items: start; /* Ensures cards align from the top */
     padding: 20px;
     margin-left: 18px;
+    margin-top: 40px;
+    flex-wrap: wrap;
 }
 /*Responsive Web*/
 @media (max-width: 762px){

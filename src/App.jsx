@@ -7,19 +7,37 @@ import TestIntroScreen from './components/TestIntroScreen';
 import GenderScreen from './components/GenderScreen';
 import HeightWeightScreen from './components/HeightWeightScreen';
 import BodyShapeScreen from './components/BodyShapeScreen';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import UndertoneScreen from './components/UndertoneScreen';
 import ResultScreen from './components/ResultScreen';
 import LegComputeScreen from './components/LegComputeScreen';
 import News from './fuctnews/News.jsx'
 import KnowledgeMenu from './fuctKnowledge/KnowledgeMenu';
+import Appearance from './fuctKnowledge/Appearance.jsx'
+import Accessory from './fuctKnowledge/Accessory.jsx';
 import MainPage from './MainPage';
-import AddPost from './Admin/AddPost.jsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Login from './Admin/Login.jsx';
+import ChangePassword from './Admin/ChangePassword';
+import AddPost from './Admin/AddPost.jsx';
 import NewsContent from './fuctnews/NewsContent.jsx';
+import Other from './fuctKnowledge/Other.jsx';
+import Tips from './fuctKnowledge/Tips.jsx'
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation()
+  useEffect(() =>{
+    if (location.pathname.startsWith('/test')){
+      document.body.style.backgroundImage = "url('/image/test-background.png')";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center";
+      document.body.style.backgroundRepeat = "no-repeat";
+    }
+    else{
+      document.body.style.backgroundImage ="none"
+      document.body.style.backgroundColor = "#fff"
+    }
+  },[location.pathname])
   return (
     <div style={{
       display: 'flex',
@@ -34,8 +52,16 @@ function App() {
         <Route path='/news' element={<News/>}/>
         <Route path='/news/content' element={<NewsContent/>}/>
         <Route path='/knowledge' element={<KnowledgeMenu/>}/>
+        <Route path='/knowledge/appearance' element={<Appearance/>}/>
+        <Route path='/knowledge/Accessory' element={<Accessory/>}/>
+        <Route path='/knowledge/Other' element={<Other/>}/>
+        <Route path='/knowledge/Tips' element={<Tips/>}/>
         <Route path='/admin/success' element={<MainPageAdmin/>} />
-        <Route path={isLoggedIn? '/admin/success': '/admin'} element={isLoggedIn ? <MainPageAdmin /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
+        <Route path={isLoggedIn? '/admin/success/*': '/admin'} element={isLoggedIn ? <MainPageAdmin /> : <Login onLogin={() => setIsLoggedIn(true)} />} >
+          {/* <Route path='/admin/addpost' element={<AddPost/>}/>
+          <Route path='/admin/success/' element={<PostManager/>}/>
+          <Route path='/admin/changepass' element={<ChangePassword/>}/> */}
+        </Route>
         {/* <Route path='/admin' element={<Login/>} /> */}
         <Route path='/admin/addpost' element={<AddPost />} />
         <Route path='/test' element={<MainTestScreen />}>

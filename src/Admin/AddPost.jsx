@@ -30,7 +30,7 @@ export default function AddPost() {
         body.append("file", file);
 
         try {
-          const response = await axios.post(`http://34.87.162.201:3000/photos/upload-to-cloud/${postId}`, body, {
+          const response = await axios.post(`https://be.fuct.gay/photos/upload-to-cloud/${postId}`, body, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
@@ -62,7 +62,7 @@ export default function AddPost() {
   useEffect(() => {
     const createNewPost = async () => {
       try {
-        const response = await axios.post("http://34.87.162.201:3000/articles/new", {
+        const response = await axios.post("https://be.fuct.gay/articles/new", {
           title: "New Post", // Use the extracted <h2> content as the title if available
           content: "<p></p>",
         });
@@ -102,7 +102,7 @@ export default function AddPost() {
     if(bgimage === "" && title){
       console.log("ok");
       try {
-        const response = await axios.put(`http://34.87.162.201:3000/articles/${postId}`, {
+        const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
           title: bg, // Use the extracted <h2> content as the title if available
           content: htmlContent,
         });
@@ -114,7 +114,7 @@ export default function AddPost() {
     }else{
       console.log("no ok");
       try {
-        const response = await axios.put(`http://34.87.162.201:3000/articles/${postId}`, {
+        const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
           title: bgimage, // Use the extracted <h2> content as the title if available
           content: htmlContent,
         });
@@ -152,7 +152,7 @@ export default function AddPost() {
     try {
       const uploadedUrl = await uploadFileFunctionRef.current(file); // Use the uploadFile function
       setBgimage(uploadedUrl);
-      const response = await axios.put(`http://34.87.162.201:3000/articles/${postId}`, {
+      const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
         title: bgimage, // Use the extracted <h2> content as the title if available
         content: htmlContent,
       });

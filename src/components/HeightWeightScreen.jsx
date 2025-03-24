@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "/src/styles/MainTestScreen.css"
 import { Link, useLocation } from 'react-router-dom';
+import { GoAlertFill } from 'react-icons/go';
+import { notifications } from '@mantine/notifications';
 
 const HeightWeightScreen = () => {
-  const [height, setHeight] = useState(0)
-  const [weight, setWeight] = useState(0)
+  const [height, setHeight] = useState('')
+  const [weight, setWeight] = useState('')
+  const [isHeightFocused, setHeightFocused] = useState(false)
+  const [isWeightFocused, setWeightFocused] = useState(false)
   const location = useLocation();
   const message = location.state?.message || 'No data passed';
   const calculateBMI = (height, weight) => {
-    if (height > 0 && weight > 0) {
-      return (weight / ((height / 100) ** 2)).toFixed(1);  
+    const h = parseFloat(height);
+    const w = parseFloat(weight);
+    if (isNaN(h) || isNaN(w) || h <= 0 || w <= 0) {
+      throw new Error("Chiều cao và cân nặng phải là các số dương.");
     }
-    alert('Invalid Input!');
+    return (w / ((h / 100) ** 2)).toFixed(1);
   };
-  console.log('height-weight-render')
-  const handleClick = (message) =>{
+  const handleClick = () =>{
     const bmi_index = calculateBMI(height, weight);
     if (bmi_index < 18.5)
       {
@@ -29,7 +34,24 @@ const HeightWeightScreen = () => {
       else{
         message.bmi = 4
       }
+  }
+  const handleNavigate = (e) => {
+    if (message.bmi==0) {
+      e.preventDefault()
+      notifications.show({
+        id:'warning',
+        position:'bottom-right',
+        withBorder:'true',
+        autoClose:'500',
+        title:'WARNING',
+        color:'#cc3300',
+        message:'Bạn cần phải nhập đúng dữ liệu trước khi chuyển!',
+        icon:<GoAlertFill/>
+      })
+    }
+    else {
       console.log(message.bmi)
+    }
   }
   return (
     <div className='bodysize_container'>
@@ -43,10 +65,19 @@ const HeightWeightScreen = () => {
           className='height_input'
           value={height}
           onChange={(e) => setHeight(e.target.value)}
+          onFocus={() => setHeightFocused(true)}
+          onBlur = {() => setHeightFocused(height !== "")}
         />
-        <div className='height_container'>
-          <div className='height_title'>Chiều cao...</div>
-          <div className='height_unit'>cm</div>
+        <div className='height_container' style={{width: isHeightFocused? "30px" :"auto", position: isHeightFocused?"relative": "", left: isHeightFocused?"258px": ""}}>
+          {!height && (
+              <div className='height_title' style={{opacity: isHeightFocused? 0: 1, color: isHeightFocused? "white":''}}
+                  onClick={() =>{
+                    setHeightFocused(true);
+                    document.querySelector('.height_input').focus()
+                  }}>Chiều cao...</div>
+            )
+          }
+          <div className={`height_unit ${isHeightFocused || height ? 'unit_hidden': ''}`} >cm</div>
         </div>
       </div>
       <div>
@@ -55,15 +86,25 @@ const HeightWeightScreen = () => {
           className='weight_input'
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
+          onFocus={() => setWeightFocused(true)}
+          onBlur = {() => setWeightFocused(weight !=="")}
         />
-        <div className='weight_container'>
-          <div className='weight_title'>Cân nặng...</div>
-          <div className='weight_unit'>kg</div>
+        <div className='weight_container' style={{position:isWeightFocused?"relative" : "", width: isWeightFocused?"30px": "auto", left:isWeightFocused?"258px":""}}>
+          {!weight && 
+            (
+              <div className='weight_title' style={{opacity: isWeightFocused? 0: 1}}
+                  onClick={() => {
+                    setWeightFocused(true);
+                    document.querySelector('.weight_input').focus()
+                  }}>Cân nặng...</div>
+            )
+          }
+          <div className={`weight_unit ${isWeightFocused || weight ? 'unit_hidden': ''}`}>kg</div>
         </div>
       </div>
       
-      <Link to='/test/body-shape' state={{message : message}}>
-        <button onClick={() => handleClick(message)}>TIẾP THEO</button>
+      <Link to='/test/body-shape' state={{message : message}} onClick={handleNavigate}>
+        <button className='test_button_class' onClick={() => handleClick()}>TIẾP THEO</button>
       </Link>
     </div>
   );

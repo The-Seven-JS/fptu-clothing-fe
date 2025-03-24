@@ -1,4 +1,6 @@
+import { notifications } from '@mantine/notifications';
 import React, { useState } from 'react';
+import { GoAlertFill } from 'react-icons/go';
 import { Link, useLocation } from 'react-router-dom';
 // import styles from '/src/styles/HeightWeightScreen.module.css';
 
@@ -67,50 +69,65 @@ const BodyShapeScreen = () => {
       description:'Vai hẹp hơn hông \n Phần thân trên nhỏ hơn so với phần thân dưới \n Hông và đùi đầy đặn.'
     }
   ]
-  const [selectedShape, setSelectedShape] = useState()
+  const [selectedShape, setSelectedShape] = useState(null)
   const [tooltipVisible,setToolTipVisible] = useState(false)
   const [tooltipPosition, setToolTipPosition] = useState({x: 0, y: 0})
-  const [currentShape, setCurrentShape] = useState()
+  const [currentShape, setCurrentShape] = useState(null)
+  const [tooltipTimeout, setTooltipTimeout] = useState(null); // Thêm biến timeout
+  const [showNotification, setShowNotification] = useState()
   const location = useLocation()
   let currentLst = []
   const message = location.state?.message|| 'Không có data trả về'
   if (message.gender === 'male'){
-    currentLst = female_shapes
+    currentLst = male_shapes
   }
   else (message.gender === 'female')
   {
-    currentLst = male_shapes
+    currentLst = female_shapes
   }
-  const handleClick1= (message) =>{
-    console.log(currentShape)
-    if (currentShape == null ){
-      console.log('del co')
+  const handleNavigate = (e) => {
+      if (!message.shape) {
+        e.preventDefault()
+        setShowNotification(true)
+        notifications.show({
+          id:'warning',
+          position:'bottom-right',
+          withBorder:'true',
+          autoClose:'500',
+          title:'WARNING',
+          color:'#cc3300',
+          message:'Bạn cần phải chọn một dáng người phù hợp với bạn trước khi chuyển!',
+          icon:<GoAlertFill/>
+        })
+      }
+      else {
+        setShowNotification(false)
+      }
     }
-    else{
-      message.shape = currentShape.id
-      console.log(message)
-    }
-  }
-  console.log('Body-render')
-  const textData = ''
-  //Handle when hover
-  const handleMouseEnter = (shape) =>{
-    setCurrentShape(shape)
-    setToolTipVisible(true)
+  const handleMouseEnter = (shape) =>{  
+    const timeout = setTimeout(() => {
+      setCurrentShape(shape)
+      setToolTipVisible(true)
+    }, 800);
+    setTooltipTimeout(timeout)
   }
   //Handle when leave
   const handleMouseLeave = () =>{
+    if (tooltipTimeout){
+      clearTimeout(tooltipTimeout)
+    }
     setToolTipVisible(false)
     setCurrentShape()
   }
   //Update position
   const handleMouseMove = (e) =>{
-    setToolTipPosition({x: e.clientX, y: e.clientY})
+    setToolTipPosition({x: e.clientX + window.scrollX, y: e.clientY+ window.scrollY})
   }
   // Handle Click
   const handleMouseClick = (shapename) =>{
     setCurrentShape(shapename)
-    // console.log(currentShape)
+    message.shape = shapename.id
+    setSelectedShape(shapename.name)
   }
   return (
     <div className='bodyshape_container'>
@@ -129,7 +146,7 @@ const BodyShapeScreen = () => {
             onMouseEnter={() => handleMouseEnter(shape)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className={`shape-item-container ${selectedShape === shape.name ? 'selected' : ''}`}
+            className={`shape-item-container ${selectedShape === shape.name ? 'shape_selected' : ''}`}
           >
             <img src={shape.img} alt={shape.name} />
             <h2>{shape.name}</h2>
@@ -161,8 +178,8 @@ const BodyShapeScreen = () => {
           </ul>
         </div>
       )}
-      <Link to='/test/undertone' state={{message: message}}>
-        <button onClick={() => handleClick1(message)}>TIẾP THEO</button>
+      <Link to='/test/undertone' state={{message: message}} onClick={handleNavigate} >
+        <button className='test_button_class'>TIẾP THEO</button>
       </Link>
     </div>
   );

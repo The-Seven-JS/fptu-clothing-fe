@@ -14,7 +14,7 @@ function PostCard({date,title,id,bg}) {
   const h1Content = extractH1Content(title);
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`http://34.87.162.201:3000/articles/${id}`);
+      const response = await axios.delete(`https://be.fuct.gay/articles/delete-article/${id}`);
       console.log('Post deleted:', response.data);
       window.location.reload();
     } catch (error) {
@@ -23,7 +23,7 @@ function PostCard({date,title,id,bg}) {
     }
   };
   const handleEdit = () => {
-      navigate(`/admin/addpost`, { state: { title,id,bg} });
+      navigate(`/admin/success/addpost`, { state: { title,id,bg} });
       console.log(bg);
   }
 

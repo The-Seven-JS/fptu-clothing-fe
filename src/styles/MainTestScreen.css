@@ -1,26 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap');
 @font-face {
     font-family: 'Gabarito';
-    src: url('/public/fonts/Be_Vietnam_Pro/BeVietnamPro-ExtraBold.ttf') format('truetype');
+    src: url('/fonts/GarbaritoCong/GabaritoCong-Bold.ttf') format('truetype');
     font-style: extra-bold;
 }
-body{
-    background-image: url('/image/test-background.png');
-}
-/* * > button{
+* > button{
     font-family: 'Gabarito', sans-serif;
     line-height: 1.4;
     background-color: #FCCE0D;
     border: none;
     color: #2F2F30;
-    font-weight: 700;
+    font-weight: 800;
     padding: 10px 20px;
     border-radius: 20px;
     transition: 0.3s ease;
-} */
-/* * > button:hover{
+}
+.test_button_class{
+    font-family: 'Gabarito', sans-serif;
+    line-height: 1.4;
+    background-color: #FCCE0D;
+    border: none;
+    color: #2F2F30;
+    font-weight: extra-bold;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: 0.2s ease;
+}
+.test_button_class:hover{
     transform: scale(1.1);
-} */
+}
+* > button:hover{
+    transform: scale(1.1);
+}
 .test-title{
     font-family: 'Bagel Fat One', sans-serif;
     font-style: bold;
@@ -35,7 +47,7 @@ body{
     padding: 10px 30px 3% 30px;
     place-items: center;
     margin-bottom: 100px;
-    
+    box-sizing: content-box;
 }   
 .test-container{
     padding-left: 100px;
@@ -99,6 +111,15 @@ body{
     align-items: center;
     transition: 0.3s ease;
 }
+.gender_items div{
+    transition: 0.4s ease;
+}
+.gender_items div:hover{
+    background-color: #fff;
+}
+.gender_items div:focus{
+    background-color: #ADD8E6;
+}
 .gender_male img, .gender_female img{
     object-fit: contain;
     box-sizing: border-box;
@@ -115,46 +136,13 @@ body{
     height: 51vh;
     width: 30vw;
 }
-.gender_male:hover{
-    animation: borderColorChange1 2s linear infinite;
-}
-@keyframes borderColorChange1 {
-    0% {
-        border-color: #B4B4B4;
-    }
-    25% {
-        border-top-color: #fff;
-    }
-    50% {
-        border-right-color: #fff;
-    }
-    75% {
-        border-bottom-color: #fff;
-    }
-    100% {
-        border-left-color: #fff;
-    }
-}
-.gender_female:hover{
-    animation: borderColorChange 2s linear infinite;
-}
-@keyframes borderColorChange {
-    0% {
-        border-color: #FCCE0D;
-    }
-    25% {
-        border-top-color: #fff;
-    }
-    50% {
-        border-right-color: #fff;
-    }
-    75% {
-        border-bottom-color: #fff;
-    }
-    100% {
-        border-left-color: #fff;
-    }
-}
+.gender_male.selected {
+    background-color: #ADD8E6 !important; /* Light Blue */
+  }
+  
+  .gender_female.selected {
+    background-color: #FFB6C1 !important; /* Light Pink */
+  }
 
 /*Height Weight Screen*/
 .bodysize_container{
@@ -163,6 +151,7 @@ body{
     gap: 20px;
     align-items: center;
     box-sizing: border-box;
+    margin-bottom: 50px;
 }
 .bodysize_text h2{
     font-family: 'Be Vietnam Pro', sans-serif;
@@ -186,11 +175,11 @@ body{
 }
 .height_container, .weight_container{
     position: relative;
-    top: -33px;
+    top: -31px;
     margin: 0 20px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    height: 20px;
 }
 .height_container .height_title, .weight_container .weight_title{
     color:#B4B4B4;
@@ -203,6 +192,31 @@ body{
     color: #2F2F30;
     font-weight: 400;
 }
+.height_unit, .weight_unit{
+    position: absolute;
+    right:8px;
+}
+.height_title, .weight_title{
+    position: absolute;
+    left: 10px;
+    top: 0;
+}
+.height_input, .weight_input{
+    font-size: 20px;
+}
+.unit_hidden{
+    right: 30px;
+}
+/* Instead of opacity, use visibility
+.height_input:focus + .height_container .height_title,
+.height_input:not(:placeholder-shown) + .height_container .height_title {
+    visibility: hidden;
+}
+
+.weight_input:focus + .weight_container .weight_title,
+.weight_input:not(:placeholder-shown) + .weight_container .weight_title {
+    visibility: hidden;
+} */
 /*BodyShapeScreen*/
 .bodyshape_container{
     display: flex;
@@ -217,11 +231,12 @@ body{
 }
 .bodyshape_text p{
     font-family: 'Inter',sans-serif;
-    font-weight: 300;
+    font-weight: 200;
     font-size: 1rem;
 }
 .shape-item-container{
     display: flex;
+    cursor: pointer;
     box-sizing: border-box;
     flex-direction: row;
     justify-content: space-between;
@@ -235,7 +250,9 @@ body{
 .shape-item-container:hover{
     border: 3px solid #FCCE0D;
 }
-
+.shape_selected{
+    border: 3px solid #FCCE0D !important;
+}
 .shape-item-container h2{
     font-family: 'Be Vietnam Pro', sans-serif;
     font-weight: 700;
@@ -251,10 +268,6 @@ body{
     gap: 15px;
     margin-bottom: 30px;
 }
-/* Thêm kiểu cho trạng thái được chọn (click) */
-.shape-item-container.selected{
-    border: 3px solid green;
-}
 /*Kiểu cho tooltip*/
 .tooltip{
     position: absolute;
@@ -266,7 +279,7 @@ body{
 .undertone-container{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 40px;
     align-items: center;
     width: 70vw;
     padding-left: 10px;
@@ -301,6 +314,15 @@ body{
     border: 2px solid #FCCE0D;
     padding: 8px 8px;   
     border-radius: 10px;
+    transition: 0.3s ease;
+    background-color: transparent;
+}
+.undertone-container-item:hover{
+    background-color: #f0f0f0;
+}
+.undertone_clicked{
+    background-color: #fff !important;
+    border: 2px solid #FCCE0D !important;
 }
 .undertone-container-item img{
     height:30vh;
@@ -313,6 +335,22 @@ body{
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    padding: 30px 30px;
+}
+.leglength_text{
+    box-sizing: border-box;
+    margin: 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 100%;
+}
+.leglength_items{
+    padding: 20px 10px;
+}
+.leg_img{
+    max-width: 100%;
+    height: auto    ;
 }
 .leglength_container div h2{
     font-family: 'Be Vietnam Pro', sans-serif;
@@ -324,22 +362,17 @@ body{
     font-weight: 300;
     color: #2F2F30;
 }
-.leglength_items{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    gap: 50px;
+.leglength_item{
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
 }
-.leglength_items div{
-    display: flex;
-    flex-direction: column;
-    gap: 10px; 
-    align-items: center;
+.leglength_item > h1{
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
 }
-.leglength_items div img{
-    height: 200px;
-    width: 200px;
-}
+
+
 /*Result Container*/
 .result_container{
     display: flex;
@@ -348,25 +381,45 @@ body{
     align-items: center;
 }
 .result_items h1{
-    font-family: 'Inter',sans-serif;
+    font-family: 'Be Vietnam Pro',sans-serif;
     font-weight: 800;
     color:#2F2F30;
     text-align: center;
 }
 .result_items p{
     font-family: 'Inter',sans-serif;
-    font-weight: 300;
+    font-weight: 200;
+}
+.result_items h3{
+    font-family: 'Be Vietnam Pro',sans-serif;
+    font-weight: 700;
+}
+.result_items ul li{
+    font-family: 'Be Vietnam Pro',sans-serif;
+    font-weight: 500;    
+}
+.result_items ul li ul li{
+    font-family: 'Inter',sans-serif;
+    font-weight: 200;
+}
+.result_container button{
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 800;
 }
 /*Media query*/
+@media screen and (max-width:1237px){
+
+    
+}
 @media screen and (max-width: 997px) {
     .undertone-container-item{
-        width: 170px;
+        width: 190px;
     }
     .undertone-container-item img{
         height: 200px;
     }
     .undertone-container-item h3{
-        font-size:16px;
+        font-size:14px;
     }
 }
 @media screen and (max-width: 818px) {

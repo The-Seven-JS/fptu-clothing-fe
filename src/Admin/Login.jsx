@@ -1,6 +1,7 @@
 import React, { use, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '/src/Admin/MainPage.css'
 
 function Login({ onLogin }) {
   const [password, setPassword] = useState('');

@@ -20,6 +20,7 @@ const ResultScreen = () => {
       try {
         const response = await axios.get(api);
         setData(response.data.advice);
+        console.log(response.data.advice)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -29,11 +30,19 @@ const ResultScreen = () => {
   }, [api]);
   const handleRendering = (data) =>{
     const dataObj = processText(data, message.gender)
-    
+    dataObj.map((section) =>{
+      console.log(section.header)
+      section.content.map((subsection) =>{
+        console.log(subsection.subheader)
+        subsection.content.map((item) =>{
+          console.log(`${item}`)
+        })
+      })
+    })
     return (
       <div>
       {dataObj.map((section, i) => (
-        <div key={i}>
+        <div key={i} className='result_items'>
           <h3>{section.header}</h3>
           <ul>
             {section.content.map((subsection, j) => (
@@ -42,7 +51,7 @@ const ResultScreen = () => {
                 <ul>
                   {subsection.content.map((item, k) => (
                     <li key={k}>
-                      {item.title}: {item.content}
+                      {item}
                     </li>
                   ))}
                 </ul>
