@@ -19,9 +19,14 @@ body {
     flex: 0.2; /* Adjust flex value as needed */
 }
 
-.right-side{
-    flex: 0.8; /* Adjust flex value as needed */
+.right-side {
+    flex: 0.8; /* Keep the same flex value */
+    display: flex; 
+    flex-direction: column; /* Ensure the content flows top-to-bottom */
+    height: 100vh; /* Full height of the viewport */
+    overflow: hidden; /* Prevent unwanted overflow */
 }
+
 .add-post-container{
     position: sticky;
 }
@@ -30,6 +35,7 @@ body {
     flex-direction: column;
     gap: 20px;
     padding: 20px;
+    overflow-y: auto;
 }
 /*LOGIN*/
 .admin_validate_container{

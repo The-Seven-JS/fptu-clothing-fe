@@ -31,8 +31,7 @@
     justify-content: center; /* Center the menu items vertically */
     flex-grow: 1; /* Allow the menu items to grow and take up available space */
 }
-
-.menu-item p {
+.menu-item a{
     width: 100%; /* Ensure the p elements take the full width */
     padding: 15px 0; /* Adjust padding for spacing */
     margin: 0;
@@ -42,11 +41,9 @@
     border-top: 1px solid #444; /* Add top border */
     border-bottom: 1px solid #444; /* Add bottom border */
 }
-
-.menu-item p:hover {
-    background-color: #444; /* Darken background color on hover */
+.menu-item a:hover{
+    background-color: #444;
 }
-
 .menu-item p.active {
     background-color: #FFD700; /* Yellow background for active item */
     color: #333; /* Dark text color for active item */
