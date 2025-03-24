@@ -62,12 +62,11 @@ const GenderScreen = () => {
       <div className='gender_items'>
         <div className={`gender_male ${gender==='male'?'selected':''}`} onClick={() => {
           setGender('male')
-          }} 
-        {...(!disableAOS && {'data-aos':'zoom-in'})}>  {/*This spread syntax trick  */}
+          }}>  {/*This spread syntax trick  */}
           <img alt='Male' src ='/image/OC_boy.svg'></img>
           <h4>Nam</h4>
         </div>
-        <div className={`gender_male ${gender==='female'?'selected':''}`} onClick={() => setGender('female')} {...(!disableAOS && {'data-aos':'zoom-in'})}>
+        <div className={`gender_male ${gender==='female'?'selected':''}`} onClick={() => setGender('female')}>
           <img alt='gender_female' src ='/image/OC_girl.svg'></img>
           <h4>Nữ</h4>
         </div>  

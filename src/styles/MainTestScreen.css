@@ -99,6 +99,14 @@
     justify-content: space-between;
     gap: 30px;
 }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 .gender_items > *{
     border-radius: 20px;
     height: 400px;
@@ -130,16 +138,21 @@
     border: 4px solid #B4B4B4;
     height: 51vh;
     width: 30vw;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
 }
 .gender_female{
     border: 4px solid #FCCE0D;
     height: 51vh;
     width: 30vw;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
 }
 .gender_male.selected {
     background-color: #ADD8E6 !important; /* Light Blue */
   }
-  
   .gender_female.selected {
     background-color: #FFB6C1 !important; /* Light Pink */
   }
