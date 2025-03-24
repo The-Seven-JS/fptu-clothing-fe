@@ -32,7 +32,7 @@ function Login({ onLogin }) {
       .then((data) => {
         alert('Đăng nhập thành công!');
         onLogin()
-        navigate('/admin/success/*')
+        navigate('/admin/success')
       })
       .catch((error) => {
       alert('Đăng nhập thất bại!');
