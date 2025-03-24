@@ -10,7 +10,7 @@ function News() {
     const [data, setData] = useState([]);//fetch data tu db
     const [content, setContent] = useState([]);//fetch data tu db
     useEffect(() => {
-      axios.get("http://34.87.162.201:3000/articles").then((res) => {
+      axios.get("https://be.fuct.gay/articles").then((res) => {
         setData(res.data.slice(res.data.length-5,res.data.length).reverse());
         setContent(res.data.slice().reverse());
       });
@@ -90,8 +90,8 @@ function News() {
         </motion.div>
       </AnimatePresence>
         <div className="news-slider-button">
-          <img src="src/fuctnews/arrowleft.png" alt="" className="arrow-left" onClick={() => iconClick(0)} />
-          <img src="src/fuctnews/arrow.png" alt="" className="arrow-right" onClick={() => iconClick(1)} />
+          <img src="/image/arrowleft.png" alt="" className="arrow-left" onClick={() => iconClick(0)} />
+          <img src="/image/arrow.png" alt="" className="arrow-right" onClick={() => iconClick(1)} />
         </div>
       </div>
       <ReactPaginate
