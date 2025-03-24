@@ -1,12 +1,15 @@
 .news-content{
-    padding: 5rem;
+    padding-left: 20vw;
+    padding-right: 20vw;
 }
 .news-content strong {
     font-weight: inherit; /* Inherit the font-weight from the parent h3 */
 }
 .news-content img{
-    margin: 0 auto;
     display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
 }
 .news-content h1 {
     font-family: 'Be Vietnam Pro';
