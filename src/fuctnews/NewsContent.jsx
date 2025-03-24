@@ -73,24 +73,24 @@ function NewsContent() {
         <div className="comment-container">
         {/* Comment Input */}
         <div className="comment-section">
-          <label>Comments</label>
+          <label>Bình luận</label>
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             className="comment-box"
-            placeholder="Write your comment here..."
+            placeholder="Nhập bình luận..."
           />
         </div>
 
         {/* Username Input */}
         <div className="username-section">
-          <label>Name</label>
+          <label>Tên</label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             className="username-box"
-            placeholder="Enter your name..."
+            placeholder="Tên bạn là..."
           />
         </div>
 
