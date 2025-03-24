@@ -16,7 +16,7 @@ function PostCard({date,title,id,bg}) {
     let conf = confirm("Do you want to delete?");
     if(conf === true){
       try {
-        const response = await axios.delete(`https://be.fuct.gay/articles/delete-article/${id}`);
+        const response = await axios.delete(`https://be.fuct.gay/articles/delete-article/${id}`, { withCredentials: true });
         console.log('Post deleted:', response.data);
         window.location.reload();
       } catch (error) {
