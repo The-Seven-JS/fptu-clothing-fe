@@ -10,13 +10,30 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@blocknote/ariakit": "latest",
+    "@blocknote/core": "latest",
+    "@blocknote/mantine": "latest",
+    "@blocknote/react": "latest",
+    "@blocknote/shadcn": "latest",
+    "@uiw/react-md-editor": "^3.6.0",
+    "aos": "^2.3.4",
+    "axios": "^1.7.9",
+    "framer-motion": "^12.4.7",
+    "install": "^0.13.0",
+    "npm": "^11.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-paginate": "^8.3.0",
+    "react-resizable": "^3.0.5",
+    "react-router-dom": "^7.2.0",
+    "react-spinners": "^0.15.0",
+    "rehype-sanitize": "^6.0.0",
+    "slate-history": "^0.110.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "eslint": "^9.19.0",
     "eslint-plugin-react": "^7.37.4",

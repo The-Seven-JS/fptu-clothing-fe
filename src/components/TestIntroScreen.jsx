@@ -23,7 +23,7 @@ function TestIntroScreen() {
       </ul>
       <div className='sub-container'>
         <Link to="/test/gender" >
-          <button className='test_button_class'>TÔI ĐÃ SẴN SÀNG</button>
+          <button>TÔI ĐÃ SẴN SÀNG</button>
         </Link>
       </div>
     </div>

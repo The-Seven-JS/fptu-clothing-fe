@@ -1,0 +1,64 @@
+.maincard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw; 
+    height: 350px;
+    border: 1px;
+    border-color: #E1E1E1;
+    border-style: solid;
+    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.3); /* Add shadow for the div */
+    position: relative;
+    background-color:#FFFFFF ;
+    top: -110px;
+}
+.maincard > *{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.maincard > p {
+    font-family: 'Be Vietnam Pro';
+    font-weight: 400;
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for truncated text */
+    display: -webkit-box; /* Use a flexible box for truncation */
+    -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+    -webkit-line-clamp: 6; /* Limit the number of lines to 8 */
+    max-height: 100%; /* Ensure it doesn't overflow the parent div */
+}
+.maincard > h5{
+    font-family:'Be Vietnam Pro'; ;
+    font-weight:300 ;
+}
+.maincard > h2{
+    font-family: 'Be Vietnam Pro';
+    font-weight: 500;
+}
+.outer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: -70px;
+}
+.outer > img{
+    width: 80vw;
+    height: 60vh;
+    object-fit: cover;
+}
+@media (max-width: 1024px) {
+    .maincard > p {
+        -webkit-line-clamp: 6; /* Show fewer lines on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .maincard > p {
+        -webkit-line-clamp: 4; /* Show even fewer lines on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .maincard > p {
+        -webkit-line-clamp: 3; /* Show only 3 lines on very small screens */
+    }
+}
