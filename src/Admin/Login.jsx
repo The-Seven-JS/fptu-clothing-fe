@@ -15,7 +15,7 @@ function Login({ onLogin }) {
   }
   const sendLoginRequest = async (name, password) => {
     try {
-      const response = await axios.post('https://testing-2bfd.onrender.com/login',
+      const response = await axios.post('https://be.fuct.gay/login',
         { name, password },
         { withCredentials: true } // Correct way to include credentials (cookies)
       );

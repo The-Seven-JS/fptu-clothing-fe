@@ -4,7 +4,6 @@ import MainCard from './components/MainCard'
 import '/src/styles/mainpage.css'
 import './styles/MainCard1.css'
 import Aos from 'aos'
-import {Carousel} from '@mantine/carousel';
 import "aos/dist/aos.css";
 function MainPage() {
   useEffect(() =>{

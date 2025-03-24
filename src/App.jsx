@@ -1,7 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
 import './styles/index.css';
-import '@mantine/carousel/styles.css';
 import MainTestScreen from './MainTestScreen';
 import MainPageAdmin from './Admin/MainPage';
 import TestIntroScreen from './components/TestIntroScreen';
