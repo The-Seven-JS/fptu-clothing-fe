@@ -22,7 +22,7 @@ function Contentcard({title,content,date,onClick}) {
         <div className='content'>
             <h3>{h1Content}</h3>
             <p className='p1'>{h2Content}</p>
-            <p className='p2'>Created at:{date}</p>
+            <p className='p2'>Đăng ngày:{date}</p>
         </div>
     </div>
   )

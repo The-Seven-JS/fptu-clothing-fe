@@ -97,6 +97,7 @@ export default function AddPost() {
   const handleSave = async () => {
     if (!postId) {
       console.error("Post ID is not available. Please create a new post first.");
+      alert("Chưa tạo được bài viết! Thử lại")
       return;
     }
     if(bgimage === "" && title){
@@ -108,6 +109,7 @@ export default function AddPost() {
         });
         console.log("Response:", response.data);
         setFetchedData(response.data.content);
+        alert("Đã lưu bài viết hoàn tất")
       } catch (error) {
         console.error("Error submitting data:", error);
       }
@@ -137,6 +139,7 @@ export default function AddPost() {
   const handleCustomUpload = async (event) => {
     if (!postId) {
       console.error("Post ID is not available. Please create a new post first.");
+      alert("Chưa tạo được bài viết! Thử lại")
       return;
     }
   

@@ -9,7 +9,7 @@ function ChangePassword({ onLogin }) {
   const navigate = useNavigate()
   const sendChangePassRequest = async (oldPass, newPass, retypePass) => {
     try {
-      const response = await axios.patch('https://testing-2bfd.onrender.com/changepass',
+      const response = await axios.patch('https://be.fuct.gay/changepass',
         { oldPass, newPass, retypePass },
         { withCredentials: true } // Correct way to include credentials (cookies)
       );

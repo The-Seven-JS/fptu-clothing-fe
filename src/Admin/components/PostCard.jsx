@@ -13,13 +13,18 @@ function PostCard({date,title,id,bg}) {
   };
   const h1Content = extractH1Content(title);
   const handleDelete = async () => {
-    try {
-      const response = await axios.delete(`https://be.fuct.gay/articles/delete-article/${id}`);
-      console.log('Post deleted:', response.data);
-      window.location.reload();
-    } catch (error) {
-      console.error('Error deleting the post:', error);
-      alert('Failed to delete the post. Please try again.');
+    let conf = confirm("Do you want to delete?");
+    if(conf === true){
+      try {
+        const response = await axios.delete(`https://be.fuct.gay/articles/delete-article/${id}`);
+        console.log('Post deleted:', response.data);
+        window.location.reload();
+      } catch (error) {
+        console.error('Error deleting the post:', error);
+        alert('Failed to delete the post. Please try again.');
+      }
+    }else{
+      return;
     }
   };
   const handleEdit = () => {

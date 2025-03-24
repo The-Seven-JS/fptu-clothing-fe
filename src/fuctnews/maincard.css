@@ -44,6 +44,7 @@
     width: 80vw;
     height: 60vh;
     object-fit: cover;
+    object-position: 50% 15%;
 }
 @media (max-width: 1024px) {
     .maincard > p {
