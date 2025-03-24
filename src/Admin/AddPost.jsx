@@ -34,7 +34,7 @@ export default function AddPost() {
             headers: {
               "Content-Type": "multipart/form-data",
             },
-          });
+          }, { withCredentials: true });
           if (response.data) {
             console.log(response.data);
             return response.data.url[0];
