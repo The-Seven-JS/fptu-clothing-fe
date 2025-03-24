@@ -6,7 +6,9 @@ import { MantineProvider } from '@mantine/core';
 import Aos from 'aos';
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
+import '@mantine/carousel/styles.css';
 import { Notifications } from '@mantine/notifications';
+import { Carousel } from '@mantine/carousel';
 
 Aos.init({
   duration: 1000,

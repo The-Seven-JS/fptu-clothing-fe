@@ -4,6 +4,7 @@ import MainCard from './components/MainCard'
 import '/src/styles/mainpage.css'
 import './styles/MainCard1.css'
 import Aos from 'aos'
+import {Carousel} from '@mantine/carousel';
 import "aos/dist/aos.css";
 function MainPage() {
   useEffect(() =>{
@@ -43,6 +44,23 @@ function MainPage() {
       src:'/image/icon-test.jpg',
       description:'Nhờ FPT Clothing đã buff cho tôi thêm 120% độ đẹp trai!'
     }
+    ,
+    {
+      name: 'Đăng Đẹp Trai',
+      job: 'Sinh viên K20 - International Law',
+      src: '/image/dang-experience.jfif',
+      description:'Lòng tôi tan nát khi nhận ra tôi là FUCT.GAY :('
+    }
+  ]
+  const news_slider = [
+    'news-slider.png',
+    'news-slider(1).png',
+    'news-slider(2).png',
+  ]
+  const knowledge_slider = [
+    'knowledge-slider.png',
+    'knowledge-slider(1).png',
+    'knowledge-slider(2).png'
   ]
   return (
     <div className='main_container'>
