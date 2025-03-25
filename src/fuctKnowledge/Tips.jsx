@@ -19,7 +19,7 @@ function Tips() {
     <div>
         <div class="container">
             <div class="line"></div>
-            <div class="text">TIPS</div>
+            <div class="text">PHỐI ĐỒ</div>
             <div class="line"></div>
         </div>
         {/* {curCards.map((_, index) => (
