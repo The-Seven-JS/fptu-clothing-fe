@@ -104,7 +104,7 @@ export default function AddPost() {
     if(bgimage === "" && title){
       console.log("ok");
       try {
-        const response = await axios.put(`https://be.fuct.gay/articles/get-article/${postId}`, {
+        const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
           title: bg, // Use the extracted <h2> content as the title if available
           content: htmlContent,
         }, {withCredentials: true});
@@ -118,7 +118,7 @@ export default function AddPost() {
     }else{
       console.log("no ok");
       try {
-        const response = await axios.put(`https://be.fuct.gay/articles/get-article/${postId}`, {
+        const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
           title: bgimage, // Use the extracted <h2> content as the title if available
           content: htmlContent,
         }, {withCredentials: true});
@@ -158,7 +158,7 @@ export default function AddPost() {
     try {
       const uploadedUrl = await uploadFileFunctionRef.current(file); // Use the uploadFile function
       setBgimage(uploadedUrl);
-      const response = await axios.put(`https://be.fuct.gay/articles/get-article/${postId}`, {
+      const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
         title: bgimage, // Use the extracted <h2> content as the title if available
         content: htmlContent,
       }, {withCredentials: true });
