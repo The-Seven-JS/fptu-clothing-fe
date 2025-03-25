@@ -13,7 +13,7 @@ function PostCard({date,title,id,bg}) {
   };
   const h1Content = extractH1Content(title);
   const handleDelete = async () => {
-    let conf = confirm("Do you want to delete?");
+    let conf = confirm("Bạn chắc chắn muốn xoá bài viết này?");
     if(conf === true){
       try {
         const response = await axios.delete(`https://be.fuct.gay/articles/delete-article/${id}`, { withCredentials: true });
@@ -38,9 +38,9 @@ function PostCard({date,title,id,bg}) {
     <div>FUCT NEWS</div>
     <div>{date}</div>
     <div onClick={handleDelete} style={{ cursor: "pointer", color: "red" }}>
-        Delete
+        Xoá
     </div>
-    <div onClick={handleEdit} style={{ cursor: "pointer", color: "blue" }}>Edit</div>
+    <div onClick={handleEdit} style={{ cursor: "pointer", color: "blue" }}>Sửa</div>
 </div>
   )
 }
