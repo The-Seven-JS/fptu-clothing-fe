@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { useEffect, useState, useMemo} from 'react';
-import processText from '/src/utils/standardizeText.js'
+import { useEffect, useState, useMemo, lazy, Suspense} from 'react';
 
 const ResultScreen = () => {
   const location = useLocation()
@@ -14,67 +13,77 @@ const ResultScreen = () => {
     bmi: 0
   };
   const api = useMemo(() => `http://34.87.162.201:3000/advice?gender=${message.gender}&shape=${message.shape}&skin=${message.skin}&leg=${message.leg}&bmi=${message.bmi}`, [message]);
-  const [data, setData] = useState(null);  
+  const [renderedContent, setRenderedContent] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Fetch data from API  
         const response = await axios.get(api);
-        setData(response.data.advice);
-        console.log(response.data.advice)
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };  
-    const timer = setTimeout(fetchData, 1000);
-    return () => clearTimeout(timer);
-  }, [api]);
-  const handleRendering = (data) =>{
-    const dataObj = processText(data, message.gender)
-    dataObj.map((section) =>{
-      console.log(section.header)
-      section.content.map((subsection) =>{
-        console.log(subsection.subheader)
-        subsection.content.map((item) =>{
-          console.log(`${item}`)
-        })
-      })
-    })
-    return (
-      <div>
-      {dataObj.map((section, i) => (
-        <div key={i} className='result_items'>
-          <h3>{section.header}</h3>
-          <ul>
-            {section.content.map((subsection, j) => (
-              <li key={j}>
-                {subsection.subheader}
+        const data = response.data.advice;
+        console.log(data)
+        // Dynamically import the ultility module and process the data
+        const module = await import('/src/utils/standardizeText.js');
+        const dataObj = module.standardizeText(data.message.gender);
+        const content = (
+        <div>
+            {dataObj.map((section, i) => (
+              <div key={i} className='result_items'>
+                <h3>{section.header}</h3>
                 <ul>
-                  {subsection.content.map((item, k) => (
-                    <li key={k}>
-                      {item}
+                  {section.content.map((subsection, j) => (
+                    <li key={j}>
+                      {subsection.subheader}
+                      <ul>
+                        {subsection.content.map((item, k) => (
+                          <li key={k}>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                     </li>
                   ))}
                 </ul>
-              </li>
+              </div>
             ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-    )
-  }
+          </div>
+        )
+        setRenderedContent(content);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setRenderedContent(<div>Error loading results</div>);
+      };
+    }
+    const timer = setTimeout(fetchData, 1000);
+    return () => clearTimeout(timer);
+  }, [api, message.gender]);
   return (
     <div className='result_container'>
       <div className='result_items'>
         <h1>KẾT QUẢ</h1>
         <p>Với dữ liệu chúng tôi nhận được từ kết quả bài kiểm tra vừa rồi, FUCT có 1 số gợi ý về cách lựa chọn trang phục như sau:</p>
       </div>
-      {data != null && handleRendering(data)}
+      {renderedContent ? renderedContent : <div>Loading...</div>}
       <Link to='/'>
         <button>XONG!</button>
       </Link>
     </div>
-  );
-};
+  )
+}
 
 export default ResultScreen;
+
+// Suspense and lazy is meant for code-splitting and lazy loading, not for loading components, handling data fetching and async processing logic which is not necessary in this case.
+// How this works:
+/*
+  1.Single Source of Truth -> there's only one place where a particular piece of data is stored. In React, this means keeping your state in one location(often a parent component
+  or a global store) and then sharing that data with child components via PROPS or CONTEXT. This avoids having multiple copies of data that can get out of sync.
+  => In our case: The useEffect hook handles both the API fetch and data processing(including the dynamic import standardizeText.js)
+  2.State Management: The processed JSX is stored in the renderContent state, which is updated once all async operations are completed
+  3.Simplified Rendering: The component renders renderContent directly when it's available, otherwise it renders a loading message
+  4.No Lazy and Suspense needed: Since you're not code-splitting a component but rather fetching and processing data, lazy and Suspense are not necessary
+  The loading state is handled manually with a ternary operator
+
+
+    AWAIT => only work with Promise but not work with callback
+
+  */
