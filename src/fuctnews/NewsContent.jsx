@@ -66,6 +66,11 @@ function NewsContent() {
     fetchData(); // Call the function on component load
   }, [data]);
 
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top
+}, [location]);
+
   return (
     <div className='news-content'>
       <div className="content-view" dangerouslySetInnerHTML={{ __html: updatedContent }} />
