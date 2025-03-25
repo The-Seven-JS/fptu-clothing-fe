@@ -29,7 +29,7 @@ return (
     <div className='admin_validate_container' >
         <div className='admin_pin'>
             <h1>NHẬP MÃ PIN ĐỂ ĐĂNG NHẬP:</h1>
-            <form onSubmit={handleSubmit} className='admin_pin_input'>
+            <form onSubmit={handleSubmit} className='admin_pin_input1'>
               <input type="text" value ={oldPass} onChange={(e) => setOldPass(e.target.value)} placeholder='Mật khẩu cũ'/>
               <input type="text" value={newPass} onChange={(e) => setNewPass(e.target.value)} placeholder='Mật khẩu mới'/>
               <input type="text" value={retypePass} onChange={(e) => setRetypePass(e.target.value)} placeholder='Nhập lại mật khẩu mới'/>

@@ -75,6 +75,22 @@ body {
     position: relative;
     left: 0px;
 }
+.admin_pin_input1{
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    place-items: center;
+}
+.admin_pin_input1 input{
+    font-size: 30px; /* Adjust font size as needed */
+    text-align: center;
+    line-height: 2;
+}
+.admin_pin_input1 button{
+    position: relative;
+    left: 0px;
+}
 @media screen and (max-width: 768px) {
     .fixed-top {
         flex-direction: column; /* Change to column layout on smaller screens */

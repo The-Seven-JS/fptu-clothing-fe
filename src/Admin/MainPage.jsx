@@ -22,7 +22,6 @@ function MainPage() {
     }
   }
   sendRequestCheck()
-    
   return (
     <div>
         <div className='fixed-top'>
@@ -30,10 +29,6 @@ function MainPage() {
           <div className='right-side'>
             <Header/>
             <div className='inside-right-side'>
-                <Routes>
-                  <Route path='' element={<PostManager/>}/>
-                  <Route path='addpost' element={<AddPost/>}/>
-                </Routes>
                 <Outlet/>
             </div>
           </div>
