@@ -34,7 +34,6 @@ function MainPage() {
                   <Route path='' element={<PostManager/>}/>
                   <Route path='addpost' element={<AddPost/>}/>
                 </Routes>
-                <Outlet/>
             </div>
           </div>
         </div>
