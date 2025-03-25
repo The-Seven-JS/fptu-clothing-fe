@@ -25,6 +25,7 @@ import Other from './fuctKnowledge/Other.jsx';
 import Tips from './fuctKnowledge/Tips.jsx'
 import PostManager from './Admin/PostManager.jsx';
 import DraftManager from './Admin/DraftManager';
+import Notification from './Admin/Notification.jsx';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation()
@@ -64,6 +65,7 @@ function App() {
           <Route index element={<PostManager/>}/>
           <Route path='addpost' element={<AddPost/>}/>
           <Route path='draft' element={<DraftManager/>}/>
+          <Route path='notification' element={<Notification/>}/>
           <Route path='changepass' element={<ChangePassword/>}/>
         </Route>
         <Route path='/test' element={<MainTestScreen />}>

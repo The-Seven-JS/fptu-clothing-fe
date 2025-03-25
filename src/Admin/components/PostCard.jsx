@@ -2,7 +2,7 @@ import React from 'react'
 import './PostCard.css'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-function PostCard({date,title,id,bg}) {
+function PostCard({date,title,id,bg,titleEmpty}) {
   const navigate = useNavigate();
 
   const extractH1Content = (html) => {
@@ -21,7 +21,7 @@ function PostCard({date,title,id,bg}) {
         window.location.reload();
       } catch (error) {
         console.error('Error deleting the post:', error);
-        alert('Failed to delete the post. Please try again.');
+        alert('Không thể xoá bài viết!Thử lại');
       }
     }else{
       return;
@@ -34,7 +34,7 @@ function PostCard({date,title,id,bg}) {
 
   return (
     <div className="post-header">
-    <div>{h1Content}</div>
+    <div>{h1Content + titleEmpty}</div>
     <div>FUCT NEWS</div>
     <div>{date}</div>
     <div onClick={handleDelete} style={{ cursor: "pointer", color: "red" }}>
