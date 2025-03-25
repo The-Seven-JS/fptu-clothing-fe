@@ -113,6 +113,7 @@ export default function AddPost() {
         alert("Đã lưu bài viết hoàn tất")
       } catch (error) {
         console.error("Error submitting data:", error);
+        alert("Lưu thất bại");
       }
     }else{
       console.log("no ok");
@@ -125,6 +126,7 @@ export default function AddPost() {
         setFetchedData(response.data.content);
       } catch (error) {
         console.error("Error submitting data:", error);
+        alert("Lưu thất bại!")
       }
     }
   };
@@ -163,6 +165,7 @@ export default function AddPost() {
       console.log("Uploaded file URL:", uploadedUrl);
       alert(`File uploaded successfully: ${uploadedUrl}`);
     } catch (error) {
+      alert("Thêm ảnh bìa thất bại!")
       console.error("Error uploading file:", error);
     }
   };

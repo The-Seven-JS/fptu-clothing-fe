@@ -20,7 +20,9 @@ function NavPane() {
         <Link to='/admin/success/' style={{textDecoration: 'none', color: 'white'}}>
           <p>Quản lý bài viết</p>
         </Link>
-        <p>Thông báo</p>
+        <Link to={'/admin/success/draft'} style={{textDecoration: 'none', color: 'white'}}>
+        <p>Bản ghi rỗng</p>
+        </Link>
         <p>Thống kê</p>
         </div>
         <div className='admin'>
