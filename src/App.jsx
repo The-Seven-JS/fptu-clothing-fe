@@ -23,6 +23,8 @@ import AddPost from './Admin/AddPost.jsx';
 import NewsContent from './fuctnews/NewsContent.jsx';
 import Other from './fuctKnowledge/Other.jsx';
 import Tips from './fuctKnowledge/Tips.jsx'
+import PostManager from './Admin/PostManager.jsx';
+import DraftManager from './Admin/DraftManager';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation()
@@ -57,13 +59,13 @@ function App() {
         <Route path='/knowledge/Other' element={<Other/>}/>
         <Route path='/knowledge/Tips' element={<Tips/>}/>
         <Route path='/admin/success' element={<MainPageAdmin/>} />
-        <Route path={isLoggedIn? '/admin/success/*': '/admin'} element={isLoggedIn ? <MainPageAdmin /> : <Login onLogin={() => setIsLoggedIn(true)} />} >
-          {/* <Route path='/admin/addpost' element={<AddPost/>}/>
-          <Route path='/admin/success/' element={<PostManager/>}/>
-          <Route path='/admin/changepass' element={<ChangePassword/>}/> */}
+        <Route path='/admin' element={<Login onLogin={() => setIsLoggedIn(true)} />} />
+        <Route path='/admin/success' element={<MainPageAdmin/>}> 
+          <Route index element={<PostManager/>}/>
+          <Route path='addpost' element={<AddPost/>}/>
+          <Route path='draft' element={<DraftManager/>}/>
+          <Route path='changepass' element={<ChangePassword/>}/>
         </Route>
-        {/* <Route path='/admin' element={<Login/>} /> */}
-        <Route path='/admin/addpost' element={<AddPost />} />
         <Route path='/test' element={<MainTestScreen />}>
           <Route index element={<TestIntroScreen/>}/>
           <Route path='/test/intro' element={<TestIntroScreen />} />
