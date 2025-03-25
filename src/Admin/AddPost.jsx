@@ -66,7 +66,8 @@ export default function AddPost() {
         const response = await axios.post("https://be.fuct.gay/articles/new", {
           title: "New Post", // Use the extracted <h2> content as the title if available
           content: "<p></p>",
-        }, { withCredentials: true });
+          withCredentials: true
+        });
         console.log("Response:", response.data);
         setFetchedData(response.data.content);
         setPostId(response.data.id); // Store the returned ID in the state
@@ -107,7 +108,8 @@ export default function AddPost() {
         const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
           title: bg, // Use the extracted <h2> content as the title if available
           content: htmlContent,
-        }, { withCredentials: true });
+          withCredentials: true
+        });
         console.log("Response:", response.data);
         setFetchedData(response.data.content);
         alert("Đã lưu bài viết hoàn tất")
@@ -121,7 +123,8 @@ export default function AddPost() {
         const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
           title: bgimage, // Use the extracted <h2> content as the title if available
           content: htmlContent,
-        }, { withCredentials: true });
+          withCredentials: true
+        });
         console.log("Response:", response.data);
         setFetchedData(response.data.content);
       } catch (error) {
@@ -161,7 +164,8 @@ export default function AddPost() {
       const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
         title: bgimage, // Use the extracted <h2> content as the title if available
         content: htmlContent,
-      }, { withCredentials: true });
+        withCredentials: true 
+      });
       console.log("Uploaded file URL:", uploadedUrl);
       alert(`File uploaded successfully: ${uploadedUrl}`);
     } catch (error) {
