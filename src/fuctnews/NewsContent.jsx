@@ -45,6 +45,7 @@ function NewsContent() {
       console.log(response.data);
     } catch (error) {
       console.error(error);
+      alert("Tên hoặc bình luận không được trống!")
     }
   };
 
