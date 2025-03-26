@@ -1,5 +1,3 @@
-OK. Dưới đây là bản README.md được format theo phong cách chuyên nghiệp, business, sử dụng thông tin bạn cung cấp. Tôi đã cố gắng làm cho nó chi tiết và dễ đọc hơn, đồng thời giữ lại cấu trúc thông tin mà bạn đã cung cấp.
-
 # FUCT - Dự Án Tư Vấn Thời Trang Cá Nhân Hóa
 
 ## I. Tổng Quan
