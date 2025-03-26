@@ -26,6 +26,11 @@ import Tips from './fuctKnowledge/Tips.jsx'
 import PostManager from './Admin/PostManager.jsx';
 import DraftManager from './Admin/DraftManager';
 import Notification from './Admin/Notification.jsx';
+import A1 from './fuctKnowledge/Pages/Appearance/A1.jsx';
+import A2 from './fuctKnowledge/Pages/Appearance/A2.jsx';
+import A3 from './fuctKnowledge/Pages/Appearance/A3.jsx';
+import A4 from './fuctKnowledge/Pages/Appearance/A4.jsx';
+import A5 from './fuctKnowledge/Pages/Appearance/A5.jsx';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation()
@@ -56,6 +61,11 @@ function App() {
         <Route path='/news/content' element={<NewsContent/>}/>
         <Route path='/knowledge' element={<KnowledgeMenu/>}/>
         <Route path='/knowledge/appearance' element={<Appearance/>}/>
+        <Route path='/knowledge/appearance/id1' element={<A1/>}/>
+        <Route path='/knowledge/appearance/id2' element={<A2/>}/>
+        <Route path='/knowledge/appearance/id3' element={<A3/>}/>
+        <Route path='/knowledge/appearance/id4' element={<A4/>}/>
+        <Route path='/knowledge/appearance/id5' element={<A5/>}/>
         <Route path='/knowledge/Accessory' element={<Accessory/>}/>
         <Route path='/knowledge/Other' element={<Other/>}/>
         <Route path='/knowledge/Tips' element={<Tips/>}/>
