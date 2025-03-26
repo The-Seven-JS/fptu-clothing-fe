@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import '/src/styles/mainpage.css'
 import { Link } from 'react-router-dom'
+import Aos from 'aos'
+import "aos/dist/aos.css";
 function MainTestBoard() {
+  useEffect(() =>{
+      Aos.init({
+        duration: 1000,
+        once: false,
+      })
+    }, [])
   return (
     <div className='main-test-board'>
-      <div>
+      <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between'}}> 
         <div className='board-text'>
           <h1 className='board-header'>Tìm ra phong cách phù hợp cùng <b>FUCT</b></h1>
           <h2 className='board-subheader'>Làm bài test và mở khóa kĩ năng phối đồ cực xịn để
@@ -14,7 +22,8 @@ function MainTestBoard() {
           </Link>
         </div>
         <div className='icon'>
-          <img src='/image/test1.png' alt='background-img' className='board-img'></img>
+          <img src='/image/female_maintestboard.svg' alt='background-img' className='female_maintestboard-img'></img>
+          <img src='/image/male_maintestboard.svg' alt='background-img' className='male_maintestboard-img'></img>
         </div>
       </div>
     </div>

@@ -1,5 +1,7 @@
 import Header from './Header';
 import Footer from './Footer';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './styles/index.css';
 import MainTestScreen from './MainTestScreen';
 import MainPageAdmin from './Admin/MainPage';
@@ -7,7 +9,6 @@ import TestIntroScreen from './components/TestIntroScreen';
 import GenderScreen from './components/GenderScreen';
 import HeightWeightScreen from './components/HeightWeightScreen';
 import BodyShapeScreen from './components/BodyShapeScreen';
-import { Route, Routes, useLocation } from 'react-router-dom';
 import UndertoneScreen from './components/UndertoneScreen';
 import ResultScreen from './components/ResultScreen';
 import LegComputeScreen from './components/LegComputeScreen';
@@ -16,7 +17,6 @@ import KnowledgeMenu from './fuctKnowledge/KnowledgeMenu';
 import Appearance from './fuctKnowledge/Appearance.jsx'
 import Accessory from './fuctKnowledge/Accessory.jsx';
 import MainPage from './MainPage';
-import { useEffect, useState } from 'react';
 import Login from './Admin/Login.jsx';
 import ChangePassword from './Admin/ChangePassword';
 import AddPost from './Admin/AddPost.jsx';
@@ -25,17 +25,49 @@ import Other from './fuctKnowledge/Other.jsx';
 import Tips from './fuctKnowledge/Tips.jsx'
 import PostManager from './Admin/PostManager.jsx';
 import DraftManager from './Admin/DraftManager';
+import ErrorPage from './utils/ErrorPage';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isNotFound, setIsNotFound] = useState(false);
   const location = useLocation()
+  const paths = [
+    '/',
+    '/home',
+    '/news',
+    '/news/content',
+    '/knowledge',
+    '/knowledge/appearance',
+    '/knowledge/Accessory',
+    '/knowledge/Other',
+    '/knowledge/Tips',
+    '/admin/success',
+    '/admin',
+    '/admin/success/addpost',
+    '/admin/success/draft',
+    '/admin/success/changepass',
+    '/test',
+    '/test/intro',
+    '/test/gender',
+    '/test/height-weight',
+    '/test/body-shape',
+    '/test/undertone',
+    '/test/result',
+    '/test/leglength',
+  ];
   useEffect(() =>{
+    console.log(location.pathname)
     if (location.pathname.startsWith('/test')){
       document.body.style.backgroundImage = "url('/image/test-background.png')";
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center";
-      document.body.style.backgroundRepeat = "no-repeat";
+      document.body.style.backgroundRepeat = "repeat";
+    }
+    else if (!paths.includes(location.pathname)){
+      setIsNotFound(true);
+      document.body.style.backgroundColor ="#181828";
     }
     else{
+      setIsNotFound(false)
       document.body.style.backgroundImage ="none"
       document.body.style.backgroundColor = "#fff"
     }
@@ -48,9 +80,10 @@ function App() {
       fontFamily:'serif',  
     }}>
     
-      <Header />  
+      {!isNotFound && <Header/>} 
       <Routes>
-        <Route path='/' element={<MainPage />}w />
+        <Route path='/' element={<MainPage />}/>
+        <Route path='/home' element={<MainPage />}/>
         <Route path='/news' element={<News/>}/>
         <Route path='/news/content' element={<NewsContent/>}/>
         <Route path='/knowledge' element={<KnowledgeMenu/>}/>
@@ -75,10 +108,10 @@ function App() {
           <Route path='/test/undertone' element={<UndertoneScreen/>}/>
           <Route path='/test/result' element={<ResultScreen/>}/>
           <Route path='/test/leglength' element={<LegComputeScreen/>}/>
-          
         </Route>
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
-      <Footer />
+      {!isNotFound &&<Footer/>}
     </div>
   );
 }

@@ -7,6 +7,7 @@ import Aos from 'aos';
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
 import { Notifications } from '@mantine/notifications';
+import ErrorPage from './utils/ErrorPage';
 
 Aos.init({
   duration: 1000,
@@ -18,7 +19,7 @@ createRoot(document.getElementById('root')).render(
   <MantineProvider withGlobalClasses withCssVariables>
     <Notifications/>
     <Router>
-      <App />
+      <App/>
     </Router>
   </MantineProvider>
   </StrictMode>
