@@ -13,7 +13,7 @@ const ResultScreen = () => {
     leg: 0,
     bmi: 0
   };
-  const api = useMemo(() => `http://34.87.162.201:3000/advice?gender=${message.gender}&shape=${message.shape}&skin=${message.skin}&leg=${message.leg}&bmi=${message.bmi}`, [message]);
+  const api = useMemo(() => `https://be.fuct.gay/advice?gender=${message.gender}&shape=${message.shape}&skin=${message.skin}&leg=${message.leg}&bmi=${message.bmi}`, [message]);
   console.log(api)
   const [renderedContent, setRenderedContent] = useState(null);
   useEffect(() => {
