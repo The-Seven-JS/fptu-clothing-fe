@@ -21,9 +21,11 @@ function NavPane() {
           <p>Quản lý bài viết</p>
         </Link>
         <Link to={'/admin/success/draft'} style={{textDecoration: 'none', color: 'white'}}>
-        <p>Bản ghi rỗng</p>
+        <p>Bài viết chưa hoàn thiện</p>
         </Link>
-        <p>Thống kê</p>
+        <Link to={'/admin/success/notification'} style={{textDecoration: 'none', color: 'white'}}>
+        <p>Quản lý bình luận</p>
+        </Link>
         </div>
         <div className='admin'>
             <img id='admin' src="https://s3-alpha-sig.figma.com/img/c958/b7e2/8324c64ed7b705151873e4e3b3063235?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nDgqI7pAXHmIFAU7qva6S-vTdTEk6jGKwaDjOJbrgAytDsj3lNEA2SwtoBq3Novni8L23tkRDKoX0wHyCkqf2OPlMNDj~9hLYF3shEmjsEq3pa7oOVCY3tOa4CiTda4Pg2-GG7TaidMGMhCsK6LJaNZPls7jlSQVdX~PFiicyKgB3L9AsOe31-BlWxKX4S2qDdE-vha0sy55yHq0WH6VMiJJocR25FNTEL9oxwGnzURm6F4x57BZYPM0O42bn3XHg6Jy8UJZSyiEF9svv7hmKumDYfmkvAYXx6QjWh-UwHZT-EaezAIX3mWDEovtsTThddd~vKE-ZJPZ85vLDqxw6Q__" alt="" />

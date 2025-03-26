@@ -110,7 +110,7 @@ export default function AddPost() {
         }, {withCredentials: true});
         console.log("Response:", response.data);
         setFetchedData(response.data.content);
-        alert("Đã lưu bài viết hoàn tất")
+        alert("Đã lưu bài viết hoàn tất");
       } catch (error) {
         console.error("Error submitting data:", error);
         alert("Lưu thất bại");
@@ -124,6 +124,7 @@ export default function AddPost() {
         }, {withCredentials: true});
         console.log("Response:", response.data);
         setFetchedData(response.data.content);
+        alert("Đã lưu bài viết hoàn tất");
       } catch (error) {
         console.error("Error submitting data:", error);
         alert("Lưu thất bại!")
@@ -158,6 +159,11 @@ export default function AddPost() {
     try {
       const uploadedUrl = await uploadFileFunctionRef.current(file); // Use the uploadFile function
       setBgimage(uploadedUrl);
+      if(uploadedUrl){
+        alert("Đã tải lên ảnh bìa");
+      }else{
+        alert("Lỗi tải lên ảnh bìa! Thử lại")
+      }
       const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
         title: bgimage, // Use the extracted <h2> content as the title if available
         content: htmlContent,
@@ -165,7 +171,6 @@ export default function AddPost() {
       console.log("Uploaded file URL:", uploadedUrl);
       alert(`File uploaded successfully: ${uploadedUrl}`);
     } catch (error) {
-      alert("Thêm ảnh bìa thất bại!")
       console.error("Error uploading file:", error);
     }
   };

@@ -2,7 +2,7 @@ import React from 'react'
 import './PostCard.css'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-function PostCard({date,title,id,bg}) {
+function PostCard({date,title,id,bg,titleEmpty}) {
   const navigate = useNavigate();
 
   const extractH1Content = (html) => {
@@ -13,7 +13,7 @@ function PostCard({date,title,id,bg}) {
   };
   const h1Content = extractH1Content(title);
   const handleDelete = async () => {
-    let conf = confirm("Do you want to delete?");
+    let conf = confirm("Bạn chắc chắn muốn xoá bài viết này?");
     if(conf === true){
       try {
         const response = await axios.delete(`https://be.fuct.gay/articles/delete-article/${id}`, { withCredentials: true });
@@ -21,7 +21,7 @@ function PostCard({date,title,id,bg}) {
         window.location.reload();
       } catch (error) {
         console.error('Error deleting the post:', error);
-        alert('Failed to delete the post. Please try again.');
+        alert('Không thể xoá bài viết!Thử lại');
       }
     }else{
       return;
@@ -34,13 +34,13 @@ function PostCard({date,title,id,bg}) {
 
   return (
     <div className="post-header">
-    <div>{h1Content}</div>
+    <div>{h1Content + titleEmpty}</div>
     <div>FUCT NEWS</div>
     <div>{date}</div>
     <div onClick={handleDelete} style={{ cursor: "pointer", color: "red" }}>
-        Delete
+        Xoá
     </div>
-    <div onClick={handleEdit} style={{ cursor: "pointer", color: "blue" }}>Edit</div>
+    <div onClick={handleEdit} style={{ cursor: "pointer", color: "blue" }}>Sửa</div>
 </div>
   )
 }

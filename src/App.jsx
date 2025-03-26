@@ -26,6 +26,24 @@ import Tips from './fuctKnowledge/Tips.jsx'
 import PostManager from './Admin/PostManager.jsx';
 import DraftManager from './Admin/DraftManager';
 import ErrorPage from './utils/ErrorPage';
+import Notification from './Admin/Notification.jsx';
+import A1 from './fuctKnowledge/Pages/Appearance/A1.jsx';
+import A2 from './fuctKnowledge/Pages/Appearance/A2.jsx';
+import A3 from './fuctKnowledge/Pages/Appearance/A3.jsx';
+import A4 from './fuctKnowledge/Pages/Appearance/A4.jsx';
+import A5 from './fuctKnowledge/Pages/Appearance/A5.jsx';
+import AC1 from './fuctKnowledge/Pages/Accessory/AC1.jsx';
+import AC2 from './fuctKnowledge/Pages/Accessory/AC2.jsx';
+import AC3 from './fuctKnowledge/Pages/Accessory/AC3.jsx';
+import AC4 from './fuctKnowledge/Pages/Accessory/AC4.jsx';
+import AC5 from './fuctKnowledge/Pages/Accessory/AC5.jsx';
+import T1 from './fuctKnowledge/Pages/Tip/T1.jsx';
+import T2 from './fuctKnowledge/Pages/Tip/T2.jsx';
+import T3 from './fuctKnowledge/Pages/Tip/T3.jsx';
+import T4 from './fuctKnowledge/Pages/Tip/T4.jsx';
+import T5 from './fuctKnowledge/Pages/Tip/T5.jsx';
+import T6 from './fuctKnowledge/Pages/Tip/T6.jsx';
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
@@ -88,15 +106,32 @@ function App() {
         <Route path='/news/content' element={<NewsContent/>}/>
         <Route path='/knowledge' element={<KnowledgeMenu/>}/>
         <Route path='/knowledge/appearance' element={<Appearance/>}/>
+        <Route path='/knowledge/appearance/id1' element={<A1/>}/>
+        <Route path='/knowledge/appearance/id2' element={<A2/>}/>
+        <Route path='/knowledge/appearance/id3' element={<A3/>}/>
+        <Route path='/knowledge/appearance/id4' element={<A4/>}/>
+        <Route path='/knowledge/appearance/id5' element={<A5/>}/>
         <Route path='/knowledge/Accessory' element={<Accessory/>}/>
+        <Route path='/knowledge/Accessory/id1' element={<AC1/>}/>
+        <Route path='/knowledge/Accessory/id2' element={<AC2/>}/>
+        <Route path='/knowledge/Accessory/id3' element={<AC3/>}/>
+        <Route path='/knowledge/Accessory/id4' element={<AC4/>}/>
+        <Route path='/knowledge/Accessory/id5' element={<AC5/>}/>
         <Route path='/knowledge/Other' element={<Other/>}/>
         <Route path='/knowledge/Tips' element={<Tips/>}/>
+        <Route path='/knowledge/Tips/id1' element={<T1/>}/>
+        <Route path='/knowledge/Tips/id2' element={<T2/>}/>
+        <Route path='/knowledge/Tips/id3' element={<T3/>}/>
+        <Route path='/knowledge/Tips/id4' element={<T4/>}/>
+        <Route path='/knowledge/Tips/id5' element={<T5/>}/>
+        <Route path='/knowledge/Tips/id6' element={<T6/>}/>
         <Route path='/admin/success' element={<MainPageAdmin/>} />
         <Route path='/admin' element={<Login onLogin={() => setIsLoggedIn(true)} />} />
         <Route path='/admin/success' element={<MainPageAdmin/>}> 
           <Route index element={<PostManager/>}/>
           <Route path='addpost' element={<AddPost/>}/>
           <Route path='draft' element={<DraftManager/>}/>
+          <Route path='notification' element={<Notification/>}/>
           <Route path='changepass' element={<ChangePassword/>}/>
         </Route>
         <Route path='/test' element={<MainTestScreen />}>

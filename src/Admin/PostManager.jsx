@@ -24,7 +24,7 @@ function PostManager() {
       });
     }, []);
     //---------ket thuc fetch data--------------------------------
-    const itemsPerPage = 4;//so card content tren trang
+    const itemsPerPage = 5;//so card content tren trang
     const [curPage,setCurPage] = useState(0);//vi tri trang news
     const cards = content.slice();//fetch tu db
 
@@ -41,7 +41,7 @@ function PostManager() {
   return (
     <div>
         {curCards.map((card, index) => (
-        <PostCard key={index + offset} title={card.content} id={card.id} bg={card.title} source="FUCT NEWS" date={card.created_at} />
+        <PostCard key={index + offset} title={card.content} id={card.id} bg={card.title} source="FUCT NEWS" date={card.created_at} titleEmpty={""} />
       ))}
       <ReactPaginate
         previousLabel={"<"}
