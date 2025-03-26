@@ -82,7 +82,7 @@ function App() {
     }
     else if (!paths.includes(location.pathname)){
       setIsNotFound(true);
-      document.body.style.backgroundColor ="#181828";
+      // document.body.style.backgroundColor ="#181828";
     }
     else{
       setIsNotFound(false)
