@@ -36,6 +36,12 @@ import AC2 from './fuctKnowledge/Pages/Accessory/AC2.jsx';
 import AC3 from './fuctKnowledge/Pages/Accessory/AC3.jsx';
 import AC4 from './fuctKnowledge/Pages/Accessory/AC4.jsx';
 import AC5 from './fuctKnowledge/Pages/Accessory/AC5.jsx';
+import T1 from './fuctKnowledge/Pages/Tip/T1.jsx';
+import T2 from './fuctKnowledge/Pages/Tip/T2.jsx';
+import T3 from './fuctKnowledge/Pages/Tip/T3.jsx';
+import T4 from './fuctKnowledge/Pages/Tip/T4.jsx';
+import T5 from './fuctKnowledge/Pages/Tip/T5.jsx';
+import T6 from './fuctKnowledge/Pages/Tip/T6.jsx';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation()
@@ -79,6 +85,12 @@ function App() {
         <Route path='/knowledge/Accessory/id5' element={<AC5/>}/>
         <Route path='/knowledge/Other' element={<Other/>}/>
         <Route path='/knowledge/Tips' element={<Tips/>}/>
+        <Route path='/knowledge/Tips/id1' element={<T1/>}/>
+        <Route path='/knowledge/Tips/id2' element={<T2/>}/>
+        <Route path='/knowledge/Tips/id3' element={<T3/>}/>
+        <Route path='/knowledge/Tips/id4' element={<T4/>}/>
+        <Route path='/knowledge/Tips/id5' element={<T5/>}/>
+        <Route path='/knowledge/Tips/id6' element={<T6/>}/>
         <Route path='/admin/success' element={<MainPageAdmin/>} />
         <Route path='/admin' element={<Login onLogin={() => setIsLoggedIn(true)} />} />
         <Route path='/admin/success' element={<MainPageAdmin/>}> 
