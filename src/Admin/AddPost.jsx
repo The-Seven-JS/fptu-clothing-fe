@@ -113,7 +113,7 @@ export default function AddPost() {
         alert("Đã lưu bài viết hoàn tất");
       } catch (error) {
         console.error("Error submitting data:", error);
-        alert("Lưu thất bại");
+        alert("Lưu thất bại do chưa có ảnh bìa hoặc Tiêu đề/Nội dung");
       }
     }else{
       console.log("no ok");
@@ -127,7 +127,7 @@ export default function AddPost() {
         alert("Đã lưu bài viết hoàn tất");
       } catch (error) {
         console.error("Error submitting data:", error);
-        alert("Lưu thất bại!")
+        alert("Lưu thất bại do chưa có ảnh bìa hoặc Tiêu đề/Nội dung")
       }
     }
   };

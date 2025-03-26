@@ -43,7 +43,10 @@ import T3 from './fuctKnowledge/Pages/Tip/T3.jsx';
 import T4 from './fuctKnowledge/Pages/Tip/T4.jsx';
 import T5 from './fuctKnowledge/Pages/Tip/T5.jsx';
 import T6 from './fuctKnowledge/Pages/Tip/T6.jsx';
-
+import O1 from './fuctKnowledge/Pages/Other/O1.jsx';
+import O2 from './fuctKnowledge/Pages/Other/O2.jsx';
+import O3 from './fuctKnowledge/Pages/Other/O3.jsx';
+import O4 from './fuctKnowledge/Pages/Other/O4.jsx';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
@@ -118,6 +121,10 @@ function App() {
         <Route path='/knowledge/Accessory/id4' element={<AC4/>}/>
         <Route path='/knowledge/Accessory/id5' element={<AC5/>}/>
         <Route path='/knowledge/Other' element={<Other/>}/>
+        <Route path='/knowledge/Other/id1' element={<O1/>}/>
+        <Route path='/knowledge/Other/id2' element={<O2/>}/>
+        <Route path='/knowledge/Other/id3' element={<O3/>}/>
+        <Route path='/knowledge/Other/id4' element={<O4/>}/>
         <Route path='/knowledge/Tips' element={<Tips/>}/>
         <Route path='/knowledge/Tips/id1' element={<T1/>}/>
         <Route path='/knowledge/Tips/id2' element={<T2/>}/>
