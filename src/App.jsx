@@ -31,6 +31,11 @@ import A2 from './fuctKnowledge/Pages/Appearance/A2.jsx';
 import A3 from './fuctKnowledge/Pages/Appearance/A3.jsx';
 import A4 from './fuctKnowledge/Pages/Appearance/A4.jsx';
 import A5 from './fuctKnowledge/Pages/Appearance/A5.jsx';
+import AC1 from './fuctKnowledge/Pages/Accessory/AC1.jsx';
+import AC2 from './fuctKnowledge/Pages/Accessory/AC2.jsx';
+import AC3 from './fuctKnowledge/Pages/Accessory/AC3.jsx';
+import AC4 from './fuctKnowledge/Pages/Accessory/AC4.jsx';
+import AC5 from './fuctKnowledge/Pages/Accessory/AC5.jsx';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation()
@@ -67,6 +72,11 @@ function App() {
         <Route path='/knowledge/appearance/id4' element={<A4/>}/>
         <Route path='/knowledge/appearance/id5' element={<A5/>}/>
         <Route path='/knowledge/Accessory' element={<Accessory/>}/>
+        <Route path='/knowledge/Accessory/id1' element={<AC1/>}/>
+        <Route path='/knowledge/Accessory/id2' element={<AC2/>}/>
+        <Route path='/knowledge/Accessory/id3' element={<AC3/>}/>
+        <Route path='/knowledge/Accessory/id4' element={<AC4/>}/>
+        <Route path='/knowledge/Accessory/id5' element={<AC5/>}/>
         <Route path='/knowledge/Other' element={<Other/>}/>
         <Route path='/knowledge/Tips' element={<Tips/>}/>
         <Route path='/admin/success' element={<MainPageAdmin/>} />
