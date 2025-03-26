@@ -14,17 +14,42 @@ body {
     font-size: 16px;
 }
 /*Main Board Test*/
+.male_maintestboard-img, .female_maintestboard-img{
+    height: 300px;
+    width: 200px;
+    align-self: center;
+}
+.m_introduction-img{
+    height: 350px;
+    width: 280px;
+    position: relative;
+    left:1300px;
+    top: -130px;
+}
+.f_introduction-img{
+    height: 300px;
+    width: 250px;
+    position: relative;
+    top:280px;
+    transform: rotate(-150deg);
+}
+.m_attract-img{
+
+}
+.f_attract-img{
+
+}
 .main-test-board{
     background-color: #2F2F30;
     border-radius: 30px;
-    padding: 10px 20px;
-    margin: 0 10px 0 10px;
+    padding: 10px 30px 10px 40px;
+    margin: 0 45px 0 45px;
 }
 .main-test-board div{
     display: flex;
 }
 .board-text{
-    width: 70%; 
+    width: 50%; 
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -32,7 +57,7 @@ body {
     margin-top: 20px;
     margin-left: 20px;
     height: 100%;
-    gap: 40px;
+    gap: 30px;
 }
 .board-header, .board-subheader, .board-explore-btn {
     margin: 0; /* Loại bỏ khoảng cách thừa */
@@ -42,7 +67,7 @@ body {
     color: #fff;
     display: inline-block;
     margin-top: 4px;
-    font-size: 60px;
+    font-size: 66px;
     line-height: 1.1;
 }
 .board-text .board-header b{
@@ -62,16 +87,16 @@ body {
 .board-explore-btn{
     display: block;
     border:none;
-    border-radius: 30px;
+    border-radius: 23px;
     width: 180px;
-    height: 43px;
+    height: 60px;
     transition: 0.3s ease;
     background-color: #FFD700;
     color: rgb(0, 0, 0);
     padding: 1px;
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 .board-explore-btn:hover {
     color: #ffffff;
@@ -90,13 +115,17 @@ body {
     object-fit: contain;
 }
 /*Intro-web*/
+.maintest-introduction{
+    display: flex ;
+    flex-direction: row;
+}
 .intro-web{
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     margin-top: 80px;
-    padding: 0 50px 0 50px;
+    padding: 0 200px 0 200px;
 }
 .intro-title{
     font-family: 'BeVietnamPro', sans-serif;
@@ -114,32 +143,26 @@ body {
 }
 /*Mini-nav*/
 .main-mini-nav{
-    margin-top: 80px;
+    margin-top: 10px;
     padding: 20px 20px;
     margin: 20px 20px;
 }
 .mini-nav{
     margin-top: 40px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     padding: 0 20px 0 20px;
-    grid-auto-flow: row;
-    grid-template-rows: 50% 50%;
-    grid-template-columns: 50% 50%;
-    grid-template-areas:
-    "content1 image1"
-    "image2 content2";
-    row-gap: 90px;
-    column-gap: 30px;
+    gap: 50px;
 }
 .title{
-    grid-area: header;
     margin-left: 20px;
     line-height: 1.5;
     font-size: 40px;
-    font-family: 'BeVietnamPro', sans-serif;
+    font-family: 'Be Vietnam Pro', sans-serif;
     font-weight: bold;
     color: #2F2F30;
 }
+
 .news-text, .knowledge-text{
     padding-left: 10px;
 }
@@ -149,19 +172,20 @@ body {
     align-self: center;
     justify-self: center;
     object-fit: contain;
+    z-index: 1000;
 }
 .news-text h2, .knowledge-text h2{
     font-family: 'Inter', sans-serif;
     font-size: 30px;
 }
 .news-text p, .knowledge-text p{
-    font-family: 'BeVietnamPro', sans-serif;
+    font-family: 'Be Vietnam Pro', sans-serif;
     font-weight: light;
     font-size: 20px; 
     color: #828282;
-    width: 80%;
+    width: 100%;
 }
-.knowledge-text button, .news-text button{
+/* .knowledge-text button, .news-text button{
     font-family: 'Gabarito', sans-serif;
     font-weight: bold;
     font-size: 17px;
@@ -174,22 +198,23 @@ body {
     text-align: center;
     height: fit-content;
     transition: 0.3s ease;
-}
+} */
 .knowledge-text button:hover, .news-text button:hover{
     color:#fff;
     transform: scale(1.1);
 }
-.news-img{
-    grid-area: image1;
+.news-img,
+.knowledge-img {
+  width: 100%; /* Adjust as needed */
+  height: 300px; /* Example height */
 }
-.news-text{
-    grid-area: content1;
-}
-.knowledge-img{
-    grid-area: image2;
-}
-.knowledge-text{
-    grid-area: content2;
+
+.news-img .swiper-slide img,
+.knowledge-img .swiper-slide img {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 40px;
+  object-fit: cover; /* Ensures images fill the slide nicely */
 }
 /*User Experience*/
 .UX-containner{
@@ -216,10 +241,30 @@ body {
     flex-wrap: wrap;
 }
 /*Responsive Web*/
-@media (max-width: 762px){
-    .board-img{
+@media screen and (max-width: 1095px){
+    .male_maintestboard-img, .female_maintestboard-img{
         display: none;
     }
+    .f_introduction-img{
+        display: none;
+    }
+    .intro-web{
+        padding: 0 30px 0 30px;
+    }
+    .board-text{
+        width: 100%;
+        max-width: 100%;
+    }
+    .board-text .board-header{
+        font-size: 60px;
+        max-width: fit-content;
+    }
+    .board-text .board-subheader{
+        font-size: 25px;
+        max-width: 100%;
+    }
+}
+@media (max-width: 762px){
     .board-text{
         width: 100%;
         max-width: 100%;

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { useEffect, useState, useMemo, lazy, Suspense} from 'react';
+import { useEffect, useState, useMemo} from 'react';
+import processText from '../utils/standardizeText.js';
 
 const ResultScreen = () => {
   const location = useLocation()
@@ -13,17 +14,15 @@ const ResultScreen = () => {
     bmi: 0
   };
   const api = useMemo(() => `http://34.87.162.201:3000/advice?gender=${message.gender}&shape=${message.shape}&skin=${message.skin}&leg=${message.leg}&bmi=${message.bmi}`, [message]);
+  console.log(api)
   const [renderedContent, setRenderedContent] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
         // Fetch data from API  
-        const response = await axios.get(api);
+        const response = await axios.get(api,{ withCredentials: true});
         const data = response.data.advice;
-        console.log(data)
-        // Dynamically import the ultility module and process the data
-        const module = await import('/src/utils/standardizeText.js');
-        const dataObj = module.standardizeText(data.message.gender);
+        const dataObj = processText(data, message.gender);
         const content = (
         <div>
             {dataObj.map((section, i) => (
