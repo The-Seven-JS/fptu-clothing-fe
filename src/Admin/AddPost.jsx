@@ -120,7 +120,7 @@ export default function AddPost() {
         console.log(response.data);
         //
         console.error("Error submitting data:", error);
-        alert("Lưu thất bại do chưa có ảnh bìa hoặc Tiêu đề/Nội dung");
+        alert("Lưu thất bại do chưa có ảnh bìa hoặc Tiêu đề/Nội dung. Nội dung sẽ được lưu trong mục 'Bài viết chưa hoàn thiện'");
       }
     }else{
       console.log("no ok");
@@ -141,7 +141,7 @@ export default function AddPost() {
         console.log(response.data);
         //
         console.error("Error submitting data:", error);
-        alert("Lưu thất bại do chưa có ảnh bìa hoặc Tiêu đề/Nội dung")
+        alert("Lưu thất bại do chưa có ảnh bìa hoặc Tiêu đề/Nội dung. Nội dung sẽ được lưu trong mục 'Bài viết chưa hoàn thiện'")
       }
     }
   };
@@ -199,14 +199,14 @@ export default function AddPost() {
   className={`upload-label ${
     uploadStatus === "selected"
       ? "selected"
-      : bgimage === "" && title && bg != null
+      : bgimage === "" && title && bg != ""
       ? "existing-photo-label"
       : ""
   }`}
 >
   {uploadStatus === "selected"
     ? fileName
-    : bgimage === "" && title && bg !=null
+    : bgimage === "" && title && bg !=""
     ? "Sửa ảnh đã có"
     : "Tải lên Ảnh Bìa"}
 </label>

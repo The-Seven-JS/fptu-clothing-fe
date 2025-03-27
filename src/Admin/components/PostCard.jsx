@@ -14,6 +14,8 @@ function PostCard({date,title,id,bg,titleEmpty}) {
   let h1Content = extractH1Content(title);
   if(h1Content === null){
     h1Content = "";
+    }else{
+      titleEmpty = "";
     }
   const handleDelete = async () => {
     let conf = confirm("Bạn chắc chắn muốn xoá bài viết này?");
