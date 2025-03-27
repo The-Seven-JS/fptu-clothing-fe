@@ -62,17 +62,42 @@ function NewsContent() {
       setIsLoading(true); // Show loading state
   
       try {
-        const response = await axios.get(`https://be.fuct.gay/comments/${id}`); // Replace with your API endpoint
-        setData(response.data.slice().reverse()); // Update state with fetched data
+        const response = await axios.get(`https://be.fuct.gay/comments/${id}/1`); // Replace with your API endpoint
+        setData(response.data); // Update state with fetched data
       } catch (err) {
         setError(err.message); // Handle error
       } finally {
         setIsLoading(false); // End loading state
       }
     };
+    
+    setData([]);
+    setLevel(1);
     fetchCmt();
   }, [reload]);
 
+  useEffect(() => {
+    const fetchCmt = async () => {
+      setIsLoading(true); // Show loading state
+  
+      try {
+        const response = await axios.get(`https://be.fuct.gay/comments/${id}/${level}`); // Replace with your API endpoint
+        setData((prevState) => prevState.concat(response.data)); // Update state with fetched data
+        console.log("ok");
+        console.log(response.data)
+      } catch (err) {
+        setError(err.message); // Handle error
+      } finally {
+        setIsLoading(false); // End loading state
+      }
+    };
+    if(level > 1)
+    fetchCmt();
+  }, [level]);
+
+  const handleLoadMore = () =>{
+    setLevel((prevState) => prevState + 1);
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to the top
@@ -93,20 +118,20 @@ useEffect(() => {
 
   fetchData();
 
-  const fetchCmt = async () => {
-    setIsLoading(true); // Show loading state
+  // const fetchCmt = async () => {
+  //   setIsLoading(true); // Show loading state
 
-    try {
-      const response = await axios.get(`https://be.fuct.gay/comments/${id}`); // Replace with your API endpoint
-      setData(response.data.slice().reverse()); // Update state with fetched data
-    } catch (err) {
-      setError(err.message); // Handle error
-    } finally {
-      setIsLoading(false); // End loading state
-    }
-  };
+  //   try {
+  //     const response = await axios.get(`https://be.fuct.gay/comments/${id}`); // Replace with your API endpoint
+  //     setData(response.data.slice().reverse()); // Update state with fetched data
+  //   } catch (err) {
+  //     setError(err.message); // Handle error
+  //   } finally {
+  //     setIsLoading(false); // End loading state
+  //   }
+  // };
 
-  fetchCmt();
+  // fetchCmt();
 }, [idx]);
   
   return (
@@ -148,7 +173,7 @@ useEffect(() => {
         {data.map((cmt,index) =>(
         <Comment key={index} username={cmt.username} content={cmt.content} date={cmt.created_at}/>
         ))}
-        <button onClick={"handleLoadMore"}>Tải thêm bình luận</button>
+        <button onClick={handleLoadMore}>Tải thêm bình luận</button>
       </div>
     </div>
   );
