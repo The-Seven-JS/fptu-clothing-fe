@@ -47,7 +47,7 @@ import O1 from './fuctKnowledge/Pages/Other/O1.jsx';
 import O2 from './fuctKnowledge/Pages/Other/O2.jsx';
 import O3 from './fuctKnowledge/Pages/Other/O3.jsx';
 import O4 from './fuctKnowledge/Pages/Other/O4.jsx';
-import ProtectedRoute from "./Admin/ProtectedRoute.jsx";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
@@ -83,10 +83,6 @@ function App() {
       document.body.style.backgroundPosition = "center";
       document.body.style.backgroundRepeat = "repeat";
     }
-    else if (location.pathname.startsWith('/news/')){
-      setIsNotFound(false);
-      // document.body.style.backgroundColor ="#181828";
-    }
     else if (!paths.includes(location.pathname)){
       setIsNotFound(true);
       // document.body.style.backgroundColor ="#181828";
@@ -110,7 +106,7 @@ function App() {
         <Route path='/' element={<MainPage />}/>
         <Route path='/home' element={<MainPage />}/>
         <Route path='/news' element={<News/>}/>
-        <Route path='/news/content/:idx?' element={<NewsContent/>}/>
+        <Route path='/news/content' element={<NewsContent/>}/>
         <Route path='/knowledge' element={<KnowledgeMenu/>}/>
         <Route path='/knowledge/appearance' element={<Appearance/>}/>
         <Route path='/knowledge/appearance/id1' element={<A1/>}/>
