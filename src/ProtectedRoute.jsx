@@ -6,7 +6,7 @@ const ProtectedRoute = () => {
 
     useEffect(() => {
         // Fetch the authorization status from the backend
-        fetch("http://localhost:3000/admin", {
+        fetch("https://be.fuct.gay/admin", {
             method: "GET",
             credentials: "include", // Ensures cookies (if used) are sent
         })
