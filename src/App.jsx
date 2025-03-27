@@ -83,6 +83,10 @@ function App() {
       document.body.style.backgroundPosition = "center";
       document.body.style.backgroundRepeat = "repeat";
     }
+    else if (location.pathname.startsWith('/news/')){
+      setIsNotFound(false);
+      // document.body.style.backgroundColor ="#181828";
+    }
     else if (!paths.includes(location.pathname)){
       setIsNotFound(true);
       // document.body.style.backgroundColor ="#181828";
@@ -106,7 +110,7 @@ function App() {
         <Route path='/' element={<MainPage />}/>
         <Route path='/home' element={<MainPage />}/>
         <Route path='/news' element={<News/>}/>
-        <Route path='/news/content' element={<NewsContent/>}/>
+        <Route path='/news/content/:idx?' element={<NewsContent/>}/>
         <Route path='/knowledge' element={<KnowledgeMenu/>}/>
         <Route path='/knowledge/appearance' element={<Appearance/>}/>
         <Route path='/knowledge/appearance/id1' element={<A1/>}/>

@@ -14,7 +14,7 @@ function NewsContent() {
   const [userData, setUserData] = useState([]);
   const[datex,setDatex] = useState("");
   const location = useLocation();
-  const { content, date,id } = location.state || { content:userData , date:datex,id:idx };
+  const { content, date,id } = location.state || { content:userData , date:datex,id:idx }||{content:"No content" , date:"N/A",id:"N/A"};
   // Parse the content and insert a <p> tag after the <h2> tag
   const addParagraphAfterH2 = (htmlContent) => {
     const parser = new DOMParser();
