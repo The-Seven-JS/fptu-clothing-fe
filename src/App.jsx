@@ -132,7 +132,6 @@ function App() {
         <Route path='/knowledge/Tips/id4' element={<T4/>}/>
         <Route path='/knowledge/Tips/id5' element={<T5/>}/>
         <Route path='/knowledge/Tips/id6' element={<T6/>}/>
-        <Route path='/admin/success' element={<MainPageAdmin/>} />
         <Route path='/admin' element={<Login onLogin={() => setIsLoggedIn(true)} />} />
         <Route element={<ProtectedRoute />}>
         <Route path='/admin/success' element={<MainPageAdmin/>}> 
