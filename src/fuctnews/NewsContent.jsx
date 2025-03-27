@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect,useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation,useParams } from 'react-router-dom';
 import './NewsContent.css';
 import axios from 'axios';
 import Comment from './Comment';
@@ -10,10 +10,11 @@ function NewsContent() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
-
+  const { idx } = useParams();// id on link
+  const [userData, setUserData] = useState([]);
+  const[datex,setDatex] = useState("");
   const location = useLocation();
-  const { content, date,id } = location.state || { content: '<p>No content available</p>', date: 'No date available',id:'do not have' };
+  const { content, date,id } = location.state || { content:userData , date:datex,id:idx };
   // Parse the content and insert a <p> tag after the <h2> tag
   const addParagraphAfterH2 = (htmlContent) => {
     const parser = new DOMParser();
@@ -72,6 +73,22 @@ function NewsContent() {
     window.scrollTo(0, 0); // Scrolls to the top
 }, [location]);
 
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`https://be.fuct.gay/articles/get-article/${idx}`); // Replace with your API endpoint
+      setUserData(response.data.article.content);
+      setDatex(response.data.article.created_at);
+      console.log(response.data)
+    } catch (err) {
+      setError(err.message); // Handle error
+    }
+  };
+
+  fetchData();
+}, [idx]);
+  
   return (
     <div className='news-content'>
       <div className="content-view" dangerouslySetInnerHTML={{ __html: updatedContent }} />
