@@ -43,7 +43,11 @@ import T3 from './fuctKnowledge/Pages/Tip/T3.jsx';
 import T4 from './fuctKnowledge/Pages/Tip/T4.jsx';
 import T5 from './fuctKnowledge/Pages/Tip/T5.jsx';
 import T6 from './fuctKnowledge/Pages/Tip/T6.jsx';
-
+import O1 from './fuctKnowledge/Pages/Other/O1.jsx';
+import O2 from './fuctKnowledge/Pages/Other/O2.jsx';
+import O3 from './fuctKnowledge/Pages/Other/O3.jsx';
+import O4 from './fuctKnowledge/Pages/Other/O4.jsx';
+import ProtectedRoute from "./ProtectedRoute.jsx";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
@@ -73,7 +77,6 @@ function App() {
     '/test/leglength',
   ];
   useEffect(() =>{
-    console.log(location.pathname)
     if (location.pathname.startsWith('/test')){
       document.body.style.backgroundImage = "url('/image/test-background.png')";
       document.body.style.backgroundSize = "cover";
@@ -82,7 +85,7 @@ function App() {
     }
     else if (!paths.includes(location.pathname)){
       setIsNotFound(true);
-      document.body.style.backgroundColor ="#181828";
+      // document.body.style.backgroundColor ="#181828";
     }
     else{
       setIsNotFound(false)
@@ -118,6 +121,10 @@ function App() {
         <Route path='/knowledge/Accessory/id4' element={<AC4/>}/>
         <Route path='/knowledge/Accessory/id5' element={<AC5/>}/>
         <Route path='/knowledge/Other' element={<Other/>}/>
+        <Route path='/knowledge/Other/id1' element={<O1/>}/>
+        <Route path='/knowledge/Other/id2' element={<O2/>}/>
+        <Route path='/knowledge/Other/id3' element={<O3/>}/>
+        <Route path='/knowledge/Other/id4' element={<O4/>}/>
         <Route path='/knowledge/Tips' element={<Tips/>}/>
         <Route path='/knowledge/Tips/id1' element={<T1/>}/>
         <Route path='/knowledge/Tips/id2' element={<T2/>}/>
@@ -127,12 +134,14 @@ function App() {
         <Route path='/knowledge/Tips/id6' element={<T6/>}/>
         <Route path='/admin/success' element={<MainPageAdmin/>} />
         <Route path='/admin' element={<Login onLogin={() => setIsLoggedIn(true)} />} />
+        <Route element={<ProtectedRoute />}>
         <Route path='/admin/success' element={<MainPageAdmin/>}> 
-          <Route index element={<PostManager/>}/>
-          <Route path='addpost' element={<AddPost/>}/>
-          <Route path='draft' element={<DraftManager/>}/>
-          <Route path='notification' element={<Notification/>}/>
-          <Route path='changepass' element={<ChangePassword/>}/>
+            <Route index element={<PostManager/>}/>
+            <Route path='addpost' element={<AddPost/>}/>
+            <Route path='draft' element={<DraftManager/>}/>
+            <Route path='notification' element={<Notification/>}/>
+            <Route path='changepass' element={<ChangePassword/>}/>
+          </Route>
         </Route>
         <Route path='/test' element={<MainTestScreen />}>
           <Route index element={<TestIntroScreen/>}/>

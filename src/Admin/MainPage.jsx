@@ -13,7 +13,7 @@ function MainPage() {
   const sendRequestCheck = async () => {
     try{
       const response = await axios.get('https://be.fuct.gay/admin', { withCredentials: true });
-      console.log(response.data.message)
+      console.log(response.data.isAuthorized)
     }
     catch(error){
       console.error('Error logging in:', error);

@@ -22,7 +22,6 @@ function ChangePassword({ onLogin }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const message = sendChangePassRequest(oldPass, newPass, retypePass)
-    console.log(message.message)
   };
 
 return (

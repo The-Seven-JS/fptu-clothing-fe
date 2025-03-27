@@ -34,7 +34,7 @@ const UndertoneScreen = () => {
           autoClose:'500',
           title:'WARNING',
           color:'#cc3300',
-          message:'Bạn cần phải chọn giới tính của bạn trước khi chuyển!',
+          message:'Bạn cần phải chọn undertone của bạn trước khi chuyển!',
           icon:<GoAlertFill/>
         })
       }
