@@ -92,6 +92,17 @@
     font-size: 16px;
     cursor: pointer;
   }
+  .reload-button {
+    background-color: #FFD700;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    margin-left: 3%;
+  }
   /* Center the table */
 .news-content table {
   margin: 0 auto; /* Centers the table horizontally */

@@ -13,6 +13,7 @@ function NewsContent() {
   const { idx } = useParams();// id on link
   const [userData, setUserData] = useState([]);
   const[datex,setDatex] = useState("");
+  const[reload,setReload] = useState(false);
   const location = useLocation();
   const { content, date,id } = location.state || { content:userData , date:datex,id:idx }||{content:"No content" , date:"N/A",id:"N/A"};
   // Parse the content and insert a <p> tag after the <h2> tag
@@ -44,17 +45,21 @@ function NewsContent() {
     try {
       const response = await axios.post(`https://be.fuct.gay/comments/new/${id}`, data);
       console.log(response.data);
+      alert("Đã tải lên bình luận. Nhấn'Tải lại bình luận' để cập nhật mới nhất")
     } catch (error) {
       console.error(error);
       alert("Tên hoặc bình luận không được trống!")
     }
   };
 
+  const handleReload = () =>{
+    setReload((prevState) => !prevState)
+  }
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchCmt = async () => {
       setIsLoading(true); // Show loading state
-
+  
       try {
         const response = await axios.get(`https://be.fuct.gay/comments/${id}`); // Replace with your API endpoint
         setData(response.data.slice().reverse()); // Update state with fetched data
@@ -64,9 +69,8 @@ function NewsContent() {
         setIsLoading(false); // End loading state
       }
     };
-
-    fetchData(); // Call the function on component load
-  }, [data]);
+    fetchCmt();
+  }, [reload]);
 
 
   useEffect(() => {
@@ -87,6 +91,21 @@ useEffect(() => {
   };
 
   fetchData();
+
+  const fetchCmt = async () => {
+    setIsLoading(true); // Show loading state
+
+    try {
+      const response = await axios.get(`https://be.fuct.gay/comments/${id}`); // Replace with your API endpoint
+      setData(response.data.slice().reverse()); // Update state with fetched data
+    } catch (err) {
+      setError(err.message); // Handle error
+    } finally {
+      setIsLoading(false); // End loading state
+    }
+  };
+
+  fetchCmt();
 }, [idx]);
   
   return (
@@ -120,6 +139,9 @@ useEffect(() => {
         {/* Submit Button */}
         <button onClick={handlePostComment} className="submit-button">
           ĐĂNG
+        </button>
+        <button onClick={handleReload} className="reload-button">
+          Tải lại bình luận
         </button>
       </div>
         {data.map((cmt,index) =>(
