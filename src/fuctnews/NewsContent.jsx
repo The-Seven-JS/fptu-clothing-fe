@@ -15,6 +15,7 @@ function NewsContent() {
   const[datex,setDatex] = useState("");
   const[reload,setReload] = useState(false);
   const location = useLocation();
+  const [level,setLevel] = useState(1);
   const { content, date,id } = location.state || { content:userData , date:datex,id:idx }||{content:"No content" , date:"N/A",id:"N/A"};
   // Parse the content and insert a <p> tag after the <h2> tag
   const addParagraphAfterH2 = (htmlContent) => {
@@ -147,6 +148,7 @@ useEffect(() => {
         {data.map((cmt,index) =>(
         <Comment key={index} username={cmt.username} content={cmt.content} date={cmt.created_at}/>
         ))}
+        <button onClick={"handleLoadMore"}>Tải thêm bình luận</button>
       </div>
     </div>
   );

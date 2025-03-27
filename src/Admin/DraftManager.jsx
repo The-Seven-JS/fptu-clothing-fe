@@ -29,7 +29,7 @@ function DraftManager() {
   return (
     <div>
         {curCards.map((card, index) => (
-        <PostCard key={index + offset} title={"<h1></h1>"} id={card.id} bg={card.title} source="FUCT NEWS" date={card.created_at} titleEmpty={"Bài viết số" + (index + 1)}/>
+        <PostCard key={index + offset} title={card.content} id={card.id} bg={card.title} source="FUCT NEWS" date={card.created_at} titleEmpty={"Bài viết số" + (index+ offset + 1)}/>
       ))}
       <ReactPaginate
         previousLabel={"<"}

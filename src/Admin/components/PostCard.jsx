@@ -11,7 +11,10 @@ function PostCard({date,title,id,bg,titleEmpty}) {
     const h2 = doc.querySelector("h1");
     return h2 ? h2.textContent : null;
   };
-  const h1Content = extractH1Content(title);
+  let h1Content = extractH1Content(title);
+  if(h1Content === null){
+    h1Content = "";
+    }
   const handleDelete = async () => {
     let conf = confirm("Bạn chắc chắn muốn xoá bài viết này?");
     if(conf === true){
@@ -29,7 +32,7 @@ function PostCard({date,title,id,bg,titleEmpty}) {
   };
   const handleEdit = () => {
       navigate(`/admin/success/addpost`, { state: { title,id,bg} });
-      console.log(bg);
+      console.log(bg + "xxx");
   }
 
   return (

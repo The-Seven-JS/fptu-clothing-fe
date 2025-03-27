@@ -19,7 +19,7 @@ function Maincard({title,content,onClick}) {
     <div className='outer' onClick={onClick} style={{ cursor: 'pointer' }}>
       <img src={title} alt="mainimage"  />
       <div className='maincard'>
-        <h5>TIN NỔI BẬT</h5>
+        <h5>TIN MỚI NHẤT</h5>
         <h2>{h1Content}</h2>
         <p>{h2Content}</p>
       </div>
