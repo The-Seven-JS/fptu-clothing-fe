@@ -47,7 +47,7 @@ import O1 from './fuctKnowledge/Pages/Other/O1.jsx';
 import O2 from './fuctKnowledge/Pages/Other/O2.jsx';
 import O3 from './fuctKnowledge/Pages/Other/O3.jsx';
 import O4 from './fuctKnowledge/Pages/Other/O4.jsx';
-import ProtectedRoute from "./ProtectedRoute.jsx";
+import ProtectedRoute from "./Admin/ProtectedRoute.jsx";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
