@@ -19,7 +19,7 @@ const ProtectedRoute = () => {
 
     if (isAuthorized === null) return <div>Loading...</div>; // Prevent flashing before auth check
 
-    return isAuthorized ? <Outlet /> : <Navigate to="/admin/success" />;
+    return isAuthorized ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;
