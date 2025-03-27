@@ -7,7 +7,7 @@ function DraftManager() {
     const [data, setData] = useState([]);//fetch data tu db
     const [content, setContent] = useState([]);//fetch data tu db
     useEffect(() => {
-      axios.get("http://localhost:3000/comments",{withCredentials:true,}).then((res) => {
+      axios.get("https://be.fuct.gay/comments",{withCredentials:true,}).then((res) => {
         setData(res.data.slice(res.data.length-5,res.data.length).reverse());
         setContent(res.data.slice().reverse());
       });
