@@ -4,22 +4,10 @@ import ReactPaginate from "react-paginate";
 import axios from "axios";
 import NotiCard from './components/NotiCard';
 function DraftManager() {
-    const sendRequestCheck = async () => {
-    try{
-      const response = await axios.get('https://be.fuct.gay/admin', { withCredentials: true });
-      console.log(response.data.message)
-    }
-    catch(error){
-      console.error('Error logging in:', error);
-      navigate('/')
-      throw error;
-    }
-  }
-  sendRequestCheck()
     const [data, setData] = useState([]);//fetch data tu db
     const [content, setContent] = useState([]);//fetch data tu db
     useEffect(() => {
-      axios.get("https://be.fuct.gay/comments",{withCredentials:true,}).then((res) => {
+      axios.get("http://localhost:3000/comments",{withCredentials:true,}).then((res) => {
         setData(res.data.slice(res.data.length-5,res.data.length).reverse());
         setContent(res.data.slice().reverse());
       });

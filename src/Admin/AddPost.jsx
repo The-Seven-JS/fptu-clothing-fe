@@ -30,7 +30,7 @@ export default function AddPost() {
         body.append("file", file);
 
         try {
-          const response = await axios.post(`https://be.fuct.gay/photos/upload-to-cloud/${postId}`, body, {
+          const response = await axios.post(`http://localhost:3000/photos/upload-to-cloud/${postId}`, body, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
@@ -63,7 +63,7 @@ export default function AddPost() {
   useEffect(() => {
     const createNewPost = async () => {
       try {
-        const response = await axios.post("https://be.fuct.gay/articles/new", {
+        const response = await axios.post("http://localhost:3000/articles/new", {
           title: "New Post", // Use the extracted <h2> content as the title if available
           content: "<p></p>",
         }, {withCredentials: true});
@@ -104,7 +104,7 @@ export default function AddPost() {
     if(bgimage === "" && title){
       console.log("ok");
       try {
-        const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
+        const response = await axios.put(`http://localhost:3000/articles/${postId}`, {
           title: bg, // Use the extracted <h2> content as the title if available
           content: htmlContent,
         }, {withCredentials: true});
@@ -118,7 +118,7 @@ export default function AddPost() {
     }else{
       console.log("no ok");
       try {
-        const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
+        const response = await axios.put(`http://localhost:3000/articles/${postId}`, {
           title: bgimage, // Use the extracted <h2> content as the title if available
           content: htmlContent,
         }, {withCredentials: true});
@@ -164,7 +164,7 @@ export default function AddPost() {
       }else{
         alert("Lỗi tải lên ảnh bìa! Thử lại")
       }
-      const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
+      const response = await axios.put(`http://localhost:3000/articles/${postId}`, {
         title: bgimage, // Use the extracted <h2> content as the title if available
         content: htmlContent,
       }, {withCredentials: true });

@@ -47,6 +47,7 @@ import O1 from './fuctKnowledge/Pages/Other/O1.jsx';
 import O2 from './fuctKnowledge/Pages/Other/O2.jsx';
 import O3 from './fuctKnowledge/Pages/Other/O3.jsx';
 import O4 from './fuctKnowledge/Pages/Other/O4.jsx';
+import ProtectedRoute from "./ProtectedRoute.jsx";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
@@ -76,7 +77,6 @@ function App() {
     '/test/leglength',
   ];
   useEffect(() =>{
-    console.log(location.pathname)
     if (location.pathname.startsWith('/test')){
       document.body.style.backgroundImage = "url('/image/test-background.png')";
       document.body.style.backgroundSize = "cover";
@@ -134,12 +134,14 @@ function App() {
         <Route path='/knowledge/Tips/id6' element={<T6/>}/>
         <Route path='/admin/success' element={<MainPageAdmin/>} />
         <Route path='/admin' element={<Login onLogin={() => setIsLoggedIn(true)} />} />
+        <Route element={<ProtectedRoute />}>
         <Route path='/admin/success' element={<MainPageAdmin/>}> 
-          <Route index element={<PostManager/>}/>
-          <Route path='addpost' element={<AddPost/>}/>
-          <Route path='draft' element={<DraftManager/>}/>
-          <Route path='notification' element={<Notification/>}/>
-          <Route path='changepass' element={<ChangePassword/>}/>
+            <Route index element={<PostManager/>}/>
+            <Route path='addpost' element={<AddPost/>}/>
+            <Route path='draft' element={<DraftManager/>}/>
+            <Route path='notification' element={<Notification/>}/>
+            <Route path='changepass' element={<ChangePassword/>}/>
+          </Route>
         </Route>
         <Route path='/test' element={<MainTestScreen />}>
           <Route index element={<TestIntroScreen/>}/>

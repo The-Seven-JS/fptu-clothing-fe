@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function NavPane() {
   const handleLogout = async () =>{
     try{
-      const response = await axios.get('https://be.fuct.gay/logout', { withCredentials: true });
+      const response = await axios.get('http://localhost:3000/logout', { withCredentials: true });
       console.log(response.data.message)
     }
     catch(error){

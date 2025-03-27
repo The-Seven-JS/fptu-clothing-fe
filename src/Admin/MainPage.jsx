@@ -12,7 +12,7 @@ function MainPage() {
   const navigate = useNavigate()
   const sendRequestCheck = async () => {
     try{
-      const response = await axios.get('https://be.fuct.gay/admin', { withCredentials: true });
+      const response = await axios.get('http://localhost:3000/admin', { withCredentials: true });
       console.log(response.data.message)
     }
     catch(error){
