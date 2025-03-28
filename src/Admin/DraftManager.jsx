@@ -2,6 +2,7 @@ import PostCard from './components/PostCard'
 import React, { useState,useEffect } from 'react'
 import ReactPaginate from "react-paginate";
 import axios from "axios";
+import './DraftManager.css'
 function DraftManager() {
     const [data, setData] = useState([]);//fetch data tu db
     const [content, setContent] = useState([]);//fetch data tu db
@@ -26,8 +27,25 @@ function DraftManager() {
         function handlePageClick({selected}){//xu ly click chuyen trang
             setCurPage(selected);
         }
+
+        const handleDel = async () => {
+          let cf = confirm("Bạn có chắc chắn muốn xoá toàn bộ bản nháp?")
+          if(cf === true){
+            try {
+              const response = await axios.delete(`https://be.fuct.gay/articles/delete-drafts`, { withCredentials: true });
+              console.log('Post deleted:', response.data);
+              window.location.reload();
+            } catch (error) {
+              console.error('Error deleting the post:', error);
+              alert('Không thể xoá!Thử lại');
+            }
+          }else{
+            return
+          }
+        }
   return (
     <div>
+        <button onClick={handleDel} className='hehe'>Xoá toàn bộ</button>
         {curCards.map((card, index) => (
         <PostCard key={index + offset} title={card.content} id={card.id} bg={card.title} source="FUCT NEWS" date={card.created_at} titleEmpty={"Bài viết số" + (index+ offset + 1)}/>
       ))}
