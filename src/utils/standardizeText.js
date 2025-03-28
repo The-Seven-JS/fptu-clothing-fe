@@ -304,7 +304,7 @@ function standardizeText(input, gender) {
             {
                 header: 'Trang phục',
                 content: [
-                    { subheader: 'Áo/váy', content: [] },
+                    { subheader: 'Áo/Váy', content: [] },
                     { subheader: 'Quần/Chân váy', content: [] },
                     { subheader: 'Áo khoác/Blazer', content: [] },
                     { subheader: 'Suit/Jumpsuit', content: [] }
