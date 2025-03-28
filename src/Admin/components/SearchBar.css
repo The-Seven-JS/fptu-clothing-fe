@@ -1,0 +1,63 @@
+.search-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px; /* Adds some spacing between the input and button */
+    
+}
+
+.search-box input[type="text"] {
+    width: 300px;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+}
+
+.search-box input[type="text"]:focus {
+    border-color: #0078D4; /* Subtle highlight for the input */
+    box-shadow: 0 0 6px rgba(0, 120, 212, 0.4);
+    outline: none; /* Removes default browser focus outline */
+}
+
+.search-box button {
+    background-color: #FFD700; /* Bright yellow color */
+    border: none;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black; /* White text for good contrast */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.search-box button:hover {
+    background-color: #FFC107; /* Slightly darker yellow */
+    transform: scale(1.05); /* Adds a pop effect on hover */
+}
+
+.search-box button:active {
+    transform: scale(0.95); /* Button press effect */
+    background-color: #E0AC00; /* Darker yellow to indicate press */
+}
+
+.results-container{
+    width: 80%;
+    padding: 10px;
+    padding-bottom: 1px;
+    margin: 0 auto;
+    border: #0078D4;
+    border-radius: 10px;
+    border-width: 0px;
+    box-shadow: 0 6px 12px 4px rgba(0, 0, 0, 0.3);
+    border-style: solid;
+    margin-bottom: 20px;
+}
+.search-not-found{
+    text-align: center;
+}
+
+  

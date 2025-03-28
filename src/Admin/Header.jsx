@@ -12,7 +12,7 @@ function Header() {
   return (
     <div className='header'>
       <p className='fuct'>FUCT</p>
-      <p className='hello'>Hello</p>
+      <p className='hello'>Hello Admin</p>
       <button onClick={() => navigate('/admin/success/addpost')} className='create'>TẠO BÀI VIẾT MỚI</button>
     </div>
   );

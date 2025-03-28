@@ -17,6 +17,9 @@ const HeightWeightScreen = () => {
     if (isNaN(h) || isNaN(w) || h <= 0 || w <= 0) {
       throw new Error("Chiều cao và cân nặng phải là các số dương.");
     }
+    else if (h>300 || w>700){
+      throw new Error("Số liệu bạn nhập không hợp lệ!")
+    }
     return (w / ((h / 100) ** 2)).toFixed(1);
   };
   const handleClick = () =>{

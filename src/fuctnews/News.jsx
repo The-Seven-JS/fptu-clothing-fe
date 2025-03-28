@@ -70,7 +70,7 @@ function News() {
     //----------ket thuc pagination cac bai viet--------------------------------------------
     const navigate = useNavigate();
     const handleCardClick = (news,date,id) => {
-      navigate(`/news/content/`,{state : {content: news,date: date,id:id}});
+      navigate(`/news/content/${id}`,{state : {content: news,date: date,id:id}});
     }
     return (
     <div>

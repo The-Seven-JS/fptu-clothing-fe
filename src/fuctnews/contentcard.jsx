@@ -19,10 +19,12 @@ function Contentcard({title,content,date,onClick}) {
   return (
     <div className='contentcard' onClick={onClick} style={{ cursor: 'pointer' }}>
         <img src={title} alt="subimg" />
-        <div className='content'>
+        <div className='content_align'>
+          <div className='content'>
             <h3>{h1Content}</h3>
             <p className='p1'>{h2Content}</p>
-            <p className='p2'>Đăng ngày:{date}</p>
+          </div>
+          <p className='p2'>Đăng ngày:{date}</p>
         </div>
     </div>
   )

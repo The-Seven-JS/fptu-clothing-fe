@@ -13,7 +13,7 @@ function MainPage() {
   const sendRequestCheck = async () => {
     try{
       const response = await axios.get('https://be.fuct.gay/admin', { withCredentials: true });
-      console.log(response.data.message)
+      console.log(response.data.isAuthorized)
     }
     catch(error){
       console.error('Error logging in:', error);
@@ -22,7 +22,6 @@ function MainPage() {
     }
   }
   sendRequestCheck()
-    
   return (
     <div>
         <div className='fixed-top'>
@@ -30,10 +29,7 @@ function MainPage() {
           <div className='right-side'>
             <Header/>
             <div className='inside-right-side'>
-                <Routes>
-                  <Route path='' element={<PostManager/>}/>
-                  <Route path='addpost' element={<AddPost/>}/>
-                </Routes>
+                <Outlet/>
             </div>
           </div>
         </div>

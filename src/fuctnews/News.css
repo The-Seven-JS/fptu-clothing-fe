@@ -112,4 +112,15 @@ html{
     top: 45%;
     margin: 0;
   }
-  
+  @media (max-width: 873px) {
+    .arrow-left, .arrow-right{
+      height: 45px;
+      width: 45px;
+    }
+  }
+  @media (max-width: 591px) {
+    .arrow-left, .arrow-right{
+      height: 35px;
+      width: 35px;
+    }
+  }

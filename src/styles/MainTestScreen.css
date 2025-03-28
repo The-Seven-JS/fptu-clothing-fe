@@ -132,7 +132,7 @@
     background-color: #ADD8E6;
 }
 .gender_male img, .gender_female img{
-    object-fit: contain;
+    object-fit: c   ontain;
     box-sizing: border-box;
     height: 40vh;
     width: 25vw;
@@ -423,10 +423,6 @@
     font-weight: 800;
 }
 /*Media query*/
-@media screen and (max-width:1237px){
-
-    
-}
 @media screen and (max-width: 997px) {
     .undertone-container-item{
         width: 190px;

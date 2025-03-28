@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap');
 .maincard{
     display: flex;
     flex-direction: column;
@@ -19,6 +21,9 @@
 .maincard > p {
     font-family: 'Be Vietnam Pro';
     font-weight: 400;
+    font-size: 17px;
+    text-align: center;
+    width: 80%;
     overflow: hidden; /* Hide overflowing text */
     text-overflow: ellipsis; /* Add ellipsis for truncated text */
     display: -webkit-box; /* Use a flexible box for truncation */
@@ -27,12 +32,17 @@
     max-height: 100%; /* Ensure it doesn't overflow the parent div */
 }
 .maincard > h5{
-    font-family:'Be Vietnam Pro'; ;
-    font-weight:300 ;
+    font-family:'Inter',sans-serif ;
+    font-weight:200 ;
+    font-size:18px;
+    margin: 20px 0 0 0;
 }
 .maincard > h2{
     font-family: 'Be Vietnam Pro';
     font-weight: 500;
+    font-size: 30px;
+    text-align: center;
+    width: 80%;
 }
 .outer{
     display: flex;
@@ -50,6 +60,7 @@
     .maincard > p {
         -webkit-line-clamp: 6; /* Show fewer lines on medium screens */
     }
+    
 }
 
 @media (max-width: 768px) {

@@ -1,9 +1,6 @@
 .news-content{
-    padding-left: 20vw;
-    padding-right: 20vw;
-}
-.news-content strong {
-    font-weight: inherit; /* Inherit the font-weight from the parent h3 */
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 .news-content img{
     display: block;
@@ -92,3 +89,37 @@
     font-size: 16px;
     cursor: pointer;
   }
+  .reload-button {
+    background-color: #FFD700;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    margin-left: 3%;
+  }
+  /* Center the table */
+.news-content table {
+  margin: 0 auto; /* Centers the table horizontally */
+  border-collapse: collapse; /* Combines adjacent borders */
+  width: 80%; /* Adjust width as needed */
+}
+
+/* Add borders to the table */
+.news-content th, td {
+  border: 2px solid black; /* Solid border for table cells */
+  padding: 10px; /* Space inside each cell */
+  text-align: center; /* Center-align text */
+}
+
+/* Style the header row */
+.news-content th {
+  background-color: #f2f2f2; /* Light gray background for headers */
+}
+
+/* Optional: Add a border around the entire table */
+.news-content table {
+  border: 2px solid black; /* Border around the whole table */
+}
