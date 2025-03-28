@@ -189,6 +189,24 @@ export default function AddPost() {
     }
   };
 
+  const saveDraft = async () =>{
+    if(bgimage === "" && title){
+      const response = await axios.put(`https://be.fuct.gay/articles/save-draft/${postId}`, {
+        title: bg, // Use the extracted <h2> content as the title if available
+        content: htmlContent,
+      }, {withCredentials: true});
+      alert("Lưu nháp thành công");
+      console.log(response.data);
+    }else{
+      const response = await axios.put(`https://be.fuct.gay/articles/save-draft/${postId}`, {
+        title: bgimage, // Use the extracted <h2> content as the title if available
+        content: htmlContent,
+      }, {withCredentials: true});
+      alert("Lưu nháp thành công");
+      console.log(response.data);
+    }
+  }
+
   // Renders the editor instance using a React component.
   return (
     <>
@@ -210,6 +228,7 @@ export default function AddPost() {
     ? "Sửa ảnh đã có"
     : "Tải lên Ảnh Bìa"}
 </label>
+          <button className="save" onClick={saveDraft}>Lưu bản nháp</button>
           <button onClick={handleSave} className="save">
             Hoàn Thành
           </button>
