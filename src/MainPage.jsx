@@ -8,6 +8,8 @@ import "aos/dist/aos.css";
 import { Carousel, CarouselSlide} from '@mantine/carousel'
 import { useInterval } from '@mantine/hooks'
 import Autoplay from 'embla-carousel-autoplay'
+import { AspectRatio, Overlay } from '@mantine/core'
+import { Link } from 'react-router-dom'
 function MainPage() {
   const autoPlay = useRef(Autoplay({delay:2500}))
   const autoPlay1 = useRef(Autoplay({delay:2500}))
@@ -94,7 +96,9 @@ function MainPage() {
             >
               {news_slider.map((ele, index) => (
                 <CarouselSlide key={index} align='center'>
-                  <img src={`/image/${ele}`} alt='news' style={{height:'500px'}}></img>
+                  <Link to='/news'>
+                    <img src={`/image/${ele}`} alt='news' style={{height:'500px'}}></img>
+                  </Link>
                 </CarouselSlide>
               ))}
             </Carousel>
@@ -111,7 +115,9 @@ function MainPage() {
                       data-aos='fade-up'>
               {knowledge_slider.map((ele, index) => (
                 <CarouselSlide key={index} align='center'>
-                  <img src={`/image/${ele}`} alt='knowledge' style={{objectFit:'contain', height:'500px'}}></img>
+                  <Link to='/knowledge'>
+                    <img src={`/image/${ele}`} alt='knowledge' style={{objectFit:'contain', height:'500px'}}></img>
+                  </Link>
                 </CarouselSlide>
               ))}
             </Carousel>
