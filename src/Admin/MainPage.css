@@ -75,6 +75,14 @@ body {
     position: relative;
     left: 0px;
 }
+.admin_pin1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-right: 270px;
+    margin-bottom: 200px;
+}
 .admin_pin_input1{
     display:flex;
     flex-direction: column;
@@ -91,19 +99,10 @@ body {
     position: relative;
     left: 0px;
 }
-@media screen and (max-width: 768px) {
-    .fixed-top {
-        flex-direction: column; /* Change to column layout on smaller screens */
-        align-items: center; /* Align items to the center */
-    }
-    .nav-pane {
-        flex: 1; /* Adjust flex value as needed */
-    }
-    .right-side {
-        flex: 1; /* Adjust flex value as needed */
-    }
-    .admin_pin{
-        left: 25%; /* Adjust left value as needed */
+@media screen and (max-width: 784px) {
+    .admin_pin1{
+        position: relative;
+        left: 50px;
     }
     
 }

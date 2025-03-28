@@ -191,9 +191,6 @@ header{
 
 /* Overlay với text */
 .carousel-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     display: flex;
@@ -302,6 +299,14 @@ header{
     flex-wrap: wrap;
 }
 /*Responsive Web*/
+@media screen and (max-width: 1284px){
+    .board-text .board-header{
+        font-size: 60px;
+    }
+    .female_maintestboard-img, .male_maintestboard-img{
+        width: 210px;
+    }
+}
 @media screen and (max-width: 1095px){
     .male_maintestboard-img, .female_maintestboard-img{
         display: none;

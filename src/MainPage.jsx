@@ -104,10 +104,10 @@ function MainPage() {
                             style={{height:'500px'}} 
                             className='carousel-news'
                         />
+                    </Link>
                         <div className="carousel-overlay">
                             <span>Tìm hiểu chi tiết</span>
                         </div>
-                    </Link>
                   </div>
                 </CarouselSlide>
               ))}

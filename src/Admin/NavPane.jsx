@@ -37,7 +37,7 @@ function NavPane() {
             </Link>
             <Link to='/admin' onClick={handleLogout}>
             <div className='logout'>
-                <p>Đăng xuất</p>
+                <p style={{textDecoration: 'none', color: 'white', border:'none'}}>Đăng xuất</p>
                 <img src="/image/logout.png" alt="" />
             </div>
             </Link>
