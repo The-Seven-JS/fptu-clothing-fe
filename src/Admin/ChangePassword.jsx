@@ -13,8 +13,10 @@ function ChangePassword({ onLogin }) {
         { oldPass, newPass, retypePass },
         { withCredentials: true } // Correct way to include credentials (cookies)
       );
+      alert('Đổi mật khẩu thành công!')
       return response.data;
     } catch (error) {
+      alert('Đổi mật khẩu thất bại!')
       console.error('Error logging in:', error);
       throw error;
     }
