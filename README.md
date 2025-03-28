@@ -39,6 +39,7 @@ Dự án được thực hiện bởi một đội ngũ chuyên nghiệp với c
     *   Phát triển backend cho chức năng xóa và cập nhật nội dung bài viết trên FUCT News.
     *   Phát triển backend cho chức năng thêm, xóa và cập nhật hình ảnh cho bài viết trên FUCT News.
     *   Phát triển backend cho chức năng thêm, xóa bình luận trên FUCT News.
+    *   Phát triển backend cho chức năng tìm kiếm bài viết trên FUCT News.
     *   Xác thực dữ liệu đầu vào (validate) khi đăng bài viết và bình luận trên FUCT News.
     *   Tải lên các bài viết mẫu cho FUCT News.
 *   **Lê Hải Đăng:**
