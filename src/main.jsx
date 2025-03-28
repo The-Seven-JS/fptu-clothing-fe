@@ -16,12 +16,12 @@ Aos.init({
   once:true,
 })
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
   <MantineProvider withGlobalClasses withCssVariables>
     <Notifications/>
     <Router>
       <App/>
     </Router>
   </MantineProvider>
-  </StrictMode>
+  // {/* </StrictMode> */}
 );

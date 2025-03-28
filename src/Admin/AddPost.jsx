@@ -104,7 +104,7 @@ export default function AddPost() {
     if(bgimage === "" && title){
       console.log("ok");
       try {
-        const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
+        const response = await axios.put(`https://be.fuct.gay/articles/update-article/${postId}`, {
           title: bg, // Use the extracted <h2> content as the title if available
           content: htmlContent,
         }, {withCredentials: true});
@@ -112,13 +112,20 @@ export default function AddPost() {
         setFetchedData(response.data.content);
         alert("Đã lưu bài viết hoàn tất");
       } catch (error) {
+        //
+        const response = await axios.put(`https://be.fuct.gay/articles/save-draft/${postId}`, {
+          title: bg, // Use the extracted <h2> content as the title if available
+          content: htmlContent,
+        }, {withCredentials: true});
+        console.log(response.data);
+        //
         console.error("Error submitting data:", error);
-        alert("Lưu thất bại do chưa có ảnh bìa hoặc Tiêu đề/Nội dung");
+        alert("Lưu thất bại do chưa có ảnh bìa hoặc Tiêu đề/Nội dung. Nội dung sẽ được lưu trong mục 'Bài viết chưa hoàn thiện'");
       }
     }else{
       console.log("no ok");
       try {
-        const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
+        const response = await axios.put(`https://be.fuct.gay/articles/update-article/${postId}`, {
           title: bgimage, // Use the extracted <h2> content as the title if available
           content: htmlContent,
         }, {withCredentials: true});
@@ -126,8 +133,15 @@ export default function AddPost() {
         setFetchedData(response.data.content);
         alert("Đã lưu bài viết hoàn tất");
       } catch (error) {
+        //
+        const response = await axios.put(`https://be.fuct.gay/articles/save-draft/${postId}`, {
+          title: bgimage, // Use the extracted <h2> content as the title if available
+          content: htmlContent,
+        }, {withCredentials: true});
+        console.log(response.data);
+        //
         console.error("Error submitting data:", error);
-        alert("Lưu thất bại do chưa có ảnh bìa hoặc Tiêu đề/Nội dung")
+        alert("Lưu thất bại do chưa có ảnh bìa hoặc Tiêu đề/Nội dung. Nội dung sẽ được lưu trong mục 'Bài viết chưa hoàn thiện'")
       }
     }
   };
@@ -164,7 +178,7 @@ export default function AddPost() {
       }else{
         alert("Lỗi tải lên ảnh bìa! Thử lại")
       }
-      const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
+      const response = await axios.put(`https://be.fuct.gay/articles/update-article/${postId}`, {
         title: bgimage, // Use the extracted <h2> content as the title if available
         content: htmlContent,
       }, {withCredentials: true });
@@ -185,14 +199,14 @@ export default function AddPost() {
   className={`upload-label ${
     uploadStatus === "selected"
       ? "selected"
-      : bgimage === "" && title
+      : bgimage === "" && title && bg != ""
       ? "existing-photo-label"
       : ""
   }`}
 >
   {uploadStatus === "selected"
     ? fileName
-    : bgimage === "" && title
+    : bgimage === "" && title && bg !=""
     ? "Sửa ảnh đã có"
     : "Tải lên Ảnh Bìa"}
 </label>
