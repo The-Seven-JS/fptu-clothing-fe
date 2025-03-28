@@ -84,11 +84,7 @@ function App() {
       document.body.style.backgroundPosition = "center";
       document.body.style.backgroundRepeat = "repeat";
     }
-    else if (location.pathname.startsWith('/news/')){
-      setIsNotFound(false);
-      // document.body.style.backgroundColor ="#181828";
-    }
-    else if (!paths.includes(location.pathname)){
+    else if (!paths.includes(location.pathname) && !location.pathname.startsWith('/knowledge') && !location.pathname.startsWith('/news')){
       setIsNotFound(true);
       // document.body.style.backgroundColor ="#181828";
     }

@@ -88,15 +88,13 @@ function MainPage() {
             <Carousel withIndicators={true}
                       withControls={false}
                       plugins={[autoPlay1.current]}
-                      // onMouseEnter={autoPlay1.current.stop}
-                      // onMouseLeave={autoPlay1.current.reset}
                       loop
                       align='center'
                       data-aos='fade-up'
             >
               {news_slider.map((ele, index) => (
                 <CarouselSlide key={index} align='center'>
-                  <img src={`/image/${ele}`} alt='news'></img>
+                  <img src={`/image/${ele}`} alt='news' style={{height:'500px'}}></img>
                 </CarouselSlide>
               ))}
             </Carousel>
@@ -108,20 +106,19 @@ function MainPage() {
             <Carousel withIndicators={true}
                       withControls={false}
                       plugins={[autoPlay.current]}
-                      
                       loop
                       align='center'
                       data-aos='fade-up'>
               {knowledge_slider.map((ele, index) => (
                 <CarouselSlide key={index} align='center'>
-                  <img src={`/image/${ele}`} alt='knowledge' style={{objectFit:'contain'}}></img>
+                  <img src={`/image/${ele}`} alt='knowledge' style={{objectFit:'contain', height:'500px'}}></img>
                 </CarouselSlide>
               ))}
             </Carousel>
         </div>
       </div>
       <div className='UX-containner'>
-        <h1 data-aos='fade-right'>Sinh viên FPTU nói gì về FUCT!</h1>
+        <h1 data-aos='fade-right' style={{marginLeft:'60px', fontSize:'50px'}}>Sinh viên FPTU nói gì về FUCT!</h1>
         <div className='card-container' data-aos='fade-up'>
           {userExperienceObj.map((ele, index) => (
             <MainCard key={index} comment={ele.description} user_img={ele.src} user={ele.name} description={ele.job}/>

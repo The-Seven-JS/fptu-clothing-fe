@@ -163,7 +163,6 @@ body {
     display: flex;
     flex-direction: column;
     padding: 0 10px 0 10px;
-    gap: 50px;
 }
 .title{
     margin-left: 40px;
@@ -189,6 +188,9 @@ body {
 .news-text h2, .knowledge-text h2{
     font-family: 'Inter', sans-serif;
     font-size: 30px;
+}
+.knowledge-text{
+    margin-top:50px;
 }
 .news-text p, .knowledge-text p{
     font-family: 'Be Vietnam Pro', sans-serif;
@@ -244,12 +246,12 @@ body {
 .card-container {
     display: flex;
     flex-direction: row;
-    gap: 40px; /* Spacing between cards */
+    gap: 20px; /* Spacing between cards */
     justify-content: center;
     align-items: start; /* Ensures cards align from the top */
     padding: 20px;
     margin-left: 18px;
-    margin-top: 40px;
+    margin-top: 0px;
     flex-wrap: wrap;
 }
 /*Responsive Web*/
