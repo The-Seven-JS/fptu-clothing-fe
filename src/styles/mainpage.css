@@ -172,7 +172,49 @@ body {
     font-weight: bold;
     color: #2F2F30;
 }
+/* Thêm container cho overlay và text */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+}
 
+.carousel-news, 
+.carousel-knowledge {
+    transition: all 0.7s ease;
+    position: relative;
+}
+
+/* Overlay với text */
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.3);
+    transition: opacity 0.7s ease;
+    z-index: 10;
+}
+
+.carousel-overlay span {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Tăng độ rõ của chữ */
+    text-align: center; /* Đảm bảo text căn giữa nếu xuống dòng */
+}
+
+/* Hover effects */
+.carousel-container:hover .carousel-news,
+.carousel-container:hover .carousel-knowledge {
+    filter: blur(5px);
+    transform: scale(1.02);
+}
 .news-text, .knowledge-text{
     padding-left: 140px;
     padding-right:140px;

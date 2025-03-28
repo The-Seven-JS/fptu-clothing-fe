@@ -11,8 +11,8 @@ import Autoplay from 'embla-carousel-autoplay'
 import { AspectRatio, Overlay } from '@mantine/core'
 import { Link } from 'react-router-dom'
 function MainPage() {
-  const autoPlay = useRef(Autoplay({delay:2500}))
-  const autoPlay1 = useRef(Autoplay({delay:2500}))
+  const autoPlay = useRef(Autoplay({delay:4000}))
+  const autoPlay1 = useRef(Autoplay({delay:4000}))
   useEffect(() =>{
     Aos.init({
       duration: 1000,
@@ -96,9 +96,19 @@ function MainPage() {
             >
               {news_slider.map((ele, index) => (
                 <CarouselSlide key={index} align='center'>
-                  <Link to='/news'>
-                    <img src={`/image/${ele}`} alt='news' style={{height:'500px'}}></img>
-                  </Link>
+                  <div className="carousel-container">
+                    <Link to='/news'>
+                        <img 
+                            src={`/image/${ele}`} 
+                            alt='news' 
+                            style={{height:'500px'}} 
+                            className='carousel-news'
+                        />
+                        <div className="carousel-overlay">
+                            <span>Tìm hiểu chi tiết</span>
+                        </div>
+                    </Link>
+                  </div>
                 </CarouselSlide>
               ))}
             </Carousel>
@@ -115,9 +125,19 @@ function MainPage() {
                       data-aos='fade-up'>
               {knowledge_slider.map((ele, index) => (
                 <CarouselSlide key={index} align='center'>
-                  <Link to='/knowledge'>
-                    <img src={`/image/${ele}`} alt='knowledge' style={{objectFit:'contain', height:'500px'}}></img>
-                  </Link>
+                  <div className="carousel-container">
+                    <Link to='/news'>
+                        <img 
+                            src={`/image/${ele}`} 
+                            alt='news' 
+                            style={{height:'500px'}} 
+                            className='carousel-news'
+                        />
+                        <div className="carousel-overlay">
+                            <span>Tìm hiểu chi tiết</span>
+                        </div>
+                      </Link>
+                </div>
                 </CarouselSlide>
               ))}
             </Carousel>
