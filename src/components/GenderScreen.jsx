@@ -59,6 +59,7 @@ const GenderScreen = () => {
   return (
     <div className='gender_container'>
       <h1>Giới tính của bạn là gì?</h1>
+      <div className='gender_container'>
       <div className='gender_items'>
         <div className={`gender_male ${gender==='male'?'selected':''}`} onClick={() => {
           setGender('male')
@@ -74,6 +75,7 @@ const GenderScreen = () => {
       <Link to='/test/height-weight' state={{message: message}} onClick={handleNavigate} >
         <button className='test_button_class'>TIẾP THEO</button>
       </Link>
+      </div>
     </div>
   );
 };

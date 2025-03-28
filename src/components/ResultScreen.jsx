@@ -26,7 +26,7 @@ const ResultScreen = () => {
         const content = (
         <div>
             {dataObj.map((section, i) => (
-              <div key={i} className='result_items'>
+              <div key={i} className='result_items1'>
                 <h3>{section.header}</h3>
                 <ul>
                   {section.content.map((subsection, j) => (

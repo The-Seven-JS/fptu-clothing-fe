@@ -5,6 +5,11 @@
 }
 @font-face {
     font-family: 'Be Vietnam Pro';
+    src: url('/fonts/Be_Vietnam_Pro/BeVietnamPro-Medium.ttf') format('truetype');
+    font-style: medium;
+}
+@font-face {
+    font-family: 'Be Vietnam Pro';
     src: url('/fonts/Be_Vietnam_Pro/BeVietnamPro-Regular.ttf') format('truetype');
     font-style: normal;
 }

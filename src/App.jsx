@@ -83,6 +83,7 @@ function App() {
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center";
       document.body.style.backgroundRepeat = "repeat";
+      document.body.style.backgroundColor = "rgba(255, 255, 255, 0.4)";
     }
     else if (!paths.includes(location.pathname) && !location.pathname.startsWith('/knowledge') && !location.pathname.startsWith('/news')){
       setIsNotFound(true);

@@ -21,7 +21,7 @@ function NavPane() {
           <p>Quản lý bài viết</p>
         </Link>
         <Link to={'/admin/success/draft'} style={{textDecoration: 'none', color: 'white'}}>
-        <p>Bài viết chưa hoàn thiện</p>
+        <p>Bản nháp</p>
         </Link>
         <Link to={'/admin/success/notification'} style={{textDecoration: 'none', color: 'white'}}>
         <p>Quản lý bình luận</p>
@@ -31,7 +31,7 @@ function NavPane() {
             <img id='admin' src="/image/admin.png" alt="" />
             <Link to='/admin/success/changepass'>
             <div className='change-pass'>
-                <p style={{textDecoration: 'none', color: 'white', border:'none'}}>Thay đổi mã PIN</p>
+                <p style={{textDecoration: 'none', color: 'white', border:'none'}}>Đổi mật khẩu</p>
                 <img src="/image/padlock.png" alt="" />
             </div>
             </Link>

@@ -67,141 +67,64 @@ function LegComputeScreen() {
             <p>Qua chiều dài chân, chúng tôi có thể xác định đúng tỉ lệ chân - lưng, giúp bạn tránh chọn phải những bộ trang phục dìm dáng, từ đó tự tin hơn mỗi khi ra ngoài.</p>
         </div>
         <div>
-        <div style={{marginBottom: '30px' , marginTop: '30px', display:'flex', flexDirection:'column',gap:'30px'}} className="leglength_items">
+        <div style={{marginTop: '0', display:'flex', flexDirection:'column',gap:'30px',marginBottom:'10px'}} className="leglength_items">
             <Accordion multiple >
-            {/* <Accordion.Item key={option1.id} value={option1.id} className='leglength_item'>
-                <Accordion.Control>
-                    <div style={{display: 'flex', flexDirection:'row', gap: '20px', alignItems:'center'}}>
-                        {<Avatar src={option1.src} radius='xl' size='md'/>}
-                        <h3>{option1.name}</h3>
-                    </div>
-                </Accordion.Control>
-                <Accordion.Panel>
-                    <h2>Cách đo chiều cao lúc ngồi</h2>
-                    <ol>
-                        <li>Đặt thước đo từ mặt ghế (điểm tiếp xúc của mông) lên đến đỉnh đầu.</li>
-                        <li>Đảm bảo thước đo thẳng đứng và vuông góc với mặt ghế.</li>
-                    </ol>
-                    <p>Số liệu này được sử dụng để tính chỉ số Skelie. Từ chỉ số này, chúng tôi có thể xác định được chiều dài đôi chân của bạn.</p>
-                    <TextInput mt="md"
-                        rightSectionPointerEvents='none'
-                        rightSection="cm"
-                        label="Chiều cao lúc ngồi"
-                        placeholder='Chiều cao'
-                        value={sitHeight}
-                        onChange={(event) => {
-                            if (!isNaN(event.target.value)){
-                                setSitHeight(event.target.value)
-                            }
-                            else{
-                                notifications.show({
-                                    id:'warning',
-                                    position:'bottom-right',
-                                    withBorder:'true',
-                                    autoClose:'500',
-                                    title:'WARNING',
-                                    color:'#cc3300',
-                                    message:'Vui lòng nhập đúng định dạng!',
-                                    icon:<GoAlertFill/>
-                                })
-                                setSitHeight(sitHeight)
-                            }
-                        }}
-                    />
-                    <TextInput mt="md"
-                        rightSectionPointerEvents='none'
-                        rightSection="cm"
-                        label="Chiều cao lúc đứng"
-                        placeholder='Chiều cao'
-                        value={standHeight}
-                        onChange={(event) => {
-                            if (!isNaN(event.target.value)){
-                                setStandHeight(event.target.value)
-                            }
-                            else{
-                                notifications.show({
-                                    id:'warning',
-                                    position:'bottom-right',
-                                    withBorder:'true',
-                                    autoClose:'500',
-                                    title:'WARNING',
-                                    color:'#cc3300',
-                                    message:'Vui lòng nhập đúng định dạng!',
-                                    icon:<GoAlertFill/>
-                                })
-                                setStandHeight(standHeight)
-                            }
-                        }}
-                    />
-                </Accordion.Panel>
-            </Accordion.Item> */}
-            <Accordion.Item key={option2.id} value={option2.id} className='leglength_item'>
-                <Accordion.Control>
-                <div style={{display: 'flex', flexDirection:'row', gap: '20px', alignItems:'center'}}>
-                    {<Avatar src={option2.src} radius='xl' size='md'/>}
-                    <h3>{option2.name}</h3>
+                <Center>
+                    <img className="leg_img" src='/image/khong_biet_do.svg'></img>
+                </Center>
+                <div style={{display: 'flex', flexDirection: 'row', gap: '10px', marginTop:'30px'}}>
+                    <CheckboxCard
+                        className={classes.root}
+                        radius="md"
+                        checked={checkedValue2 === 3? true: false}
+                        onClick={() => setCheckedValue2((c) => 3)}
+                        
+                        >
+                        <Group wrap='nowrap' align='flex-start'>
+                            <Center>
+                                <CheckboxIndicator  style={{marginLeft: '10px'}}/>
+                                <div>
+                                    <h2 style={{marginLeft: '30px', fontSize:'16px', marginBottom:'14px'}}>Chân dài</h2>
+                                </div>
+                            </Center>
+                        </Group>
+                    </CheckboxCard>
+                    <CheckboxCard
+                        className={classes.root}
+                        radius="md"
+                        checked={checkedValue2 === 2? true: false}
+                        onClick={() => setCheckedValue2((c) => 2)}
+                        >
+                        <Group wrap='nowrap' align='flex-start' >
+                            <Center>
+                                <CheckboxIndicator  style={{marginLeft: '10px'}}/>
+                                <div>
+                                    <h2 style={{marginLeft: '30px', fontSize: '16px', marginBottom:'14px'}}>Chân vừa</h2>
+                                </div>
+                            </Center>
+                        </Group>
+                    </CheckboxCard>
+                    <CheckboxCard
+                        className={classes.root}
+                        radius="md"
+                        checked={checkedValue2 === 1? true: false}
+                        onClick={() => setCheckedValue2((c) => 1)}
+                        >
+                        <Group wrap='nowrap' align='flex-start' >
+                            <Center>
+                                <CheckboxIndicator  style={{marginLeft: '10px'}}/>
+                                <div>
+                                    <h2 style={{marginLeft: '30px', fontSize:'16px', marginBottom:'14px'}}>Chân ngắn</h2>
+                                </div>
+                            </Center>
+                        </Group>
+                    </CheckboxCard>
                 </div>
-                </Accordion.Control>
-                <Accordion.Panel className='leglength_item'>
-                    <h2>Nếu bạn không thể xác định độ dài chân, cũng đừng lo!</h2>
-                    <p>Các bạn làm theo hướng dẫn của chúng tôi để đo được kết quả tương đối chính xác nhé!</p>
-                    <Center>
-                        <img className="leg_img" src='/image/khong_biet_do.svg'></img>
-                    </Center>
-                    <div style={{display: 'flex', flexDirection: 'row', gap: '10px', marginTop:'30px'}}>
-                        <CheckboxCard
-                            className={classes.root}
-                            radius="md"
-                            checked={checkedValue2 === 3? true: false}
-                            onClick={() => setCheckedValue2((c) => 3)}
-                            >
-                            <Group wrap='nowrap' align='flex-start' >
-                                <Center>
-                                    <CheckboxIndicator/>
-                                    <div>
-                                        <h2 style={{marginLeft: '30px', fontSize:'16px'}}>Chân siêu dài</h2>
-                                    </div>
-                                </Center>
-                            </Group>
-                        </CheckboxCard>
-                        <CheckboxCard
-                            className={classes.root}
-                            radius="md"
-                            checked={checkedValue2 === 2? true: false}
-                            onClick={() => setCheckedValue2((c) => 2)}
-                            >
-                            <Group wrap='nowrap' align='flex-start' >
-                                <Center>
-                                    <CheckboxIndicator/>
-                                    <div>
-                                        <h2 style={{marginLeft: '30px', fontSize: '16px'}}>Chân dài</h2>
-                                    </div>
-                                </Center>
-                            </Group>
-                        </CheckboxCard>
-                        <CheckboxCard
-                            className={classes.root}
-                            radius="md"
-                            checked={checkedValue2 === 1? true: false}
-                            onClick={() => setCheckedValue2((c) => 1)}
-                            >
-                            <Group wrap='nowrap' align='flex-start' >
-                                <Center>
-                                    <CheckboxIndicator/>
-                                    <div>
-                                        <h2 style={{marginLeft: '30px', fontSize:'16px'}}>Chân ngắn</h2>
-                                    </div>
-                                </Center>
-                            </Group>
-                        </CheckboxCard>
-                    </div>
-                </Accordion.Panel>
-            </Accordion.Item>
-            </Accordion>
+        </Accordion>
         </div>
         </div>
         <Link to='/test/result' state={{message: message}} onClick={handleData}>
-            <button className='test_button_class'>Hoàn thành</button>
+            <button className='test_button_class' style={{marginBottom:'0'}}>Hoàn thành</button>
         </Link>
     </div>
   )
