@@ -68,7 +68,7 @@ Dự án được thực hiện bởi một đội ngũ chuyên nghiệp với c
 
 ## IV. Công Nghệ và Công Cụ
 
-*   **Ngôn Ngữ Lập Trình:** JavaScript, XML, CSS
+*   **Ngôn Ngữ Lập Trình:** JavaScript, CSS
 *   **Framework:** React, Express.js
 *   **Cơ Sở Dữ Liệu:** PostgreSQL
 *   **Công Cụ Thiết Kế:** Figma, Photoshop
