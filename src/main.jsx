@@ -7,6 +7,7 @@ import Aos from 'aos';
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
 import { Notifications } from '@mantine/notifications';
+import '@mantine/carousel/styles.css';
 import ErrorPage from './utils/ErrorPage';
 
 Aos.init({

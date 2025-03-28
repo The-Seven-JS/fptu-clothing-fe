@@ -27,6 +27,7 @@ import PostManager from './Admin/PostManager.jsx';
 import DraftManager from './Admin/DraftManager';
 import ErrorPage from './utils/ErrorPage';
 import Notification from './Admin/Notification.jsx';
+import LoadingPage from './utils/LoadingPage';
 import A1 from './fuctKnowledge/Pages/Appearance/A1.jsx';
 import A2 from './fuctKnowledge/Pages/Appearance/A2.jsx';
 import A3 from './fuctKnowledge/Pages/Appearance/A3.jsx';
@@ -103,7 +104,7 @@ function App() {
     
       {!isNotFound && <Header/>} 
       <Routes>
-        <Route path='/' element={<MainPage />}/>
+        <Route path='/' element={<MainPage/>}/>
         <Route path='/home' element={<MainPage />}/>
         <Route path='/news' element={<News/>}/>
         <Route path='/news/content' element={<NewsContent/>}/>

@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import MainTestBoard from './components/MainTestBoard'
 import MainCard from './components/MainCard'
 import '/src/styles/mainpage.css'
 import './styles/MainCard1.css'
 import Aos from 'aos'
 import "aos/dist/aos.css";
+import { Carousel, CarouselSlide} from '@mantine/carousel'
+import { useInterval } from '@mantine/hooks'
+import Autoplay from 'embla-carousel-autoplay'
 function MainPage() {
+  const autoPlay = useRef(Autoplay({delay:2500}))
+  const autoPlay1 = useRef(Autoplay({delay:2500}))
   useEffect(() =>{
     Aos.init({
       duration: 1000,
@@ -57,7 +62,7 @@ function MainPage() {
     'news-slider(2).png',
   ]
   const knowledge_slider = [
-    'knowledge-slider.png',
+    'knowledge-slider(3).jpg',
     'knowledge-slider(1).png',
     'knowledge-slider(2).png'
   ]
@@ -73,18 +78,46 @@ function MainPage() {
         <img src='/image/male_introduction.svg' data-aos='fade-left' alt='background-img' className='m_introduction-img'></img>
       </div>
       <div className='main-mini-nav'>
-        <h1 className='title' data-aos='fade-up'>ĐIỂM NỔI BẬT</h1>
+        <h1 className='title' data-aos='fade-up'>Điểm nổi bật</h1>
         <div className='mini-nav'>
           <div className='news-text' data-aos ='fade-right'>
             <h2>FUCT NEWS</h2>
             <p>Cập nhật những thông tin mới nhất về những xu hướng và phong cách thời trang hiện đại, các bộ sưu tập mới nhất từ các thương hiệu và nhà thiết kế nổi tiếng.</p>
           </div>
-            <img data-aos='fade-left' className='news-img' src='/image/news-slider(1).png' alt='news'></img>
+            {/* <img data-aos='fade-left' className='news-img' src='/image/news-slider(1).png' alt='news'></img> */}
+            <Carousel withIndicators={true}
+                      withControls={false}
+                      plugins={[autoPlay1.current]}
+                      // onMouseEnter={autoPlay1.current.stop}
+                      // onMouseLeave={autoPlay1.current.reset}
+                      loop
+                      align='center'
+                      data-aos='fade-up'
+            >
+              {news_slider.map((ele, index) => (
+                <CarouselSlide key={index} align='center'>
+                  <img src={`/image/${ele}`} alt='news'></img>
+                </CarouselSlide>
+              ))}
+            </Carousel>
           <div className='knowledge-text' data-aos='fade-left'>
             <h2>KIẾN THỨC THỜI TRANG</h2>
             <p>Cung cấp cái nhìn chi tiết về các thuật ngữ và khái niệm trong thời trang, như định nghĩa về phong cách, thiết kế, và các yếu tố ảnh hưởng đến sự thay đổi trong các xu hướng thời trang.</p>
           </div>
-            <img className='knowledge-img' src='/image/knowledge-slider(1).png' data-aos='fade-right' alt='knowledge'></img>
+            {/* <img className='knowledge-img' src='/image/knowledge-slider(1).png' data-aos='fade-right' alt='knowledge'></img> */}
+            <Carousel withIndicators={true}
+                      withControls={false}
+                      plugins={[autoPlay.current]}
+                      
+                      loop
+                      align='center'
+                      data-aos='fade-up'>
+              {knowledge_slider.map((ele, index) => (
+                <CarouselSlide key={index} align='center'>
+                  <img src={`/image/${ele}`} alt='knowledge' style={{objectFit:'contain'}}></img>
+                </CarouselSlide>
+              ))}
+            </Carousel>
         </div>
       </div>
       <div className='UX-containner'>
@@ -94,7 +127,7 @@ function MainPage() {
             <MainCard key={index} comment={ele.description} user_img={ele.src} user={ele.name} description={ele.job}/>
           ))}
         </div>
-      </div>
+      </div>  
     </div>
   )
 }

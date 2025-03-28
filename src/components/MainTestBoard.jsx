@@ -12,6 +12,7 @@ function MainTestBoard() {
     }, [])
   return (
     <div className='main-test-board'>
+      <div className='main-component'>
       <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between'}}> 
         <div className='board-text'>
           <h1 className='board-header'>Tìm ra phong cách phù hợp cùng <b>FUCT</b></h1>
@@ -25,6 +26,7 @@ function MainTestBoard() {
           <img src='/image/female_maintestboard.svg' alt='background-img' className='female_maintestboard-img'></img>
           <img src='/image/male_maintestboard.svg' alt='background-img' className='male_maintestboard-img'></img>
         </div>
+      </div>
       </div>
     </div>
   )
