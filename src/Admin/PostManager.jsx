@@ -2,6 +2,7 @@ import PostCard from './components/PostCard'
 import React, { useState,useEffect } from 'react'
 import ReactPaginate from "react-paginate";
 import axios from "axios";
+import SearchBar from './components/SearchBar';
 function PostManager() {
     const [data, setData] = useState([]);//fetch data tu db
     const [content, setContent] = useState([]);//fetch data tu db
@@ -28,6 +29,9 @@ function PostManager() {
         }
   return (
     <div>
+      <div>
+        <SearchBar/>
+      </div>
         {curCards.map((card, index) => (
         <PostCard key={index + offset} title={card.content} id={card.id} bg={card.title} source="FUCT NEWS" date={card.created_at} titleEmpty={""} />
       ))}
