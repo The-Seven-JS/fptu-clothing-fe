@@ -18,7 +18,7 @@
 	--purple: hsl(273,90%,50%);
 	--magenta: hsl(303,90%,50%);
 	--trans-dur: 0.3s;
-	font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1280 - 320));
+	/* font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1280 - 320)); */
 }
 /* body {
 	background-color: var(--bg);
