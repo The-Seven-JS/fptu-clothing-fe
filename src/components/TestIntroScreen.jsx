@@ -3,8 +3,8 @@ import '/src/styles/MainTestScreen.css'
 import { Link } from 'react-router-dom'
 function TestIntroScreen() {
   return (
-    <div className='intro-container'>
-      <h2>Kiểm tra phong cách phù hợp với bạn</h2>
+    <div className='intro-container' style={{ padding: '0px 80px' }}>
+      <h2 style={{fontSize:'40px'}}>Kiểm tra phong cách phù hợp với bạn</h2>
       <p>Bạn đã bao giờ đứng trước tủ quần áo đầy ắp mà vẫn cảm thấy "không có gì để mặc"? Hay bạn đang muốn làm mới không gian sống nhưng lại băn khoăn không biết bắt đầu từ đâu? Có lẽ bạn chỉ đơn giản là muốn khám phá và định hình phong cách cá nhân một cách rõ ràng hơn, để mỗi lựa chọn trang phục hay đồ đạc đều thể hiện đúng con người bạn.</p>
       <p>Nếu bạn đang tìm kiếm câu trả lời cho những câu hỏi trên, thì bài kiểm tra này chính là dành cho bạn. Bài kiểm tra này không chỉ đơn thuần là một danh sách các câu hỏi, mà là một công cụ tương tác giúp bạn khám phá những khía cạnh khác nhau trong gu thẩm mỹ của bản thân. Các bạn sẽ được tìm hiểu rõ hơn về các khía cạnh trên cơ thể của mình, những trang phục phù hợp và những thứ cần tránh. Tin chắc rằng, sau khi học được những tips phối đồ này, bạn sẽ trở nên tự tin hơn khi đi chơi, đi hẹn hò, hay thậm chí là tham dự các sự kiện quan trọng.</p>
       <br/>
