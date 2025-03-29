@@ -120,7 +120,7 @@ export default function AddPost() {
         console.log(response.data);
         //
         console.error("Error submitting data:", error);
-        alert("Lưu thất bại do chưa có ảnh bìa hoặc Tiêu đề/Nội dung. Nội dung sẽ được lưu trong mục 'Bài viết chưa hoàn thiện'");
+        alert("Lưu thất bại!. Nội dung sẽ được lưu trong mục 'Bài viết chưa hoàn thiện'");
       }
     }else{
       console.log("no ok");
