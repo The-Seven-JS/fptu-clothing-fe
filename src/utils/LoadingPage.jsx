@@ -27,13 +27,11 @@ const BrickLayer = ({ layerNumber, bricks }) => {
 const Message = () => {
   const messages = [
     "Loading…",
-    "Sorting out the pieces…",
-    "Assembling one brick at a time…",
-    "Following every step…",
-    "Being very careful not to step on the pieces…",
-    "Trying not to get finger blisters…",
-    "Might take longer to build than the Death Star…",
-    "Wrapping it up…"
+    "Làm gì mà phải xoắn...",
+    "Chờ đợi là hạnh phúc",
+    "Yeah yeah",
+    "YÊU YÊU YÊU...",
+    "500 Anh em của FUCT đâu rồi"
   ];
   return (
     <div className="message">
@@ -84,7 +82,7 @@ const Tower = () => {
     }
   ];
   return (
-    <main>
+    <div className="main_loadingpage">
       <div className="tower">
         <div className="tower__group">
           {layers.map((layer, index) => (
@@ -93,7 +91,7 @@ const Tower = () => {
         </div>
       </div>
       <Message />
-    </main>
+    </div>
   );
 };
 

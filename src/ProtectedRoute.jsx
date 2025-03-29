@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import Tower from "./utils/LoadingPage";
 const ProtectedRoute = () => {
     const [isAuthorized, setIsAuthorized] = useState(null);
 
@@ -17,8 +17,12 @@ const ProtectedRoute = () => {
         .catch(() => setIsAuthorized(false));
     }, []);
 
-    if (isAuthorized === null) return <div>Loading...</div>; // Prevent flashing before auth check
-
+    if (isAuthorized === null) 
+    return (
+        <div>
+            {<Tower/>}
+        </div>
+    )
     return isAuthorized ? <Outlet /> : <Navigate to="/" />;
 };
 

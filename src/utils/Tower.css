@@ -4,6 +4,9 @@
 	margin: 0;
 	padding: 0;
 } */
+.main_loadingpage{
+	margin: 50px 100px 20px 100px;
+}
 :root {
 	--hue: 223;
 	--bg: hsl(var(--hue),90%,90%);
@@ -15,7 +18,7 @@
 	--purple: hsl(273,90%,50%);
 	--magenta: hsl(303,90%,50%);
 	--trans-dur: 0.3s;
-	/* font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1280 - 320)); */
+	font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1280 - 320));
 }
 /* body {
 	background-color: var(--bg);
@@ -28,9 +31,9 @@
 		background-color var(--trans-dur),
 		color var(--trans-dur);
 } */
-main {
+/* main {
 	padding: 1.5em 0;
-}
+} */
 .message {
 	height: 1.5em;
 	position: relative;
