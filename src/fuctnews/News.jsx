@@ -69,8 +69,8 @@ function News() {
     }
     //----------ket thuc pagination cac bai viet--------------------------------------------
     const navigate = useNavigate();
-    const handleCardClick = (news,date) => {
-      navigate(`/news/content/`,{state : {content: news,date: date}});
+    const handleCardClick = (news,date,id) => {
+      navigate(`/news/content/${id}`,{state : {content: news,date: date,id:id}});
     }
     return (
     <div>
@@ -85,13 +85,13 @@ function News() {
           transition={{ duration: 0.5 }}
         >
         {mainCardsToShow.map((card,index)=> (
-        <Maincard key={index + offsetMainCard} title={card.title} content={card.content} onClick={() =>handleCardClick(card.content,card.created_at)}/>
+        <Maincard key={index + offsetMainCard} title={card.title} content={card.content} onClick={() =>handleCardClick(card.content,card.created_at,card.id)}/>
         ))}
         </motion.div>
       </AnimatePresence>
         <div className="news-slider-button">
-          <img src="src/fuctnews/arrowleft.png" alt="" className="arrow-left" onClick={() => iconClick(0)} />
-          <img src="src/fuctnews/arrow.png" alt="" className="arrow-right" onClick={() => iconClick(1)} />
+          <img src="/image/arrowleft.png" alt="" className="arrow-left" onClick={() => iconClick(0)} />
+          <img src="/image/arrow.png" alt="" className="arrow-right" onClick={() => iconClick(1)} />
         </div>
       </div>
       <ReactPaginate
@@ -110,7 +110,7 @@ function News() {
       />
 {/* ----------------------------------------------- */}
       {curCards.map((card, index) => (
-        <Contentcard key={index + offset} title={card.title} content={card.content} date={card.created_at} onClick={() => handleCardClick(card.content,card.created_at)} />
+        <Contentcard key={index + offset} title={card.title} content={card.content} date={card.created_at} onClick={() => handleCardClick(card.content,card.created_at,card.id)} />
       ))}
       <ReactPaginate
         previousLabel={"<"}

@@ -1,3 +1,4 @@
+@import url(/src/styles/fonts.css);
 * {
     box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
@@ -12,7 +13,7 @@
     align-items: center;
     padding-top: 20px; /* Add padding to the top */
     padding-bottom: 20px; /* Add padding to the bottom */
-    position: relative; /* Set position to relative for absolute positioning of child elements */
+     /* Set position to relative for absolute positioning of child elements */
 }
 
 .menu {
@@ -26,13 +27,15 @@
 .menu-item {
     width: 100%; /* Ensure the menu-item takes the full width */
     display: flex;
+    font-family: 'Be Vietnam Pro', sans-serif; /* Use the imported font */
+    font-weight: bold; /* Set font weight to normal */
     flex-direction: column;
+    font-size: 20px;
     align-items: center;
     justify-content: center; /* Center the menu items vertically */
     flex-grow: 1; /* Allow the menu items to grow and take up available space */
 }
-
-.menu-item p {
+.menu-item a{
     width: 100%; /* Ensure the p elements take the full width */
     padding: 15px 0; /* Adjust padding for spacing */
     margin: 0;
@@ -42,11 +45,9 @@
     border-top: 1px solid #444; /* Add top border */
     border-bottom: 1px solid #444; /* Add bottom border */
 }
-
-.menu-item p:hover {
-    background-color: #444; /* Darken background color on hover */
+.menu-item a:hover{
+    background-color: #444;
 }
-
 .menu-item p.active {
     background-color: #FFD700; /* Yellow background for active item */
     color: #333; /* Dark text color for active item */
@@ -68,6 +69,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "Be Vietnam Pro", sans-serif; 
+    font-weight: light; /* Set font weight to normal */
 }
 
 .change-pass img {
@@ -80,6 +83,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: light; /* Set font weight to normal */
 }
 
 .logout img {
@@ -107,4 +112,9 @@
     background-color: transparent; /* Ensure background color does not change */
     text-decoration: underline; /* Add underline on hover */
     cursor: pointer; /* Change cursor to pointer on hover */
+}
+@media screen and (max-width: 721px) {
+  * > p{
+    font-size:13px;
+  }
 }

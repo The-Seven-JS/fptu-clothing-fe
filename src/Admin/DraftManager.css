@@ -1,0 +1,12 @@
+.hehe{
+    background-color: #FFD700; /* Bright yellow color */
+    border: none;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black; /* White text for good contrast */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-bottom: 10px;
+}

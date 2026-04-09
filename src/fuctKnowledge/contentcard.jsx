@@ -1,5 +1,4 @@
 import React from 'react'
-import './contentcard.css'
 function Contentcard({title,content,onClick,img}) {
   // Function to extract the content of the <h2> tag
   return (

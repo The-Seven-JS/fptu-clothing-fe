@@ -9,12 +9,14 @@ function ChangePassword({ onLogin }) {
   const navigate = useNavigate()
   const sendChangePassRequest = async (oldPass, newPass, retypePass) => {
     try {
-      const response = await axios.patch('https://testing-2bfd.onrender.com/changepass',
+      const response = await axios.patch('https://be.fuct.gay/changepass',
         { oldPass, newPass, retypePass },
         { withCredentials: true } // Correct way to include credentials (cookies)
       );
+      alert('Đổi mật khẩu thành công!')
       return response.data;
     } catch (error) {
+      alert('Đổi mật khẩu thất bại!')
       console.error('Error logging in:', error);
       throw error;
     }
@@ -22,14 +24,13 @@ function ChangePassword({ onLogin }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const message = sendChangePassRequest(oldPass, newPass, retypePass)
-    console.log(message.message)
   };
 
 return (
     <div className='admin_validate_container' >
-        <div className='admin_pin'>
-            <h1>NHẬP MÃ PIN ĐỂ ĐĂNG NHẬP:</h1>
-            <form onSubmit={handleSubmit} className='admin_pin_input'>
+        <div className='admin_pin1'>
+            <h1>ĐỔI MẬT KHẨU</h1>
+            <form onSubmit={handleSubmit} className='admin_pin_input1'>
               <input type="text" value ={oldPass} onChange={(e) => setOldPass(e.target.value)} placeholder='Mật khẩu cũ'/>
               <input type="text" value={newPass} onChange={(e) => setNewPass(e.target.value)} placeholder='Mật khẩu mới'/>
               <input type="text" value={retypePass} onChange={(e) => setRetypePass(e.target.value)} placeholder='Nhập lại mật khẩu mới'/>

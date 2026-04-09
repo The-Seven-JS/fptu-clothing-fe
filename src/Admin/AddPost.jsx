@@ -34,6 +34,7 @@ export default function AddPost() {
             headers: {
               "Content-Type": "multipart/form-data",
             },
+            withCredentials: true
           });
           if (response.data) {
             console.log(response.data);
@@ -65,7 +66,7 @@ export default function AddPost() {
         const response = await axios.post("https://be.fuct.gay/articles/new", {
           title: "New Post", // Use the extracted <h2> content as the title if available
           content: "<p></p>",
-        });
+        }, {withCredentials: true});
         console.log("Response:", response.data);
         setFetchedData(response.data.content);
         setPostId(response.data.id); // Store the returned ID in the state
@@ -97,31 +98,50 @@ export default function AddPost() {
   const handleSave = async () => {
     if (!postId) {
       console.error("Post ID is not available. Please create a new post first.");
+      alert("Chưa tạo được bài viết! Thử lại")
       return;
     }
     if(bgimage === "" && title){
       console.log("ok");
       try {
-        const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
+        const response = await axios.put(`https://be.fuct.gay/articles/update-article/${postId}`, {
           title: bg, // Use the extracted <h2> content as the title if available
           content: htmlContent,
-        });
+        }, {withCredentials: true});
         console.log("Response:", response.data);
         setFetchedData(response.data.content);
+        alert("Đã lưu bài viết hoàn tất");
       } catch (error) {
+        //
+        const response = await axios.put(`https://be.fuct.gay/articles/save-draft/${postId}`, {
+          title: bg, // Use the extracted <h2> content as the title if available
+          content: htmlContent,
+        }, {withCredentials: true});
+        console.log(response.data);
+        //
         console.error("Error submitting data:", error);
+        alert("Lưu thất bại!. Nội dung sẽ được lưu trong mục 'Bài viết chưa hoàn thiện'");
       }
     }else{
       console.log("no ok");
       try {
-        const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
+        const response = await axios.put(`https://be.fuct.gay/articles/update-article/${postId}`, {
           title: bgimage, // Use the extracted <h2> content as the title if available
           content: htmlContent,
-        });
+        }, {withCredentials: true});
         console.log("Response:", response.data);
         setFetchedData(response.data.content);
+        alert("Đã lưu bài viết hoàn tất");
       } catch (error) {
+        //
+        const response = await axios.put(`https://be.fuct.gay/articles/save-draft/${postId}`, {
+          title: bgimage, // Use the extracted <h2> content as the title if available
+          content: htmlContent,
+        }, {withCredentials: true});
+        console.log(response.data);
+        //
         console.error("Error submitting data:", error);
+        alert("Lưu thất bại do chưa có ảnh bìa hoặc Tiêu đề/Nội dung. Nội dung sẽ được lưu trong mục 'Bài viết chưa hoàn thiện'")
       }
     }
   };
@@ -137,6 +157,7 @@ export default function AddPost() {
   const handleCustomUpload = async (event) => {
     if (!postId) {
       console.error("Post ID is not available. Please create a new post first.");
+      alert("Chưa tạo được bài viết! Thử lại")
       return;
     }
   
@@ -152,16 +173,39 @@ export default function AddPost() {
     try {
       const uploadedUrl = await uploadFileFunctionRef.current(file); // Use the uploadFile function
       setBgimage(uploadedUrl);
-      const response = await axios.put(`https://be.fuct.gay/articles/${postId}`, {
+      if(uploadedUrl){
+        alert("Đã tải lên ảnh bìa");
+      }else{
+        alert("Lỗi tải lên ảnh bìa! Thử lại")
+      }
+      const response = await axios.put(`https://be.fuct.gay/articles/update-article/${postId}`, {
         title: bgimage, // Use the extracted <h2> content as the title if available
         content: htmlContent,
-      });
+      }, {withCredentials: true });
       console.log("Uploaded file URL:", uploadedUrl);
       alert(`File uploaded successfully: ${uploadedUrl}`);
     } catch (error) {
       console.error("Error uploading file:", error);
     }
   };
+
+  const saveDraft = async () =>{
+    if(bgimage === "" && title){
+      const response = await axios.put(`https://be.fuct.gay/articles/save-draft/${postId}`, {
+        title: bg, // Use the extracted <h2> content as the title if available
+        content: htmlContent,
+      }, {withCredentials: true});
+      alert("Lưu nháp thành công");
+      console.log(response.data);
+    }else{
+      const response = await axios.put(`https://be.fuct.gay/articles/save-draft/${postId}`, {
+        title: bgimage, // Use the extracted <h2> content as the title if available
+        content: htmlContent,
+      }, {withCredentials: true});
+      alert("Lưu nháp thành công");
+      console.log(response.data);
+    }
+  }
 
   // Renders the editor instance using a React component.
   return (
@@ -173,17 +217,18 @@ export default function AddPost() {
   className={`upload-label ${
     uploadStatus === "selected"
       ? "selected"
-      : bgimage === "" && title
+      : bgimage === "" && title && bg != ""
       ? "existing-photo-label"
       : ""
   }`}
 >
   {uploadStatus === "selected"
     ? fileName
-    : bgimage === "" && title
+    : bgimage === "" && title && bg !=""
     ? "Sửa ảnh đã có"
     : "Tải lên Ảnh Bìa"}
 </label>
+          <button className="save" onClick={saveDraft}>Lưu bản nháp</button>
           <button onClick={handleSave} className="save">
             Hoàn Thành
           </button>

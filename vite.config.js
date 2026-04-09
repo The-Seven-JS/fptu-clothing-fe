@@ -9,5 +9,10 @@ export default defineConfig({
   },
   resolve: {
     dedupe: ['react', 'react-dom']
+  },
+  test: {
+    global: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.js'
   }
 })

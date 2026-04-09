@@ -59,15 +59,15 @@ const GenderScreen = () => {
   return (
     <div className='gender_container'>
       <h1>Giới tính của bạn là gì?</h1>
+      <div className='gender_container'>
       <div className='gender_items'>
         <div className={`gender_male ${gender==='male'?'selected':''}`} onClick={() => {
           setGender('male')
-          }} 
-        {...(!disableAOS && {'data-aos':'zoom-in'})}>  {/*This spread syntax trick  */}
+          }}>  {/*This spread syntax trick  */}
           <img alt='Male' src ='/image/OC_boy.svg'></img>
           <h4>Nam</h4>
         </div>
-        <div className={`gender_male ${gender==='female'?'selected':''}`} onClick={() => setGender('female')} {...(!disableAOS && {'data-aos':'zoom-in'})}>
+        <div className={`gender_male ${gender==='female'?'selected':''}`} onClick={() => setGender('female')}>
           <img alt='gender_female' src ='/image/OC_girl.svg'></img>
           <h4>Nữ</h4>
         </div>  
@@ -75,6 +75,7 @@ const GenderScreen = () => {
       <Link to='/test/height-weight' state={{message: message}} onClick={handleNavigate} >
         <button className='test_button_class'>TIẾP THEO</button>
       </Link>
+      </div>
     </div>
   );
 };

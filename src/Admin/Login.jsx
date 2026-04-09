@@ -15,7 +15,7 @@ function Login({ onLogin }) {
   }
   const sendLoginRequest = async (name, password) => {
     try {
-      const response = await axios.post('https://testing-2bfd.onrender.com/login',
+      const response = await axios.post('https://be.fuct.gay/login',
         { name, password },
         { withCredentials: true } // Correct way to include credentials (cookies)
       );
@@ -31,7 +31,7 @@ function Login({ onLogin }) {
     sendLoginRequest(name, password)
       .then((data) => {
         alert('Đăng nhập thành công!');
-        onLogin()
+        onLogin() 
         navigate('/admin/success')
       })
       .catch((error) => {
@@ -42,7 +42,7 @@ function Login({ onLogin }) {
 return (
     <div className='admin_validate_container' >
         <div className='admin_pin'>
-            <h1>NHẬP MÃ PIN ĐỂ ĐĂNG NHẬP:</h1>
+            <h1>ĐĂNG NHẬP</h1>
             <form onSubmit={handleSubmit} className='admin_pin_input'>
               <input type="text" value ={name} onChange={handleChange1}/>
               <input type="password" value={password} onChange={handleChange} />

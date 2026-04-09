@@ -22,7 +22,7 @@
 
 .item img {
     width: 100%; /* Make the images take full width of the container */
-    height: auto; /* Maintain the aspect ratio */
+    height: 35vh; /* Maintain the aspect ratio */
     object-fit: cover; /* Ensure the images cover the entire grid cell */
     border-radius: 10px; /* Add rounded corners if needed */
     transition: transform 0.3s ease; /* Add transition for hover effect */
