@@ -1,1 +1,154 @@
+name: CI/CD with Docker
+
+on:
+  push:
+    branches: 
+        - develop
+
+jobs:
+    CI:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                node-version: 24
+            - name: Check Project Structure and Verification
+              run: |
+                set -euo pipefail
+                test -f package.json || (echo "package.json not found" && exit 1)
+                test -f package-lock.json || (echo "package-lock.json not found" && exit 1)
+                test -f vite.config.js || (echo "vite.config.js not found" && exit 1)
+                test -d src || (echo "src directory not found" && exit 1)
+                test -d public || (echo "public directory not found" && exit 1)
+                if [ $? -eq 0 ]]; then
+                  echo "Project structure verification done"
+                  exit 0
+                fi
+            - name: Install dependencies
+              run: npm ci
+            - name: Run test 
+              run: npx vitest
+            - name: Login to Docker Hub
+              uses: docker/login-action@v4
+              with:
+                username: ${{ secrets.DOCKER_HUB_USERNAME }}
+                password: ${{ secrets.DOCKER_HUB_TOKEN }}
+            - name: Build Docker image and Push
+              uses: docker/build-push-action@v5
+              with:
+                context: .
+                push: true
+                tags: |
+                    ${{ secrets.DOCKER_HUB_USERNAME }}/fptu-clothing-fe:latest
+                    ${{ secrets.DOCKER_HUB_USERNAME }}/fptu-clothing-fe:{{ github.sha }}
+
+
+    # CD: 
+    #     needs:
+    #       - CI
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - name: Install Docker Engine and Compose V2
+    #           uses: appleboy/ssh-action@v1
+    #           with:
+    #             host: ${{ secrets.SERVER_HOST }}
+    #             port: 22
+    #             username: ${{ secrets.SERVER_USERNAME }}
+    #             key: ${{ secrets.SERVER_KEY }}
+    #             script: |
+    #               echo "Checking for docker engine installation"
+    #               if ! command -v docker &> /dev/null; then
+    #                 echo "docker not found, installing..."
+    #                 sudo apt update
+    #                 sudo apt install -y ca-certificates curl gnupg
+
+    #                 # Add Docker GPG key
+    #                 sudo install -m 0755 -d /etc/apt/keyrings
+    #                 curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
+    #                     | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    #                 sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+    #                 # Add Docker repository
+    #                 echo \
+    #                     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+    #                     https://download.docker.com/linux/ubuntu \
+    #                     $(. /etc/os-release && echo "$VERSION_CODENAME") stable" \
+    #                     | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+    #                 sudo apt update
+
+    #                 # Install Docker Engine + Compose V2
+    #                 sudo apt install -y docker-ce docker-ce-cli containerd.io \
+    #                     docker-buildx-plugin docker-compose-plugin
+    #               else
+    #                 echo "docker installed"
+    #               fi
+    #         - name: Copy docker-compose to server
+    #           uses: appleboy/scp-action@v0.1.7
+    #           with:
+    #             host: ${{ secrets.SERVER_HOST }}
+    #             username: ${{ secrets.SERVER_USERNAME }}
+    #             key: ${{ secrets.SERVER_KEY }}
+    #             source: "./docker-compose.yml"
+    #             target: "~/"
+    #         - name: Move to web root
+    #           uses: appleboy/ssh-action@v1
+    #           with:
+    #             host: ${{ secrets.SERVER_HOST }}
+    #             port: 22
+    #             username: ${{ secrets.SERVER_USERNAME }}
+    #             key: ${{ secrets.SERVER_KEY }}
+    #             script: |
+    #               echo "Moving files to web root"
+    #               sudo mkdir -p /var/www/html/fptu-clothing-fe
+    #               sudo rm -rf /var/www/html/fptu-clothing-fe/*
+    #               sudo cp -r /tmp/fe-build/dist/* /var/www/html/fptu-clothing-fe/
+    #               sudo chown -R www-data:www-data /var/www/html/fptu-clothing-fe
+    #               rm -rf /tmp/fe-build
+
+    #               echo "Config Nginx..."
+    #               sudo cat << 'EOF' | sudo tee /etc/nginx/sites-available/default > /dev/null
+    #               server {
+    #                   listen 80 default_server;
+    #                   listen [::]:80 default_server;
+
+    #                   # Trỏ đúng vào thư mục chứa code
+    #                   root /var/www/html/fptu-clothing-fe;
+    #                   index index.html index.htm index.nginx-debian.html;
+    #                   server_name _;
+
+    #                   location / {
+    #                       # Cấu hình siêu quan trọng cho React Router
+    #                       try_files $uri $uri/ /index.html;
+    #                   }
+    #               }
+    #               EOF
+    #               sudo systemctl restart nginx
+    # Health-Check: 
+    #   needs:
+    #     - CD
+    #   runs-on: ubuntu-latest
+    #   steps:
+    #         - name: Check Health Status
+    #           run: |
+    #             echo "Checking health status"
+    #             for i in {1..5}; do
+    #               HTTP_STATUS=$(curl --connect-timeout 3 --max-time 5 -o /dev/null -s -w "%{http_code}\n" http://${{ secrets.SERVER_HOST }})
+    #               if [ $HTTP_STATUS -eq 200 ]; then
+    #                 echo "Health check passed"
+    #                 exit 0
+    #               fi
+    #               sleep 5
+    #             done
+    #             if [ $? -ne 0 ]; then
+    #               echo "Health check failed after 5 attempts"
+    #               exit 1
+    #             fi
+              
+              
+
+
+
+
 
