@@ -86,7 +86,7 @@ jobs:
                   echo "Moving files to web root"
                   sudo mkdir -p /var/www/html/fptu-clothing-fe
                   sudo rm -rf /var/www/html/fptu-clothing-fe/*
-                  sudo cp -r /tmp/* /var/www/html/fptu-clothing-fe/
+                  sudo cp -r ~/tmp/* /var/www/html/fptu-clothing-fe/
                   sudo chown -R www-data:www-data /var/www/html/fptu-clothing-fe
                   rm -rf ~/tmp
               
