@@ -41,7 +41,7 @@ jobs:
                 push: true
                 tags: |
                     ${{ secrets.DOCKER_HUB_USERNAME }}/fptu-clothing-fe:latest
-                    ${{ secrets.DOCKER_HUB_USERNAME }}/fptu-clothing-fe:{{ github.sha }}
+                    ${{ secrets.DOCKER_HUB_USERNAME }}/fptu-clothing-fe:${{ github.sha }}
 
 
     # CD: 
