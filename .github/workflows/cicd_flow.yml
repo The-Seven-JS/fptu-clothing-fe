@@ -88,6 +88,26 @@ jobs:
                   sudo cp -r /tmp/fe-build/dist/* /var/www/html/fptu-clothing-fe/
                   sudo chown -R www-data:www-data /var/www/html/fptu-clothing-fe
                   rm -rf /tmp/fe-build
+                  echo "Config nginx"
+                  
+                  echo "Config Nginx..."
+                  sudo cat << 'EOF' | sudo tee /etc/nginx/sites-available/default > /dev/null
+                  server {
+                      listen 80 default_server;
+                      listen [::]:80 default_server;
+
+                      # Trỏ đúng vào thư mục chứa code
+                      root /var/www/html/fptu-clothing-fe;
+                      index index.html index.htm index.nginx-debian.html;
+                      server_name _;
+
+                      location / {
+                          # Cấu hình siêu quan trọng cho React Router
+                          try_files $uri $uri/ /index.html;
+                      }
+                  }
+                  EOF
+                  sudo systemctl restart nginx
               
 
 
