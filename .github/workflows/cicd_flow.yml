@@ -117,7 +117,7 @@ jobs:
               run: |
                 echo "Checking health status"
                 for i in {1..5}; do
-                  HTTP_STATUS=$(curl -o /dev/null -s -w "%{http_code}\n" http://${{ secrets.SERVER_HOST }})
+                  HTTP_STATUS=$(curl --connect-timeout 3 --max-time 5 -o /dev/null -s -w "%{http_code}\n" http://${{ secrets.SERVER_HOST }})
                   if [ $HTTP_STATUS -eq 200 ]; then
                     echo "Health check passed"
                     exit 0
