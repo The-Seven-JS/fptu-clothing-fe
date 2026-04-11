@@ -51,7 +51,7 @@ jobs:
         steps:
             - name: Checkout Code
               uses: actions/checkout@v3
-            - name: Install Docker Engine and Compose V2
+            - name: Check for Docker installation
               uses: appleboy/ssh-action@v1
               with:
                 host: ${{ secrets.SERVER_HOST }}
@@ -60,15 +60,21 @@ jobs:
                 key: ${{ secrets.SERVER_KEY }}
                 script: |
                   if ! command -v docker &> /dev/null; then
+                    echo "docker not found, installing..."
                     curl -fsSL https://get.docker.com -o get-docker.sh
                     sudo sh get-docker.sh
                     rm get-docker.sh
                     sudo systemctl start docker
-                    sudo systemctl enable docker        
+                    sudo systemctl enable docker
+                  else
+                    echo "docker installed"
                   fi
                   if ! docker compose version &> /dev/null && ! command -v docker-compose &> /dev/null; then
+                    echo "docker-compose not found, installing..."
                     sudo apt update -y
                     sudo apt install -y docker-compose-plugin
+                  else
+                    echo "docker-compose installed"
                   fi
                   
             - name: Copy docker-compose to server
@@ -94,32 +100,26 @@ jobs:
                   sudo docker compose up -d
                   sudo docker image prune -a -f
 
-
-
-
-
-
-
-    # Health-Check: 
-    #   needs:
-    #     - CD
-    #   runs-on: ubuntu-latest
-    #   steps:
-    #         - name: Check Health Status
-    #           run: |
-    #             echo "Checking health status"
-    #             for i in {1..5}; do
-    #               HTTP_STATUS=$(curl --connect-timeout 3 --max-time 5 -o /dev/null -s -w "%{http_code}\n" http://${{ secrets.SERVER_HOST }})
-    #               if [ $HTTP_STATUS -eq 200 ]; then
-    #                 echo "Health check passed"
-    #                 exit 0
-    #               fi
-    #               sleep 5
-    #             done
-    #             if [ $? -ne 0 ]; then
-    #               echo "Health check failed after 5 attempts"
-    #               exit 1
-    #             fi
+    Health-Check: 
+      needs:
+        - CD
+      runs-on: ubuntu-latest
+      steps:
+            - name: Check Health Status
+              run: |
+                echo "Checking health status"
+                for i in {1..5}; do
+                  HTTP_STATUS=$(curl --connect-timeout 3 --max-time 5 -o /dev/null -s -w "%{http_code}\n" http://${{ secrets.SERVER_HOST }})
+                  if [ $HTTP_STATUS -eq 200 ]; then
+                    echo "Health check passed"
+                    exit 0
+                  fi
+                  sleep 5
+                done
+                if [ $? -ne 0 ]; then
+                  echo "Health check failed after 5 attempts"
+                  exit 1
+                fi
               
               
 
